@@ -18,7 +18,7 @@ public class ProductsController : ControllerBase
 
     public ProductsController()
     {
-        _mongoClient = new MongoClient("mongodb://localhost:27017");
+        _mongoClient = new MongoClient("mongodb://mongodb:27017");
         _database = _mongoClient.GetDatabase("products_db");
         _products = _database.GetCollection<Product>("products");
     }
@@ -49,7 +49,7 @@ public class ProductsController : ControllerBase
     {
         var factory = new ConnectionFactory
         {
-            HostName = "localhost",
+            HostName = "furniture_rabbitmq",
             UserName = "guest",
             Password = "guest",
             Port = 5672

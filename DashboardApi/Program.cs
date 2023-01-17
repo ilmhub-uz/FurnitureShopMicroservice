@@ -12,7 +12,7 @@ builder.Services.AddHostedService<ProductService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=password;database=postgres");
+    options.UseNpgsql("Host=dashboardapi_db;Port=5432;Username=postgres;Password=password;database=postgres");
 });
 
 
@@ -20,6 +20,9 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+var context = app.Services.GetRequiredService<AppDbContext>();
+context.Database.Migrate();
 
 app.UseHttpsRedirection();
 
