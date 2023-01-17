@@ -89,6 +89,19 @@ services:
     networks:
       - real 
 
+  dashboard_blazor:
+    image: dashboard_blazor
+    depends_on:
+      - "dashboardapi_db"
+    container_name: dashboard_blazor
+    ports:
+      - "3021:80"
+    build:
+      context: AdminBlazor
+      dockerfile: Dockerfile
+    networks:
+      - real
+
 networks:
   real:
     driver: bridge
