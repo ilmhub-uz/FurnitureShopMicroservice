@@ -58,12 +58,14 @@ public class ProductsController : ControllerBase
         var connection = factory.CreateConnection();
         var channel = connection.CreateModel();
 
-        channel.QueueDeclare("product_added", false, false, false, null);
+        //channel.QueueDeclare("product_added", false, false, false, null);
+
+        channel.ExchangeDeclare("product_added", ExchangeType.Fanout);
 
         var productJson = Newtonsoft.Json.JsonConvert.SerializeObject(product);
         var productJsonByte = Encoding.UTF8.GetBytes(productJson);
 
-        channel.BasicPublish("", "product_added", null, productJsonByte);
+        channel.BasicPublish("product_added", "", null, productJsonByte);
 
         channel.Close();
         connection.Close();

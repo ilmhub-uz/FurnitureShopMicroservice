@@ -63,7 +63,32 @@ services:
       - mongodb:/data/db
     networks:
       - real
-      
+
+  cartapi:
+    image: cartapi
+    depends_on:
+      - "dashboardapi_db"
+      - "furniture_rabbitmq"
+    container_name: cartapi
+    ports:
+      - "3003:80"
+    build:
+      context: CartApi
+      dockerfile: Dockerfile
+    networks:
+      - real
+
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    container_name: redis
+    ports:
+      - '6379:6379'
+    volumes: 
+      - cache:/data
+    networks:
+      - real 
+
 networks:
   real:
     driver: bridge
@@ -71,3 +96,4 @@ networks:
 volumes:
   customer_data:
   mongodb:
+  cache:

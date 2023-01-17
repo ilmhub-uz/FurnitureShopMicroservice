@@ -1,29 +1,24 @@
-﻿using DashboardApi.Data;
-using DashboardApi.Models;
+﻿using System.Text;
+using System.Threading.Channels;
+using Microsoft.Extensions.Caching.Distributed;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using System.Text;
-using System.Threading.Channels;
 
-namespace DashboardApi.Services;
+namespace CartApi.Services;
 
-public class ProductService : BackgroundService
+public class ProductConsumer : BackgroundService
 {
-    private readonly IServiceScopeFactory _scopeFactory;
-    private AppDbContext _context;
     private IConnection _connection;
     private IModel _channel;
-    private string _queueName;
+    private readonly IDistributedCache _distributedCache;
 
-    public ProductService(IServiceScopeFactory scopeFactory)
+    public ProductConsumer(IDistributedCache distributedCache)
     {
-        _scopeFactory = scopeFactory;
+        _distributedCache = distributedCache;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _context = _scopeFactory.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
-
         var factory = new ConnectionFactory
         {
             HostName = "furniture_rabbitmq",
@@ -37,19 +32,17 @@ public class ProductService : BackgroundService
 
         //_channel.QueueDeclare("product_added", false, false, false, null);
         _channel.ExchangeDeclare("product_added", ExchangeType.Fanout);
-        _queueName = _channel.QueueDeclare().QueueName;
-        
-        _channel.QueueBind(_queueName, "product_added", "");
+        var queueName = _channel.QueueDeclare().QueueName;
+        _channel.QueueBind(queueName, "product_added", "");
 
-        HandleQueue();
+        HandleQueue(queueName);
     }
 
-    private void HandleQueue()
+    private void HandleQueue(string queueName)
     {
         var consumer = new EventingBasicConsumer(_channel);
         consumer.Received += ConsumerOnReceived();
-
-        _channel.BasicConsume(_queueName, false, consumer);
+        _channel.BasicConsume(queueName, false, consumer);
     }
 
     private EventHandler<BasicDeliverEventArgs> ConsumerOnReceived()
@@ -64,13 +57,7 @@ public class ProductService : BackgroundService
 
     private void SaveProduct(ProductQueue productQueue)
     {
-        _context.Products?.Add(new Product()
-        {
-            ProductId = productQueue.Id,
-            ProductCount = productQueue.Count,
-            ProductName = productQueue.Name,
-        });
-
-        _context.SaveChanges();
+        _distributedCache.SetString("product", 
+            Newtonsoft.Json.JsonConvert.SerializeObject(productQueue));
     }
 }
