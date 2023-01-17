@@ -1,5 +1,17 @@
 # FurnitureShopMicroservice
 
+aspnetcore,
+blazor,
+signalr,
+postgres,
+mongodb,
+redis,
+rabbitmq,
+docker,
+
+efcore,
+mappster,
+
 > Clone repository and run following commands
 
 1. ```docker-compose build ```
