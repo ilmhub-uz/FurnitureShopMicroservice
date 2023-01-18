@@ -1,0 +1,31 @@
+﻿@page "/products"
+@inject HttpClient Http
+@using ClientBlazor.Models
+
+<h1>Add Product</h1>
+
+<br>
+
+<MudTextField @bind-Value="Product.Name" Label="Name" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="Product.Count" Label="Count" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="Product.Price" Label="Price" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="Product.Category!.Name" Label="CategoryName" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="Product.Brand!.Name" Label="BrandName" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="Product.Brand!.Description" Label="BrandDescription" Variant="Variant.Outlined"></MudTextField>
+
+<br>
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async()=> await PostProduct())">Add</MudButton>
+
+@code {
+    public CreateProductDto Product { get; set; } = new CreateProductDto()
+    {
+        Category = new CreateCategoryDto(),
+        Brand = new CreateBrandDto()
+    };
+
+    private async Task PostProduct()
+    {
+        var result = await Http.PostAsJsonAsync("/api/products", Product);
+    }
+}
