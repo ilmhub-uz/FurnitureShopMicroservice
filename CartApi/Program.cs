@@ -4,6 +4,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(cors =>
+{
+    cors.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowAnyOrigin();
+    });
+});
+
+builder.Services.AddHostedService<ProductConsumer>();
+
 builder.Services.AddDistributedRedisCache(options =>
 {
     options.Configuration = "redis";
@@ -16,6 +28,8 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 

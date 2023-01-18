@@ -4,6 +4,8 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Threading.Channels;
+using DashboardApi.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace DashboardApi.Services;
 
@@ -14,10 +16,12 @@ public class ProductService : BackgroundService
     private IConnection _connection;
     private IModel _channel;
     private string _queueName;
+    private readonly IHubContext<ProductsHub> _hubContext;
 
-    public ProductService(IServiceScopeFactory scopeFactory)
+    public ProductService(IServiceScopeFactory scopeFactory, IHubContext<ProductsHub> hubContext)
     {
         _scopeFactory = scopeFactory;
+        _hubContext = hubContext;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -29,7 +33,8 @@ public class ProductService : BackgroundService
             HostName = "furniture_rabbitmq",
             UserName = "guest",
             Password = "guest",
-            Port = 5672
+            Port = 5672,
+            DispatchConsumersAsync = true
         };
 
         _connection = factory.CreateConnection();
@@ -46,31 +51,30 @@ public class ProductService : BackgroundService
 
     private void HandleQueue()
     {
-        var consumer = new EventingBasicConsumer(_channel);
-        consumer.Received += ConsumerOnReceived();
+        var consumer = new AsyncEventingBasicConsumer(_channel);
+        consumer.Received += async  (sender, args) =>
+            {
+                var productJson = Encoding.UTF8.GetString(args.Body.ToArray());
+                var product = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductQueue>(productJson);
+                await SaveProductAsync(product);
+            };
 
         _channel.BasicConsume(_queueName, false, consumer);
     }
 
-    private EventHandler<BasicDeliverEventArgs> ConsumerOnReceived()
+    private async Task SaveProductAsync(ProductQueue productQueue)
     {
-        return (sender, args) =>
-        {
-            var productJson = Encoding.UTF8.GetString(args.Body.ToArray());
-            var product = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductQueue>(productJson);
-            SaveProduct(product);
-        };
-    }
-
-    private void SaveProduct(ProductQueue productQueue)
-    {
-        _context.Products?.Add(new Product()
+        var product = new Product()
         {
             ProductId = productQueue.Id,
             ProductCount = productQueue.Count,
             ProductName = productQueue.Name,
-        });
+        };
 
-        _context.SaveChanges();
+        _context.Products?.Add(product);
+
+        await _context.SaveChangesAsync();
+
+        await _hubContext.Clients.All.SendAsync("ProductAdded", product);
     }
 }
