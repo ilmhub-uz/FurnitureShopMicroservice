@@ -14,8 +14,6 @@ builder.Services.AddCors(cors =>
     });
 });
 
-builder.Services.AddHostedService<ProductConsumer>();
-
 builder.Services.AddDistributedRedisCache(options =>
 {
     options.Configuration = "redis";
