@@ -37,3 +37,8 @@
 - [ ] nunit,
 - [ ] moq,
 - [ ] fluentassertions 
+
+- [ ] request rate limit
+- [ ] load balancing in microservices 
+- [ ] api gateway
+
