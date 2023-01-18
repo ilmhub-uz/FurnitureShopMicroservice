@@ -1,12 +1,8 @@
-using CartApi.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddHostedService<ProductConsumer>();
 
 builder.Services.AddDistributedRedisCache(options =>
 {
