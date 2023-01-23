@@ -9,8 +9,7 @@ namespace Product.Api.Controllers
 	[ApiController]
 	public class ProductController : ControllerBase
 	{
-
-		private readonly IProductRepository repository;
+        private readonly IProductRepository repository;
         public ProductController(IProductRepository repository)
 		{
 			this.repository = repository;

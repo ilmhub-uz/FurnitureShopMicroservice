@@ -1,8 +1,6 @@
 ﻿using Product.Api.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Product.Api.Entities;
-
 public class ProductModel
 {
 	public string Id { get; set; }
