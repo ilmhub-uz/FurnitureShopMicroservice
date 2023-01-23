@@ -8,7 +8,7 @@ namespace Merchant.Api.Controllers;
 [ApiController]
 public class OrganizationController : ControllerBase
 {
-    private IOrganizationService organizationService;
+    private readonly IOrganizationService organizationService;
 
     public OrganizationController(IOrganizationService organizationService)
     {
