@@ -1,8 +1,9 @@
-﻿namespace Merchant.Api.Entities;
+﻿namespace Dashboard.Data.Entities;
 
 public enum EOrganizationStatus
 {
     Created,
     Active,
     InActive,
+    Deleted
 }

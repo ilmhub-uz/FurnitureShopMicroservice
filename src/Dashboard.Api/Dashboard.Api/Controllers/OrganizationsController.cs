@@ -1,42 +1,29 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dashboard.Api.Controllers;
+
 [Route("api/[controller]")]
 public class OrganizationsController : Controller
 {
-    // GET: api/values
     [HttpGet]
-    public IEnumerable<string> Get()
+    public async Task<IActionResult> GetOrganizations()
     {
-        return new string[] { "value1", "value2" };
+        return Ok();
     }
 
-    // GET api/values/5
-    [HttpGet("{id}")]
-    public string Get(int id)
+    [HttpGet("{organization:Guid}")]
+    public async Task<IActionResult> GetOrganizationById(Guid organizationId)
     {
-        return "value";
+        return Ok();
     }
 
-    // POST api/values
-    [HttpPost]
-    public void Post([FromBody]string value)
+    [HttpPut("{organization:Guid}")]
+    public async Task<IActionResult> OrganizationUpdateStatus(Guid organizationId)
     {
-    }
-
-    // PUT api/values/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody]string value)
-    {
-    }
-
-    // DELETE api/values/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
+        return Ok();
     }
 }
