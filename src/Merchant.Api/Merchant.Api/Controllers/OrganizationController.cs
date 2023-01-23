@@ -57,9 +57,6 @@ public class OrganizationController : ControllerBase
             var updateOrganizationResult = await organizationService.UpdateOrganizationAsync()
         }
 
-
-
-
         return Ok(await organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto));
     }
 }
