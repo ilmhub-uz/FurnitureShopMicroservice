@@ -18,19 +18,18 @@ public class OrganizationController : ControllerBase
     [HttpGet]
     [ProducesResponseType(typeof(List<OrganizationDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrganizations()
-    {
-        //some code
-
-        return Ok();
-    }
+        => Ok(await organizationService.GetOrganizationsAsync());
 
     [HttpPost]
     [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateOrganization([FromBody] CreateOrganizationDto createOrganization)
     {
-        //some code
+        if (!ModelState.IsValid)
+            return BadRequest();
 
-        return Ok();
+        var organization = await organizationService.CreateOrganizationAsync(createOrganization);
+
+        return Ok(organization);
     }
 
     [HttpGet("{organizationId:guid}")]
