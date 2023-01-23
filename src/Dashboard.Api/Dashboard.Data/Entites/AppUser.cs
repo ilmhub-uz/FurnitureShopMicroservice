@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Dashboard.Data.Entites;
 
-public class AppUser : IdentityUser<Guid>
+public class AppUser
 {
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
