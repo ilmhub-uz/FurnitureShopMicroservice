@@ -44,6 +44,22 @@ public class OrganizationController : ControllerBase
 
     [HttpPut("{organizationId:guid}")]
     [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateOrganization(Guid organizationId, UpdateOrganizationDto updateOrganizationDto) 
-        => Ok(await organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto));
+    public async Task<IActionResult> UpdateOrganization(Guid organizationId, UpdateOrganizationDto updateOrganizationDto)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(updateOrganizationDto);
+
+            if(!await organizationService.ExistsAsync(organizationId))
+                return NotFound(new { ErrorMessage = "Organization with given ID not found." });
+
+            var updateOrganizationResult = await organizationService.UpdateOrganizationAsync()
+        }
+
+
+
+
+        return Ok(await organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto));
+    }
 }

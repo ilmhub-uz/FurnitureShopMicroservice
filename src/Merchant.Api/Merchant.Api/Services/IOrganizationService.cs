@@ -4,9 +4,10 @@ namespace Merchant.Api.Services;
 
 public interface IOrganizationService
 {
-    Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto createOrganization);
-    Task<List<OrganizationDto>> GetOrganizationsAsync();
-    Task<OrganizationDto> GetOrganizationByIdAsync(Guid organizationId);
-    Task<OrganizationDto> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization);
+    Task<Result<OrganizationDto>> CreateOrganizationAsync(CreateOrganizationDto createOrganization);
+    Task<Result<List<OrganizationDto>>> GetOrganizationsAsync();
+    Task<Result<OrganizationDto>> GetOrganizationByIdAsync(Guid organizationId);
+    Task<Result<OrganizationDto>> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization);
     Task DeleteOrganizationAsync(Guid organizationId);
+    Task<bool> ExistsAsync(Guid organizationId);
 }
