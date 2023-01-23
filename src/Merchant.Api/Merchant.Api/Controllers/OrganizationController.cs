@@ -8,7 +8,7 @@ namespace Merchant.Api.Controllers;
 public class OrganizationController : ControllerBase
 {
     [HttpGet]
-    [ProducesResponseType(typeof(List<Organization>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<OrganizationDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrganizations()
     {
         //some code
@@ -17,17 +17,26 @@ public class OrganizationController : ControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(Organization), StatusCodes.Status200OK)]
-    public async Task<IActionResult> CreateOrganization([FromBody] CreateOrganization createOrganization)
+    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> CreateOrganization([FromBody] CreateOrganizationDto createOrganization)
     {
         //some code
 
         return Ok();
     }
 
-    [HttpGet("{organizationId:guid}"))]
-    [ProducesResponseType(typeof(Organization), StatusCodes.Status200OK)]
+    [HttpGet("{organizationId:guid}")]
+    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrganizationByID(string organizationId)
+    {
+        //some code
+
+        return Ok();
+    }
+
+    [HttpPut("{organizationId:guid}")]
+    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateOrganization(string organizationId, UpdateOrganizationDto updateOrganizationDto)
     {
         //some code
 

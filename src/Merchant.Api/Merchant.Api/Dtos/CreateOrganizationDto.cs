@@ -2,7 +2,7 @@
 
 namespace Merchant.Api.Dtos;
 
-public class UpdateOrganization
+public class CreateOrganizationDto
 {
     public string? Name { get; set; }
     public IFormFile? ImageUrl { get; set; }

@@ -5,17 +5,22 @@ namespace Merchant.Api.Services;
 
 public class OrganizationService : IOrganizationService
 {
-    public Task<Organization> AddOrganization(ObjectId , CreateOrganization createOrganization)
+    public Task<OrganizationDto> CreateOrganization(CreateOrganizationDto createOrganization)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Organization> GetOrganizationById(ObjectId organizationId)
+    public Task<OrganizationDto> GetOrganizationById(ObjectId organizationId)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Organization>> GetOrganizations()
+    public Task<List<OrganizationDto>> GetOrganizations()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<OrganizationDto> UpdateOrganization(ObjectId organizationId, UpdateOrganizationDto updateOrganization)
     {
         throw new NotImplementedException();
     }
