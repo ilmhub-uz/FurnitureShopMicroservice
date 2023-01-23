@@ -1,0 +1,31 @@
+﻿version: '3.7'
+
+services:
+  cartapi:
+    image: cartapi
+    container_name: cartapi
+    ports:
+      - "3003:80"
+    build:
+      context: Cart.Api
+      dockerfile: Dockerfile
+    networks:
+      - real
+
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    container_name: redis
+    ports:
+      - '6379:6379'
+    volumes: 
+      - cache:/data
+    networks:
+      - real 
+
+networks:
+  real:
+    driver: bridge
+
+volumes:
+  cache:
