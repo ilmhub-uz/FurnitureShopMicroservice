@@ -1,6 +1,11 @@
-﻿using MongoDB.Bson;
+﻿using Mapster;
+using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Product.Api.Entities;
+using Product.Api.Entities.Dtos;
+using Product.Api.Entities.ViewModels;
+using Product.Api.Services;
 
 namespace Product.Api.Repositories
 {
@@ -9,17 +14,18 @@ namespace Product.Api.Repositories
         private readonly MongoClient _mongoClient;
         private readonly IMongoDatabase _database;
         private readonly IMongoCollection<ProductModel> _products;
-
-        public ProductRepository()
+        private IOptions<AppSettings> _appsettings;
+        public ProductRepository(IOptions<AppSettings> appsettings)
         {
-            _mongoClient = new MongoClient("mongodb://mongodb:27017");
+            _appsettings= appsettings;
+            _mongoClient = new MongoClient(_appsettings.Value.MongoDbConnectionStrings);
             _database = _mongoClient.GetDatabase("products_db");
             _products = _database.GetCollection<ProductModel>("products");
         }
-        public async Task CreateProductAsync(ProductModel product)
+        public async Task CreateProductAsync(CreateProductDto productDto)
         {
+            var product = productDto.Adapt<ProductModel>();
             product.Id = Guid.Parse(ObjectId.GenerateNewId(DateTime.Now).ToString());
-
             await _products.InsertOneAsync(product);
         }
 
@@ -37,12 +43,12 @@ namespace Product.Api.Repositories
             return products;
         }
 
-        public async Task<ProductModel> GetProductAsync(Guid productId)
+        public async Task<ProductViewModel> GetProductAsync(Guid productId)
         {
             var product = await (await _products.FindAsync(product => product.Id==productId)).SingleOrDefaultAsync();
             if(product is null)
                 throw new Exception();
-            return product;
+            return product.Adapt<ProductViewModel>();
         }
 
         public async Task<ProductModel> UpdateProductAsync(Guid productId, ProductModel productModel)
