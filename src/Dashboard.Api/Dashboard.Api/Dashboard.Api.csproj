@@ -23,6 +23,13 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Dtos\Enums" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Services\" />
+    <None Remove="ViewModels\" />
+  </ItemGroup>
 </Project>
