@@ -1,4 +1,6 @@
-﻿namespace Merchant.Api.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Merchant.Api.Entities;
 
 public class OrganizationUser
 {

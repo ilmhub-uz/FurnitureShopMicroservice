@@ -37,7 +37,7 @@ public class OrganizationController : ControllerBase
     [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrganizationById(Guid organizationId)
     {
-        organizationService.GetOrganizationById(organizationId);
+        //organizationService.GetOrganizationById(organizationId);
 
         return Ok();
     }
