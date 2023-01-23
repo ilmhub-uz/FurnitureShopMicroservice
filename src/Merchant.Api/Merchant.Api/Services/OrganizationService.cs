@@ -3,7 +3,6 @@ using Mapster;
 using Merchant.Api.Dtos;
 using Merchant.Api.Dtos.Enums;
 using Merchant.Api.Repositories;
-using MongoDB.Bson;
 
 namespace Merchant.Api.Services;
 

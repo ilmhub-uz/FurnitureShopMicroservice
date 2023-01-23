@@ -14,6 +14,5 @@ public class AppDbContext : DbContext
 	{
         base.OnModelCreating(builder);
         builder.Entity<OrganizationUser>().HasKey(user => new { user.UserId, user.OrganizationId });
-    }
-
+  	}
 }
