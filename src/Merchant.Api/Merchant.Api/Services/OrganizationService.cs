@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using Merchant.Api.Dtos;
+using Merchant.Api.Dtos.Enums;
 using Merchant.Api.Repositories;
 
 namespace Merchant.Api.Services;
@@ -7,10 +8,14 @@ namespace Merchant.Api.Services;
 public class OrganizationService : IOrganizationService
 {
     private readonly IOrganizationRepository _organizationRepository;
+    private readonly IFileHelper _fileHelper;
 
-    public OrganizationService(IOrganizationRepository organizationRepository)
+    public OrganizationService(
+        IOrganizationRepository organizationRepository,
+        IFileHelper fileHelper)
     {
         _organizationRepository = organizationRepository;
+        _fileHelper = fileHelper;
     }
 
     public Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto createOrganization)
@@ -39,8 +44,13 @@ public class OrganizationService : IOrganizationService
         if (organization is null)
             return null;
 
-        var updatedOrganization = updateOrganization.Adapt<OrganizationDto>();
+        organization.Name = updateOrganization.Name;
+        organization.Status = updateOrganization.Status;
+        organization.Users = updateOrganization.Users;
+        if (updateOrganization.ImageUrl is not null)
+            organization.ImageUrl = await _fileHelper.SaveFileAsync(updateOrganization.ImageUrl, EFileType.Images, EFileFolder.Organization);
+  
 
-        return updatedOrganization;
+        return organization.Adapt<OrganizationDto>();
     }
 }
