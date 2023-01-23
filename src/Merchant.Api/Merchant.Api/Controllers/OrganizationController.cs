@@ -44,10 +44,6 @@ public class OrganizationController : ControllerBase
 
     [HttpPut("{organizationId:guid}")]
     [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateOrganization(Guid organizationId, UpdateOrganizationDto updateOrganizationDto)
-    {
-        //some code
-
-        return Ok();
-    }
+    public async Task<IActionResult> UpdateOrganization(Guid organizationId, UpdateOrganizationDto updateOrganizationDto) 
+        => Ok(await _organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto));
 }
