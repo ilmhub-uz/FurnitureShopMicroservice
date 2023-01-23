@@ -6,5 +6,5 @@ public class Organization
     public string? Name { get; set; }
     public string? ImageUrl { get; set; }
     public EOrganizationStatus Status { get; set; }
-    public  ICollection<OrganizationUser>? Users { get; set; }
+    public ICollection<OrganizationUser>? Users { get; set; }
 }
