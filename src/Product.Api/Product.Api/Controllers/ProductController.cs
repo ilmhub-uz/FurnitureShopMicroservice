@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Product.Api.Entities.Dtos;
+using Product.Api.Repositories;
 
 namespace Product.Api.Controllers
 {
@@ -7,20 +9,40 @@ namespace Product.Api.Controllers
 	[ApiController]
 	public class ProductController : ControllerBase
 	{
-		public async Task<IActionResult> CreateProduct() 
-			=> Ok();
 
-		public async Task<IActionResult> GetProduct()
-			=> Ok();
+        private readonly IProductRepository repository;
 
-		public async Task<IActionResult> GetProductById()
-			=> Ok();
+		public ProductController(IProductRepository repository)
+		{
+			this.repository = repository;
+		}
+        [HttpPost]
+		public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
+        {
+            await repository.CreateProductAsync(createProductDto);
+            return Ok();
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetProduct()
+        => Ok(await repository.GetAllProductAsync());
+        
+        [HttpGet("getbyId")]
+        public async Task<IActionResult> GetProductById(string productId)
+            => Ok(await repository.GetProductAsync(productId));
 
-		public async Task<IActionResult> UpdateProduct()
-			=> Ok();
-
-		public async Task<IActionResult> DeleteProduct()
-			=> Ok();
-
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct(string productId , CreateProductDto productDto )
+        {
+          var product = await repository.UpdateProductAsync(productId,productDto);
+            return Ok(product);
+        }
+        
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProduct(string productId)
+        {
+            await repository.DeleteProductAsync(productId);
+            return Ok();
+        }
 	}
 }

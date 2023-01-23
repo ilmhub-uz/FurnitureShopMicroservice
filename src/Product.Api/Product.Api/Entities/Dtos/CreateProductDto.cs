@@ -11,5 +11,4 @@ public class CreateProductDto
     public bool IsAvailable { get; set; }
     public uint Count { get; set; }
     public int CategoryId { get; set; }
-    public Guid OrganizationId { get; set; }
 }

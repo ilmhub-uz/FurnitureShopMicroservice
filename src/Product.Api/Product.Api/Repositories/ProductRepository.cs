@@ -25,11 +25,11 @@ namespace Product.Api.Repositories
         public async Task CreateProductAsync(CreateProductDto productDto)
         {
             var product = productDto.Adapt<ProductModel>();
-            product.Id = Guid.Parse(ObjectId.GenerateNewId(DateTime.Now).ToString());
+            product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
             await _products.InsertOneAsync(product);
         }
 
-        public async Task DeleteProductAsync(Guid productId)
+        public async Task DeleteProductAsync(string productId)
         {
             var result = await _products.DeleteOneAsync(e => e.Id == productId);
             if (result.DeletedCount == 0)
@@ -43,7 +43,7 @@ namespace Product.Api.Repositories
             return products;
         }
 
-        public async Task<ProductViewModel> GetProductAsync(Guid productId)
+        public async Task<ProductViewModel> GetProductAsync(string productId)
         {
             var product = await (await _products.FindAsync(product => product.Id==productId)).SingleOrDefaultAsync();
             if(product is null)
@@ -51,12 +51,13 @@ namespace Product.Api.Repositories
             return product.Adapt<ProductViewModel>();
         }
 
-        public async Task<ProductModel> UpdateProductAsync(Guid productId, ProductModel productModel)
+        public async Task<ProductModel> UpdateProductAsync(string productId, CreateProductDto productDto)
         {
-            var product = await (await _products.FindAsync(product => product.Id == productId)).SingleOrDefaultAsync();
-            product.Id = productId;
-            await _products.ReplaceOneAsync(e => e.Id == productId,productModel, new ReplaceOptions { IsUpsert = true });
-            return product;
-        }
+			var product = await (await _products.FindAsync(product => product.Id == productId)).SingleOrDefaultAsync();
+
+			product = productDto.Adapt<ProductModel>();
+			await _products.ReplaceOneAsync(e => e.Id == productId, product);
+			return product;
+		}
     }
 }
