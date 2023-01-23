@@ -1,5 +1,4 @@
 ﻿using Merchant.Api.Dtos;
-using MongoDB.Bson;
 
 namespace Merchant.Api.Services;
 
