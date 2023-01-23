@@ -17,14 +17,14 @@ public class ProductsController : Controller
         return Ok();
     }
 
-    [HttpGet("productId:Guid")]
+    [HttpGet("product:Guid")]
     public async Task<IActionResult> GetProductsById(Guid productId)
     {
         return Ok();
     }
 
-    [HttpPut]
-    public async Task<IActionResult> ProductUpdate()
+    [HttpPut("{product:Guid}")]
+    public async Task<IActionResult> ProductUpdateStatus(Guid productsId)
     {
         return Ok();
     }
