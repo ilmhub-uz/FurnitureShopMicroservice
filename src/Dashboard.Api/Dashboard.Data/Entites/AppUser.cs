@@ -1,5 +1,4 @@
 using System.Diagnostics.Contracts;
-using Microsoft.AspNetCore.Identity;
 
 namespace Dashboard.Data.Entites;
 
