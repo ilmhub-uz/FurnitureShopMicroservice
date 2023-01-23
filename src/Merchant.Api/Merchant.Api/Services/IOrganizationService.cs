@@ -5,8 +5,8 @@ namespace Merchant.Api.Services;
 
 public interface IOrganizationService
 {
-    Task<OrganizationDto> CreateOrganization(CreateOrganizationDto createOrganization);
-    Task<List<OrganizationDto>> GetOrganizations();
-    Task<OrganizationDto> GetOrganizationById(ObjectId organizationId);
-    Task<OrganizationDto> UpdateOrganization(ObjectId organizationId, UpdateOrganizationDto updateOrganization);
+    Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto createOrganization);
+    Task<List<OrganizationDto>> GetOrganizationsAsync();
+    Task<OrganizationDto> GetOrganizationByIdAsync(Guid organizationId);
+    Task<OrganizationDto> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization);
 }
