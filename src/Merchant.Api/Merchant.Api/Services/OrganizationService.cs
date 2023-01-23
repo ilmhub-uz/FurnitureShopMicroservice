@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using JFA.DependencyInjection;
+using Mapster;
 using Merchant.Api.Dtos;
 using Merchant.Api.Dtos.Enums;
 using Merchant.Api.Repositories;
@@ -6,6 +7,7 @@ using MongoDB.Bson;
 
 namespace Merchant.Api.Services;
 
+[Scoped]
 public class OrganizationService : IOrganizationService
 {
     private readonly IOrganizationRepository _organizationRepository;
@@ -50,7 +52,7 @@ public class OrganizationService : IOrganizationService
         organization.Users = updateOrganization.Users;
         if (updateOrganization.ImageUrl is not null)
             organization.ImageUrl = await _fileHelper.SaveFileAsync(updateOrganization.ImageUrl, EFileType.Images, EFileFolder.Organization);
-  
+
 
         return organization.Adapt<OrganizationDto>();
     }
