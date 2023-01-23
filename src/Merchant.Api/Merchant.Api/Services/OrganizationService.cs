@@ -18,9 +18,14 @@ public class OrganizationService : IOrganizationService
         _fileHelper = fileHelper;
     }
 
-    public Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto createOrganization)
+    public async Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto createOrganization)
     {
-        throw new NotImplementedException();
+        var organization = createOrganization.Adapt<OrganizationDto>();
+
+        organization.ImageUrl = await _fileHelper.
+            SaveFileAsync(createOrganization.ImageUrl!, EFileType.Images, EFileFolder.Organization);
+
+        return organization;
     }
 
     public Task DeleteOrganizationAsync(Guid organizationId)
