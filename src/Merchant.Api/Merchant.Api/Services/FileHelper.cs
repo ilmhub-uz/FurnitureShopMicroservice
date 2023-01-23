@@ -1,5 +1,4 @@
 ﻿using Merchant.Api.Dtos.Enums;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Merchant.Api.Services;
 

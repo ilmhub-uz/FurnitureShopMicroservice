@@ -18,11 +18,7 @@ public class OrganizationController : ControllerBase
     [HttpGet]
     [ProducesResponseType(typeof(List<OrganizationDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrganizations()
-    {
-        //some code
-
-        return Ok();
-    }
+        => Ok(await organizationService.GetOrganizationsAsync());
 
     [HttpPost]
     [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]

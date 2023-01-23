@@ -1,12 +1,10 @@
-﻿using JFA.DependencyInjection;
-using Mapster;
+﻿using Mapster;
 using Merchant.Api.Dtos;
 using Merchant.Api.Dtos.Enums;
 using Merchant.Api.Repositories;
 
 namespace Merchant.Api.Services;
 
-[Scoped]
 public class OrganizationService : IOrganizationService
 {
     private readonly IOrganizationRepository _organizationRepository;
