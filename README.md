@@ -3,7 +3,7 @@
 # FurnitureShopMicroservice
 
 ***
-[alt text](https://github.com/ilmhub-uz/FurnitureShopMicroservice/blob/master/Microservice.png?raw=true)
+[Diagram](https://github.com/ilmhub-uz/FurnitureShopMicroservice/blob/master/Microservice.png?raw=true)
 ***
 
 - [x] aspnetcore
