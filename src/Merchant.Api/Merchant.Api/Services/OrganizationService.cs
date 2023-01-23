@@ -10,7 +10,7 @@ public class OrganizationService : IOrganizationService
         throw new NotImplementedException();
     }
 
-    public Task<OrganizationDto> GetOrganizationById(ObjectId organizationId)
+    public Task<OrganizationDto> GetOrganizationById(Guid organizationId)
     {
         throw new NotImplementedException();
     }
@@ -20,7 +20,7 @@ public class OrganizationService : IOrganizationService
         throw new NotImplementedException();
     }
 
-    public Task<OrganizationDto> UpdateOrganization(ObjectId organizationId, UpdateOrganizationDto updateOrganization)
+    public Task<OrganizationDto> UpdateOrganization(Guid organizationId, UpdateOrganizationDto updateOrganization)
     {
         throw new NotImplementedException();
     }

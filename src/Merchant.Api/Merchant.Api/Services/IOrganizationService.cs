@@ -7,6 +7,6 @@ public interface IOrganizationService
 {
     Task<OrganizationDto> CreateOrganization(CreateOrganizationDto createOrganization);
     Task<List<OrganizationDto>> GetOrganizations();
-    Task<OrganizationDto> GetOrganizationById(ObjectId organizationId);
-    Task<OrganizationDto> UpdateOrganization(ObjectId organizationId, UpdateOrganizationDto updateOrganization);
+    Task<OrganizationDto> GetOrganizationById(Guid organizationId);
+    Task<OrganizationDto> UpdateOrganization(Guid organizationId, UpdateOrganizationDto updateOrganization);
 }
