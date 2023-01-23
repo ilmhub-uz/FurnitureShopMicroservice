@@ -1,8 +1,12 @@
-﻿using Merchant.Api.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Merchant.Api.Dtos;
+namespace Dashboard.Data.Entities;
 
-public class OrganizationDto
+public class Organization
 {
     public Guid Id { get; set; }
     public string? Name { get; set; }
