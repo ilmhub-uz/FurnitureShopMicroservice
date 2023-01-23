@@ -18,6 +18,11 @@ public class OrganizationService : IOrganizationService
         throw new NotImplementedException();
     }
 
+    public Task DeleteOrganizationAsync(Guid organizationId)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<OrganizationDto> GetOrganizationByIdAsync(Guid organizationId)
     {
         throw new NotImplementedException();

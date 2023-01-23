@@ -9,4 +9,5 @@ public interface IOrganizationService
     Task<List<OrganizationDto>> GetOrganizationsAsync();
     Task<OrganizationDto> GetOrganizationByIdAsync(Guid organizationId);
     Task<OrganizationDto> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization);
+    Task DeleteOrganizationAsync(Guid organizationId);
 }
