@@ -10,39 +10,39 @@ namespace Product.Api.Controllers
 	public class ProductController : ControllerBase
 	{
 
-        private readonly IProductRepository repository;
-
-		public ProductController(IProductRepository repository)
+		private readonly IProductRepository repository;
+        public ProductController(IProductRepository repository)
 		{
 			this.repository = repository;
 		}
-        [HttpPost]
-		public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
-        {
-            await repository.CreateProductAsync(createProductDto);
-            return Ok();
-        }
-        
-        [HttpGet]
-        public async Task<IActionResult> GetProduct()
-        => Ok(await repository.GetAllProductAsync());
-        
-        [HttpGet("getbyId")]
-        public async Task<IActionResult> GetProductById(string productId)
-            => Ok(await repository.GetProductAsync(productId));
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateProduct(string productId , CreateProductDto productDto )
-        {
-          var product = await repository.UpdateProductAsync(productId,productDto);
-            return Ok(product);
-        }
-        
-        [HttpDelete]
-        public async Task<IActionResult> DeleteProduct(string productId)
-        {
-            await repository.DeleteProductAsync(productId);
-            return Ok();
-        }
+		[HttpPost]
+		public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
+		{
+			await repository.CreateProductAsync(createProductDto);
+			return Ok();
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> GetProduct()
+		=> Ok(await repository.GetAllProductAsync());
+
+		[HttpGet("getbyId")]
+		public async Task<IActionResult> GetProductById(string productId)
+			=> Ok(await repository.GetProductAsync(productId));
+
+		[HttpPut]
+		public async Task<IActionResult> UpdateProduct(string productId, CreateProductDto productDto)
+		{
+			var product = await repository.UpdateProductAsync(productId, productDto);
+			return Ok(product);
+		}
+
+		[HttpDelete]
+		public async Task<IActionResult> DeleteProduct(string productId)
+		{
+			await repository.DeleteProductAsync(productId);
+			return Ok();
+		}
 	}
 }
