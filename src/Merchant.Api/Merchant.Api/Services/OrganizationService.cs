@@ -1,4 +1,5 @@
-﻿using Merchant.Api.Dtos;
+﻿using Mapster;
+using Merchant.Api.Dtos;
 using Merchant.Api.Repositories;
 using MongoDB.Bson;
 
@@ -33,8 +34,14 @@ public class OrganizationService : IOrganizationService
         throw new NotImplementedException();
     }
 
-    public Task<OrganizationDto> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization)
+    public async Task<OrganizationDto> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization)
     {
-        throw new NotImplementedException();
+        var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
+        if (organization is null)
+            return null;
+
+        var updatedOrganization = updateOrganization.Adapt<OrganizationDto>();
+
+        return updatedOrganization;
     }
 }
