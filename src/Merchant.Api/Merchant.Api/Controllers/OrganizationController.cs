@@ -28,9 +28,12 @@ public class OrganizationController : ControllerBase
     [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateOrganization([FromBody] CreateOrganizationDto createOrganization)
     {
-        //some code
+        if (!ModelState.IsValid)
+            return BadRequest();
 
-        return Ok();
+        var organization = await organizationService.CreateOrganizationAsync(createOrganization);
+
+        return Ok(organization);
     }
 
     [HttpGet("{organizationId:guid}")]
