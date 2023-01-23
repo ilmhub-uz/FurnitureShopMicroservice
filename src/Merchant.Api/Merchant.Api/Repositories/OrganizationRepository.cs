@@ -1,11 +1,21 @@
-﻿using Merchant.Api.Dtos;
+﻿using JFA.DependencyInjection;
+using Merchant.Api.Context;
+using Merchant.Api.Dtos;
 using Merchant.Api.Entities;
 
 namespace Merchant.Api.Repositories;
 
+[Scoped]
 public class OrganizationRepository : IOrganizationRepository
 {
-    public Task<Organization> CreateOrganizationAsync(CreateOrganizationDto createOrganization)
+    private readonly AppDbContext context;
+
+    public OrganizationRepository(AppDbContext context)
+    {
+        this.context = context;
+    }
+
+    public Task<Organization> CreateOrganizationAsync(Organization createOrganization)
     {
         throw new NotImplementedException();
     }
@@ -25,8 +35,9 @@ public class OrganizationRepository : IOrganizationRepository
         throw new NotImplementedException();
     }
 
-    public Task<Organization> UpdateOrganizationAsync(UpdateOrganizationDto updateOrganization)
+    public void UpdateOrganizationAsync(Organization updateOrganization)
     {
-        throw new NotImplementedException();
+        context.Organizations.Update(updateOrganization);
+        context.SaveChanges();
     }
 }
