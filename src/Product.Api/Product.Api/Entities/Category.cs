@@ -11,4 +11,6 @@ public class Category
     public virtual Category? Parent { get; set; }
     public virtual List<Category>? Children { get; set; }
     public virtual ICollection<ProductModel>? Products { get; set; }
+    public virtual ICollection<ProductModel>? Products { get; set; }
+    public virtual ICollection<ProductModel>? Products { get; set; }
 }
