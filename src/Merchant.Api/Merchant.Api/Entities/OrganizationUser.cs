@@ -1,7 +1,4 @@
-﻿using MongoDB.Bson;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Merchant.Api.Entities;
+﻿namespace Merchant.Api.Entities;
 
 public class OrganizationUser
 {

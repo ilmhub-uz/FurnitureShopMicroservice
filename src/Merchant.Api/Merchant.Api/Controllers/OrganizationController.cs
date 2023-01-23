@@ -8,11 +8,11 @@ namespace Merchant.Api.Controllers;
 [ApiController]
 public class OrganizationController : ControllerBase
 {
-    private readonly IOrganizationService _organizationService;
+    private readonly IOrganizationService organizationService;
 
     public OrganizationController(IOrganizationService organizationService)
     {
-        _organizationService = organizationService;
+        this.organizationService = organizationService;
     }
 
     [HttpGet]
@@ -35,9 +35,9 @@ public class OrganizationController : ControllerBase
 
     [HttpGet("{organizationId:guid}")]
     [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetOrganizationByID(Guid organizationId)
+    public async Task<IActionResult> GetOrganizationById(Guid organizationId)
     {
-        //some code
+        organizationService.GetOrganizationById(organizationId);
 
         return Ok();
     }
