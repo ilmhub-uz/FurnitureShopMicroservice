@@ -1,7 +1,9 @@
 ﻿using JFA.DependencyInjection;
+using Mapster;
 using Merchant.Api.Context;
 using Merchant.Api.Dtos;
 using Merchant.Api.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Merchant.Api.Repositories;
 
@@ -15,7 +17,12 @@ public class OrganizationRepository : IOrganizationRepository
         this.context = context;
     }
 
-    public Task<Organization> CreateOrganizationAsync(Organization createOrganization)
+    public Task CreateOrganizationAsync(Organization createOrganization)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UpdateOrganizationAsync(Organization updateOrganization)
     {
         throw new NotImplementedException();
     }
@@ -25,19 +32,21 @@ public class OrganizationRepository : IOrganizationRepository
         throw new NotImplementedException();
     }
 
-    public Task<Organization> GetOrganizationByIdAsync(Guid organizationId)
+    public async Task<OrganizationDto> GetOrganizationByIdAsync(Guid organizationId)
+    {
+        var entity = await context.Organizations.FirstOrDefaultAsync(organization => organization.Id == organizationId);
+        return entity.Adapt<OrganizationDto>();
+    }
+    
+
+    public Task <List<OrganizationDto>> GetOrganizations()
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Organization>> GetOrganizations()
+    public void UpdateOrganizationAsync(OrganizationDto updateOrganization)
     {
-        throw new NotImplementedException();
-    }
-
-    public void UpdateOrganizationAsync(Organization updateOrganization)
-    {
-        context.Organizations.Update(updateOrganization);
+        context.Organizations.Update(updateOrganization.Adapt<Organization>());
         context.SaveChanges();
     }
 }
