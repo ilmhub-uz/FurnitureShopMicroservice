@@ -12,11 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartApi", "CartApi\CartApi.csproj", "{D16111BB-790F-4B74-BB66-F53AB4E8051F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartApi", "CartApi\CartApi.csproj", "{D16111BB-790F-4B74-BB66-F53AB4E8051F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminBlazor", "AdminBlazor\AdminBlazor.csproj", "{4CDDBE2A-C1C4-4A7B-A664-8E020182572C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminBlazor", "AdminBlazor\AdminBlazor.csproj", "{4CDDBE2A-C1C4-4A7B-A664-8E020182572C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientBlazor", "ClientBlazor\ClientBlazor.csproj", "{7A94F1D2-46C5-4855-9A82-659857E3E396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientBlazor", "ClientBlazor\ClientBlazor.csproj", "{7A94F1D2-46C5-4855-9A82-659857E3E396}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{86446E8B-3EC1-4EAA-B98E-0963D77FEC6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{7A94F1D2-46C5-4855-9A82-659857E3E396}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A94F1D2-46C5-4855-9A82-659857E3E396}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A94F1D2-46C5-4855-9A82-659857E3E396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86446E8B-3EC1-4EAA-B98E-0963D77FEC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86446E8B-3EC1-4EAA-B98E-0963D77FEC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86446E8B-3EC1-4EAA-B98E-0963D77FEC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86446E8B-3EC1-4EAA-B98E-0963D77FEC6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
