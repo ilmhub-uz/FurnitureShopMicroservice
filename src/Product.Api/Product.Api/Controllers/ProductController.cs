@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Product.Api.Entities.Dtos;
+using Product.Api.Entities.ViewModels;
 using Product.Api.Repositories;
+using System.Collections.Generic;
 
 namespace Product.Api.Controllers
 {
@@ -23,10 +25,12 @@ namespace Product.Api.Controllers
 		}
 
 		[HttpGet]
+		[ProducesResponseType(typeof(List<ProductViewModel>),StatusCodes.Status200OK)]
 		public async Task<IActionResult> GetProduct()
 		=> Ok(await repository.GetAllProductAsync());
 
 		[HttpGet("getbyId")]
+		[ProducesResponseType(typeof(ProductViewModel),StatusCodes.Status200OK)]
 		public async Task<IActionResult> GetProductById(string productId)
 			=> Ok(await repository.GetProductAsync(productId));
 
