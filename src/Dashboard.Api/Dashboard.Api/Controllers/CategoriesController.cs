@@ -8,10 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Dashboard.Api.Controllers;
 [Route("api/[controller]")]
-[Scoped]
 public class CategoriesController : Controller
 {
-    private readonly UpdateCategoryDto _updateCategoryDto;
     private readonly ICategoriesService _categoriesService;
 
     public CategoriesController(UpdateCategoryDto updateCategoryDto, ICategoriesService categoriesService)

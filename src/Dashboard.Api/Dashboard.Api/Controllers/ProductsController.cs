@@ -1,39 +1,34 @@
 ﻿using Dashboard.Api.ModelsDto;
-using Dashboard.Api.Services.Interfaces;
+using Dashboard.Api.Services;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Dashboard.Api.Controllers;
-
 [Route("api/[controller]")]
 public class ProductsController : Controller
 {
-    private readonly IProductService _productService;
-
-    public ProductsController(IProductService productService)
+    private readonly ProductService _productService;
+    
+    public ProductsController(ProductService productService)
     {
         _productService = productService;
-
     }
-
     [HttpGet]
     public async Task<IActionResult> GetProduct()
     {
-        var products = await _productService.GetProductsAsync();
-        return Ok(products);
-    }
-
-    [HttpGet("{productId:Guid}")]
-    public async Task<IActionResult> GetProductsById(Guid productId)
-    {
-        var product = await _productService.GetProductByIdAsync(productId);
+        var product =  await _productService.GetProductsAsync();
         return Ok(product);
     }
 
-    [HttpPut("{productId:Guid}")]
+    [HttpGet("{product:guid}")]
+    public async Task<IActionResult> GetProductsById(Guid productId)
+    {
+        await _productService.GetProductByIdAsync(productId);
+        return Ok();
+    }
+
+    [HttpPut("{product:guid}")]
     public async Task<IActionResult> ProductUpdateStatus(Guid productId, UpdateProductDto updateProductDto)
     {
         await _productService.UpdateProduct(productId, updateProductDto);
         return Ok();
     }
-
 }
