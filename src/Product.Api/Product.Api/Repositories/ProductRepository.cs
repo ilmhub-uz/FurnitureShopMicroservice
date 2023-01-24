@@ -45,12 +45,12 @@ namespace Product.Api.Repositories
 				throw new Exception();
 		}
 
-		public async Task<IEnumerable<ProductModel>> GetAllProductAsync()
+		public async Task<IEnumerable<ProductViewModel>> GetAllProductAsync()
 		{
 			var products = await (await _products.FindAsync(product => true)).ToListAsync();
-			if (products.Count == 0)
-				throw new Exception("products is empty");
-			return products;
+			if (products is null)
+				return new List<ProductViewModel>();
+			return products.Adapt<List<ProductViewModel>>();
 		}
 
 		public async Task<ProductViewModel> GetProductAsync(string productId)

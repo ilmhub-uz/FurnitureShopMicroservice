@@ -10,8 +10,8 @@ namespace Product.Api.Repositories
     {
         Task CreateProductAsync(CreateProductDto productDto);
         Task DeleteProductAsync(string productId);
-        Task<IEnumerable<ProductModel>> GetAllProductAsync();
+        Task<IEnumerable<ProductViewModel>> GetAllProductAsync();
         Task<ProductViewModel> GetProductAsync(string productId);
-        Task<ProductModel> UpdateProductAsync(string productId, UpdateProductDto productDto);
+        Task<ProductViewModel> UpdateProductAsync(string productId, UpdateProductDto productDto);
     }
 }
