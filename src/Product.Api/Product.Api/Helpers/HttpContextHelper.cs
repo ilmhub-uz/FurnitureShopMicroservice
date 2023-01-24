@@ -1,4 +1,4 @@
-﻿namespace Product.Api.Helper
+﻿namespace Product.Api.Helpers
 {
 	public class HttpContextHelper
 	{

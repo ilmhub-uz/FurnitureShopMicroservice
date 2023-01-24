@@ -1,6 +1,6 @@
 ﻿using Product.Api.Filters;
 using Newtonsoft.Json;
-namespace Product.Api.Helper
+namespace Product.Api.Helpers
 {
 	public static class PageListHelper
 	{
