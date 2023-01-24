@@ -24,8 +24,8 @@ namespace Product.Api.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> GetProduct()
-		=> Ok(await repository.GetAllProductAsync());
+		public async Task<IActionResult> GetProduct(ProductFilterDto filterDto)
+		=> Ok(await repository.GetAllProductAsync(filterDto));
 
 		[HttpGet("getbyId")]
 		public async Task<IActionResult> GetProductById(string productId)

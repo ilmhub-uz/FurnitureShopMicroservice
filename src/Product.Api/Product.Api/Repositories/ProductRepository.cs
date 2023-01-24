@@ -4,8 +4,10 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Product.Api.Entities;
 using Product.Api.Entities.Dtos;
+using Product.Api.Entities.Enums;
 using Product.Api.Entities.ViewModels;
 using Product.Api.Exceptions;
+using Product.Api.Helpers;
 using Product.Api.RabbitMq;
 using Product.Api.Services;
 
@@ -31,9 +33,6 @@ namespace Product.Api.Repositories
 		{
 			var product = productDto.Adapt<ProductModel>();
 			product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
-			var currentproduct = await (await _products.FindAsync(p => p.Id == product.Id)).SingleOrDefaultAsync();
-			if (currentproduct != null)
-				throw new BadRequestException("available in the product database");
 			sendToGet.SendMessage(product);
 			await _products.InsertOneAsync(product);
 		}
@@ -45,12 +44,34 @@ namespace Product.Api.Repositories
 				throw new Exception();
 		}
 
-		public async Task<IEnumerable<ProductViewModel>> GetAllProductAsync()
+		public async Task<IEnumerable<ProductViewModel>> GetAllProductAsync(ProductFilterDto filterDto)
 		{
 			var products = await (await _products.FindAsync(product => true)).ToListAsync();
 			if (products is null)
 				return new List<ProductViewModel>();
-			return products.Adapt<List<ProductViewModel>>();
+
+			products = filterDto.Status switch
+			{
+				EProductStatus.Active => products.Where(p => p.Status == filterDto.Status).ToList(),
+				EProductStatus.Created => products.Where(p => p.Status == filterDto.Status).ToList(),
+				EProductStatus.InActive => products.Where(p => p.Status == filterDto.Status).ToList(),
+				EProductStatus.Deleted => products.Where(p => p.Status == filterDto.Status).ToList(),
+				_ => products
+			};
+
+			if (filterDto.Name is not null) products = products.Where(p => p.Name.Contains(filterDto.Name)).ToList();
+			if (filterDto.FromPrice is not null) products = products.Where(p => p.Price >= filterDto.FromPrice).ToList();
+			if (filterDto.FromPrice is not null) products = products.Where(p => p.Price <= filterDto.ToPrice).ToList();
+
+			products = filterDto.SortingStatus switch
+			{
+				EProductSortingStatus.Prices => products.OrderByDescending(p => p.Price).ToList(),
+				EProductSortingStatus.Names => products.OrderByDescending(p => p.Name).ToList(),
+				EProductSortingStatus.CreatedAtes => products.OrderByDescending(p => p.CreatedAt).ToList(),
+				_ => products
+			};
+			var productList = products.Adapt<List<ProductViewModel>>().ToPagedList(filterDto);
+			return productList;
 		}
 
 		public async Task<ProductViewModel> GetProductAsync(string productId)
@@ -77,8 +98,7 @@ namespace Product.Api.Repositories
 				.Set("Count", productDto.Count);
 
 			var options = new FindOneAndUpdateOptions<ProductModel> { ReturnDocument = ReturnDocument.After };
-
-			var product = await _products.FindOneAndUpdateAsync(filter, update, options);
+            var product = await _products.FindOneAndUpdateAsync(filter, update, options);
 			return product.Adapt<ProductViewModel>();
 		}
 	}
