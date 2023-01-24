@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using Merchant.Api.Dtos;
 using Merchant.Api.Dtos.Enums;
+using Merchant.Api.Entities;
 using Merchant.Api.Repositories;
 
 namespace Merchant.Api.Services;
@@ -18,42 +19,68 @@ public class OrganizationService : IOrganizationService
         _fileHelper = fileHelper;
     }
 
-    public async Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto createOrganization)
+    public async Task CreateOrganizationAsync(CreateOrganizationDto createOrganization)
     {
-        var organization = createOrganization.Adapt<OrganizationDto>();
+        var organization = createOrganization.Adapt<Organization>();
 
-        organization.ImageUrl = await _fileHelper.
-            SaveFileAsync(createOrganization.ImageUrl!, EFileType.Images, EFileFolder.Organization);
+        organization.Users = new List<OrganizationUser>()
+        {
+            new OrganizationUser()
+            {
+                UserId = Guid.NewGuid(),
+                Role = ERole.Owner,
+                User= new AppUser()
+                {
+                    UserName = Guid.NewGuid().ToString(),
+                    Email = Guid.NewGuid().ToString()
+                }
+            }
+        };
+        await _organizationRepository.CreateOrganizationAsync(organization);
 
-        return organization;
+
+        /*organization.ImageUrl = await _fileHelper.
+            SaveFileAsync(createOrganization.ImageUrl!, EFileType.Images, EFileFolder.Organization);*/
     }
 
-    public Task DeleteOrganizationAsync(Guid organizationId)
+    public async Task DeleteOrganizationAsync(Guid organizationId)
     {
-        throw new NotImplementedException();
+        var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
+
+        if (organization == null)
+            throw new Exception("not organization");
+
+        await _organizationRepository.DeleteOrganizationAsync(organization);
     }
 
-    public Task<OrganizationDto> GetOrganizationByIdAsync(Guid organizationId)
+    public async Task<OrganizationView> GetOrganizationByIdAsync(Guid organizationId)
     {
-        throw new NotImplementedException();
+        var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
+
+        if (organization == null)
+            throw new Exception("not organization");
+
+        return organization.Adapt<OrganizationView>();
     }
 
-    public async Task<List<OrganizationDto>> GetOrganizationsAsync()
-        => (await _organizationRepository.GetOrganizations()).Adapt<List<OrganizationDto>>();
+    public async Task<List<OrganizationView>?> GetOrganizationsAsync()
+    {
+        var organizations = await _organizationRepository.GetOrganizations();
+        return organizations?.Select(x => x.Adapt<OrganizationView>()).ToList();
+    }
 
-    public async Task<OrganizationDto> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization)
+    public async Task UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization)
     {
         var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
         if (organization is null)
-            return null;
+            throw new Exception("not organization");
 
         organization.Name = updateOrganization.Name;
         organization.Status = updateOrganization.Status;
-        organization.Users = updateOrganization.Users;
-        if (updateOrganization.ImageUrl is not null)
-            organization.ImageUrl = await _fileHelper.SaveFileAsync(updateOrganization.ImageUrl, EFileType.Images, EFileFolder.Organization);
+        //organization.Users = updateOrganization.Users;
+        //if (updateOrganization.ImageUrl is not null)
+        //organization.ImageUrl = await _fileHelper.SaveFileAsync(updateOrganization.ImageUrl, EFileType.Images, EFileFolder.Organization);
 
-
-        return organization.Adapt<OrganizationDto>();
+        await _organizationRepository.UpdateOrganizationAsync(organization);
     }
 }
