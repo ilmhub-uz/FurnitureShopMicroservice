@@ -10,6 +10,8 @@
     <None Remove="Entites\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="JFA.DependencyInjection" Version="1.0.7" />
+    <PackageReference Include="Mapster" Version="6.5.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.13">
       <PrivateAssets>all</PrivateAssets>
