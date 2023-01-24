@@ -12,6 +12,6 @@ namespace Product.Api.Repositories
         Task DeleteProductAsync(string productId);
         Task<IEnumerable<ProductModel>> GetAllProductAsync();
         Task<ProductViewModel> GetProductAsync(string productId);
-        Task<ProductModel> UpdateProductAsync(string productId, CreateProductDto productDto);
+        Task<ProductModel> UpdateProductAsync(string productId, UpdateProductDto productDto);
     }
 }

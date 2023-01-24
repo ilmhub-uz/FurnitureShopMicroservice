@@ -31,7 +31,7 @@ namespace Product.Api.Controllers
 			=> Ok(await repository.GetProductAsync(productId));
 
 		[HttpPut]
-		public async Task<IActionResult> UpdateProduct(string productId, CreateProductDto productDto)
+		public async Task<IActionResult> UpdateProduct(string productId, UpdateProductDto productDto)
 		{
 			var product = await repository.UpdateProductAsync(productId, productDto);
 			return Ok(product);
