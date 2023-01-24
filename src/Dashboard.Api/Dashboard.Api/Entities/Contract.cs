@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Dashboard.Api.Entities;
+using Dashboard.Api.Entities.Enums;
 
 namespace Dashboard.Api.Entites;
 

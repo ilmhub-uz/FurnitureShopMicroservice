@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Dashboard.Api.Controllers;
 [Route("api/[controller]")]
-[Scoped]
 public class CategoriesController : Controller
 {
     [HttpGet]
