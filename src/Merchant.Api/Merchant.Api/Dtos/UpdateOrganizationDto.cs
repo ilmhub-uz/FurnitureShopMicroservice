@@ -6,5 +6,4 @@ public class UpdateOrganizationDto
 {
     public string? Name { get; set; }
     public IFormFile? ImageUrl { get; set; }
-    public EOrganizationStatus Status { get; set; }
 }

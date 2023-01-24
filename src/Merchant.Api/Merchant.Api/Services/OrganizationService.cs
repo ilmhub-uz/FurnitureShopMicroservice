@@ -36,11 +36,12 @@ public class OrganizationService : IOrganizationService
                 }
             }
         };
+
+        if(createOrganization.ImageUrl is not null)
+            organization.ImageUrl = await _fileHelper.
+                SaveFileAsync(createOrganization.ImageUrl!, EFileType.Images, EFileFolder.Organization);
+
         await _organizationRepository.CreateOrganizationAsync(organization);
-
-
-        /*organization.ImageUrl = await _fileHelper.
-            SaveFileAsync(createOrganization.ImageUrl!, EFileType.Images, EFileFolder.Organization);*/
     }
 
     public async Task DeleteOrganizationAsync(Guid organizationId)
@@ -75,11 +76,12 @@ public class OrganizationService : IOrganizationService
         if (organization is null)
             throw new Exception("not organization");
 
-        organization.Name = updateOrganization.Name;
-        organization.Status = updateOrganization.Status;
-        //organization.Users = updateOrganization.Users;
-        //if (updateOrganization.ImageUrl is not null)
-        //organization.ImageUrl = await _fileHelper.SaveFileAsync(updateOrganization.ImageUrl, EFileType.Images, EFileFolder.Organization);
+        if(updateOrganization.Name is not null)
+            organization.Name = updateOrganization.Name;
+
+        if (updateOrganization.ImageUrl is not null)
+            organization.ImageUrl = await _fileHelper.
+                SaveFileAsync(updateOrganization.ImageUrl, EFileType.Images, EFileFolder.Organization);
 
         await _organizationRepository.UpdateOrganizationAsync(organization);
     }
