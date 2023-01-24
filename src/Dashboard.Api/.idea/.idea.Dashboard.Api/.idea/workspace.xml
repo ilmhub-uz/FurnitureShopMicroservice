@@ -5,34 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9898c901-0a6e-4bc6-ab9a-18767203a420" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dashboard.Api/Controllers/CategoriesController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dashboard.Api/ModelsDto/CreateCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dashboard.Api/ModelsDto/UpdateCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dashboard.Api/Services/CategoryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dashboard.Api/Services/Interfaces/ICategoriesService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dashboard.Api/ViewModels/CategoryView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/ModelsDto/UpdateProductDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dashboard.Api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dashboard.Api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Context/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Context/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Controllers/OrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Controllers/OrdersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Controllers/ProductsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/Category.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/Contract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/Contract.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/EContractStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/EContractStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/EOrderStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/EOrderStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/EProductStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/EProductStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/ERole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/ERole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/EUserStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/EUserStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/OrganizationUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/OrganizationUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/OrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/OrderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/OrganizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/OrganizationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/ViewModels/OrderView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/ViewModels/OrderView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/CategoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/Interfaces/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/Interfaces/IProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/ProductService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="master" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,9 +40,9 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/dostonbekubaydullayev/Library/Application Support/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/dostonbekubaydullayev/Library/Application Support/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
-      &quot;/Users/dostonbekubaydullayev/.local/share/Symbols/src&quot;
+      &quot;/home/botirjon/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
+      &quot;/home/botirjon/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
+      &quot;/home/botirjon/.local/share/Symbols/src&quot;
     ]
   }
 }</component>
@@ -88,6 +77,7 @@
       <workItem from="1674555817837" duration="1165000" />
       <workItem from="1674559507311" duration="2646000" />
       <workItem from="1674562180367" duration="603000" />
+      <workItem from="1674567788641" duration="1138000" />
     </task>
     <servers />
   </component>
