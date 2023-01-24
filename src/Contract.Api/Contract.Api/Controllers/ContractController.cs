@@ -1,5 +1,4 @@
-﻿using Contract.Api.Dto;
-using Contract.Api.Services;
+﻿using Contract.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Contract.Api.Controllers
@@ -8,17 +7,46 @@ namespace Contract.Api.Controllers
     [ApiController]
     public class ContractController : Controller
     {
-        private readonly IContractService _contractService;
+        private readonly IContractService contractService;
         public ContractController(IContractService contractService)
         {
-            _contractService = contractService;
+            this.contractService = contractService;
+        }
+
+        [HttpPost]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+        public async Task<IActionResult> CreateContract()
+        {
+            await contractService.AddContractAsync();
+
+            return Ok();
         }
 
         [HttpGet]
-        public async Task<IActionResult> CreateContract()
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetContractById()
         {
-            var contract = await _contractService.AddContractAsync();
+            return Ok();
+        }
 
+        [HttpGet]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetContracts()
+        {
+            return Ok();
+        }
+
+        [HttpPut]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateContract()
+        {
+            return Ok();
+        }
+
+        [HttpDelete]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+        public async Task<IActionResult> DeleteContract()
+        {
             return Ok();
         }
     }
