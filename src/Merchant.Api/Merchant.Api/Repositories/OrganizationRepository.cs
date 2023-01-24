@@ -1,13 +1,10 @@
-﻿using JFA.DependencyInjection;
-using Mapster;
-using Merchant.Api.Context;
+﻿using Merchant.Api.Context;
 using Merchant.Api.Dtos;
 using Merchant.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Merchant.Api.Repositories;
 
-[Scoped]
 public class OrganizationRepository : IOrganizationRepository
 {
     private readonly AppDbContext context;
@@ -18,11 +15,6 @@ public class OrganizationRepository : IOrganizationRepository
     }
 
     public Task CreateOrganizationAsync(Organization createOrganization)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void UpdateOrganizationAsync(Organization updateOrganization)
     {
         throw new NotImplementedException();
     }
