@@ -61,7 +61,7 @@ namespace Product.Api.Repositories
 			return product.Adapt<ProductViewModel>();
 		}
 
-		public async Task<ProductModel> UpdateProductAsync(string productId, UpdateProductDto productDto)
+		public async Task<ProductViewModel> UpdateProductAsync(string productId, UpdateProductDto productDto)
 		{
 			var filter = Builders<ProductModel>.Filter.Eq("_id", productId);
 			if (filter is null)
@@ -79,7 +79,7 @@ namespace Product.Api.Repositories
 			var options = new FindOneAndUpdateOptions<ProductModel> { ReturnDocument = ReturnDocument.After };
 
 			var product = await _products.FindOneAndUpdateAsync(filter, update, options);
-			return product;
+			return product.Adapt<ProductViewModel>();
 		}
 	}
 }
