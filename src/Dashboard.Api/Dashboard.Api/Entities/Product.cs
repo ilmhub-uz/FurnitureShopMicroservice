@@ -1,13 +1,14 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Dashboard.Api.Entities;
-
-namespace Dashboard.Data.Entites;
+namespace Dashboard.Api.Entities;
 
 public class Product
 {
     public Guid Id { get; set; }
     public Guid AuthorId { get; set; }
     public string? Name { get; set; }
+    public string ProductId { get; set; }
+    public string? ProductName { get; set; }
     public string? Description { get; set; }
     public bool? WithInstallation { get; set; }
     public string? Brend { get; set; }
@@ -25,4 +26,9 @@ public class Product
     public Guid OrganizationId { get; set; }
     [ForeignKey(nameof(OrganizationId))]
     public virtual Organization? Organization { get; set; }
+    public virtual List<string>? Images { get; set; }
+    public bool IsAvailable { get; set; }
+    public uint ProductCount { get; set; }
+    public int Views { get; set; }
+    public EProductStatus Status { get; set; }
 }

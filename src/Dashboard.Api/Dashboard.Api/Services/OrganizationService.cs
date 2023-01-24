@@ -47,12 +47,9 @@ public class OrganizationService : IOrganizationService
         {
             throw new Exception("not found");
         }
-
         organization.Name = updateOrganizationDto.Name;
         organization.Status = updateOrganizationDto.Status;
 
-        await _context.SaveChangesAsync();
+          await _context.SaveChangesAsync();
     }
 
-
-}
