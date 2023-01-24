@@ -1,5 +1,8 @@
-﻿namespace Dashboard.Api.Entities;
+namespace Dashboard.Data.Entites;
 
 public enum ERole
 {
+    Owner,
+    Manager,
+    Seller
 }
