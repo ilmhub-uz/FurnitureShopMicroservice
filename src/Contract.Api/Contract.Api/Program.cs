@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(option =>
 {
-    option.UseNpgsql(builder.Configuration.GetConnectionString("localhost"));
+    option.UseLazyLoadingProxies().UseNpgsql(builder.Configuration.GetConnectionString("localhost"));
 });
 
 var app = builder.Build();
