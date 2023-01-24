@@ -45,7 +45,7 @@ public class OrganizationService : IOrganizationService
         var organization = await _context.Organizations.FirstOrDefaultAsync(or => or.Id == organizationId);
         if (organization is null)
         {
-            throw Exception;
+            throw new Exception();
         }
 
         organization.Name = updateOrganizationDto.Name;
