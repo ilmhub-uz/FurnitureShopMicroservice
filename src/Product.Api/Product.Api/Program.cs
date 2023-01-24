@@ -9,8 +9,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 IConfigurationSection appsettingsSection = builder.Configuration.GetSection("AppSettings");
 builder.Services.Configure<AppSettings>(appsettingsSection);
+builder.Services.AddSingleton<SendToGetMessage>();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<SendToGetMessage>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

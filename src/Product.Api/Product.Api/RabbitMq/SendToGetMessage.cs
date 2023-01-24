@@ -10,7 +10,7 @@ namespace Product.Api.RabbitMq
 		{
 			var factory = new ConnectionFactory
 			{
-				HostName = "furniture_rabbitmq",
+				HostName = "localhost",
 				UserName = "guest",
 				Password = "guest",
 				Port = 5672

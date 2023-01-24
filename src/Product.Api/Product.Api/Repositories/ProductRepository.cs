@@ -6,6 +6,7 @@ using Product.Api.Entities;
 using Product.Api.Entities.Dtos;
 using Product.Api.Entities.ViewModels;
 using Product.Api.Exceptions;
+using Product.Api.RabbitMq;
 using Product.Api.Services;
 
 namespace Product.Api.Repositories
@@ -13,22 +14,27 @@ namespace Product.Api.Repositories
 	public class ProductRepository : IProductRepository
 	{
 		private readonly MongoClient _mongoClient;
+		private readonly SendToGetMessage sendToGet;
 		private readonly IMongoDatabase _database;
 		private readonly IMongoCollection<ProductModel> _products;
 		private IOptions<AppSettings> _appsettings;
-		public ProductRepository(IOptions<AppSettings> appsettings)
+		public ProductRepository(IOptions<AppSettings> appsettings, SendToGetMessage sendToGet)
 		{
 			_appsettings = appsettings;
 			_mongoClient = new MongoClient(_appsettings.Value.MongoDbConnectionStrings);
 			_database = _mongoClient.GetDatabase("products_db");
 			_products = _database.GetCollection<ProductModel>("products");
+			this.sendToGet = sendToGet;
 		}
 
 		public async Task CreateProductAsync(CreateProductDto productDto)
 		{
 			var product = productDto.Adapt<ProductModel>();
 			product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
-			if(_products.Equals(product))
+			var currentproduct = await (await _products.FindAsync(p => p.Id == product.Id)).SingleOrDefaultAsync();
+			if (currentproduct != null)
+				throw new BadRequestException("available in the product database");
+			sendToGet.SendMessage(product);
 			await _products.InsertOneAsync(product);
 		}
 
@@ -42,7 +48,7 @@ namespace Product.Api.Repositories
 		public async Task<IEnumerable<ProductModel>> GetAllProductAsync()
 		{
 			var products = await (await _products.FindAsync(product => true)).ToListAsync();
-			if(products.Count == 0)
+			if (products.Count == 0)
 				throw new Exception("products is empty");
 			return products;
 		}
