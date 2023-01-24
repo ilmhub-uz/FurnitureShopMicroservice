@@ -10,6 +10,7 @@ namespace Contract.Api.Context
         public DbSet<Entities.Contract>? Contracts { get; set; }
         public DbSet<Order>? Orders { get; set; }
         public DbSet<OrderProduct>? OrderProducts { get; set; }
+        public DbSet<Product>? Products {get;set;}
        
     }
 }
