@@ -1,4 +1,4 @@
-﻿using Dashboard.Data.Entities;
+﻿using Dashboard.Api.Entities;
 
 namespace Dashboard.Api.ModelsDto;
 
