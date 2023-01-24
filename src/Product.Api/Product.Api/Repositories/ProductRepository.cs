@@ -54,7 +54,7 @@ namespace Product.Api.Repositories
 		public async Task<ProductModel> UpdateProductAsync(string productId, CreateProductDto productDto)
 		{
 			var filter = Builders<ProductModel>.Filter.Eq(p => p.Id, productId);
-			var update = Builders<ProductModel>.Update.Set(productId,
+			var update = Builders<ProductModel>.Update.Set(e=>e,
 				productDto.Adapt<ProductModel>());
 			await _products.UpdateOneAsync(filter, update);
 			return _products.Find(p => p.Id == productId).SingleOrDefault();
