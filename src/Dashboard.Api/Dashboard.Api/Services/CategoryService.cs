@@ -86,7 +86,6 @@ public class CategoryService
     public async Task DeleteCategory(int categoryId)
     {
         var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId);
-
         if (category is null)
             throw new NotFoundException<Category>();
 

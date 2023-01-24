@@ -1,4 +1,6 @@
-﻿namespace Dashboard.Api.Entities;
+﻿using Dashboard.Api.Entities.Enums;
+
+namespace Dashboard.Api.Entities;
 
 public class Organization
 {
