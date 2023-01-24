@@ -5,9 +5,9 @@ namespace Merchant.Api.Repositories;
 
 public interface IOrganizationRepository
 {
-    Task CreateOrganizationAsync(Organization createOrganization);
-    void UpdateOrganizationAsync(Organization updateOrganization);
-    Task DeleteOrganizationAsync(Guid organizationId);
-    Task<OrganizationDto> GetOrganizationByIdAsync(Guid organizationId);
+    Task CreateOrganizationAsync(OrganizationDto createOrganization);
     Task<List<OrganizationDto>> GetOrganizations();
+    Task<OrganizationDto> GetOrganizationByIdAsync(Guid organizationId);
+    void UpdateOrganizationAsync(OrganizationDto updateOrganization);
+    Task DeleteOrganizationAsync(Guid organizationId);
 }
