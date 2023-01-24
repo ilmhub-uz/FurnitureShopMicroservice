@@ -32,12 +32,8 @@ public class OrganizationController : ControllerBase
 
     [HttpGet("{organizationId:guid}")]
     [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetOrganizationById(Guid organizationId)
-    {
-        var organization = await organizationService.GetOrganizationByIdAsync(organizationId);
-
-        return Ok(organization);
-    }
+    public async Task<IActionResult> GetOrganizationById(Guid organizationId) 
+        => Ok(await organizationService.GetOrganizationByIdAsync(organizationId));
 
     [HttpDelete("{organizationId:guid}")]
     public async Task<IActionResult> DeleteOrganization(Guid organizationId)
@@ -51,6 +47,7 @@ public class OrganizationController : ControllerBase
     public async Task<IActionResult> UpdateOrganization(Guid organizationId, [FromBody] UpdateOrganizationDto updateOrganizationDto)
     {
         await organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto);
+        
         return Ok();
     }
 }
