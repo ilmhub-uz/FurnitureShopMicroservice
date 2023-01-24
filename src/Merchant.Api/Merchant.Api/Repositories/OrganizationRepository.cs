@@ -14,26 +14,33 @@ public class OrganizationRepository : IOrganizationRepository
         this.context = context;
     }
 
-    public Task CreateOrganizationAsync(Organization createOrganization)
+    public async Task CreateOrganizationAsync(Organization createOrganization)
     {
-        throw new NotImplementedException();
+        await context.Organizations.AddAsync(createOrganization);
+        await context.SaveChangesAsync();
     }
 
-    public Task DeleteOrganizationAsync(Guid organizationId)
+    public async Task DeleteOrganizationAsync(Organization deleteOrganization)
     {
-        throw new NotImplementedException();
+        context.Organizations.Remove(deleteOrganization);
+        await context.SaveChangesAsync();
     }
 
-    public Task<Organization> GetOrganizationByIdAsync(Guid organizationId)
+    public async Task<Organization?> GetOrganizationByIdAsync(Guid organizationId)
     {
-        throw new NotImplementedException();
+        var organization = await context.Organizations.FirstOrDefaultAsync(x => x.Id == organizationId);
+        return organization;
     }
 
-    public async Task<List<Organization>> GetOrganizations() => await context.Organizations.ToListAsync();
+    public async Task<List<Organization>?> GetOrganizations()
+    {
+        var organizations = await context.Organizations.ToListAsync();
+        return organizations;
+    }
 
-    public void UpdateOrganizationAsync(Organization updateOrganization)
+    public async Task UpdateOrganizationAsync(Organization updateOrganization)
     {
         context.Organizations.Update(updateOrganization);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 }
