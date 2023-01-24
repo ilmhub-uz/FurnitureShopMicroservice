@@ -1,6 +1,5 @@
 ﻿using Merchant.Api.Dtos;
 using Merchant.Api.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Merchant.Api.Controllers;
@@ -16,33 +15,39 @@ public class OrganizationController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(List<OrganizationDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<OrganizationView?>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrganizations()
         => Ok(await organizationService.GetOrganizationsAsync());
 
     [HttpPost]
-    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> CreateOrganization([FromBody] CreateOrganizationDto createOrganization)
+    public async Task<IActionResult> CreateOrganization([FromForm] CreateOrganizationDto createOrganization)
     {
         if (!ModelState.IsValid)
             return BadRequest();
 
-        var organization = await organizationService.CreateOrganizationAsync(createOrganization);
+        await organizationService.CreateOrganizationAsync(createOrganization);
 
-        return Ok(organization);
+        return Ok();
     }
 
     [HttpGet("{organizationId:guid}")]
-    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetOrganizationById(Guid organizationId)
+    [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetOrganizationById(Guid organizationId) 
+        => Ok(await organizationService.GetOrganizationByIdAsync(organizationId));
+
+    [HttpDelete("{organizationId:guid}")]
+    public async Task<IActionResult> DeleteOrganization(Guid organizationId)
     {
-        //organizationService.GetOrganizationById(organizationId);
+        await organizationService.DeleteOrganizationAsync(organizationId);
 
         return Ok();
     }
 
     [HttpPut("{organizationId:guid}")]
-    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateOrganization(Guid organizationId, UpdateOrganizationDto updateOrganizationDto) 
-        => Ok(await organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto));
+    public async Task<IActionResult> UpdateOrganization(Guid organizationId, [FromForm] UpdateOrganizationDto updateOrganizationDto)
+    {
+        await organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto);
+        
+        return Ok();
+    }
 }

@@ -2,8 +2,8 @@
 
 public enum EProductStatus
 {
-        Created,
-        Active,
-        InActive,
-        Deleted
+	Created,
+	Active,
+	InActive,
+	Deleted
 }
