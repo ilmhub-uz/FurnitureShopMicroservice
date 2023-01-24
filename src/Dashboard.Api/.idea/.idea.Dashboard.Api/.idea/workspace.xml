@@ -4,7 +4,31 @@
     <projectFile profileName="Dashboard.Api">Dashboard.Api/Dashboard.Api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9898c901-0a6e-4bc6-ab9a-18767203a420" name="Changes" comment="" />
+    <list default="true" id="9898c901-0a6e-4bc6-ab9a-18767203a420" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/Controllers/CategoriesController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/ModelsDto/CreateCategoryDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/ModelsDto/UpdateCategoryDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/Services/CategoryService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/Services/Interfaces/ICategoriesService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/ViewModels/CategoryView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Dashboard.Api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dashboard.Api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Context/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Context/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Controllers/OrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Controllers/OrdersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Controllers/ProductsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/Category.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/Contract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/Contract.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/EContractStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/EContractStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/EOrderStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/EOrderStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/EProductStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/EProductStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/ERole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/ERole.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/EUserStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/EUserStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/Order.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/OrganizationUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/OrganizationUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Entities/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Entities/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/OrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/OrderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/OrganizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/OrganizationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/ViewModels/OrderView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/ViewModels/OrderView.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +85,9 @@
       <workItem from="1674554913492" duration="591000" />
       <workItem from="1674555509902" duration="12000" />
       <workItem from="1674555538391" duration="10000" />
+      <workItem from="1674555817837" duration="1165000" />
+      <workItem from="1674559507311" duration="2646000" />
+      <workItem from="1674562180367" duration="603000" />
     </task>
     <servers />
   </component>
@@ -70,5 +97,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Dashboard.Api/Services/OrderService.cs</url>
+          <line>17</line>
+          <properties documentPath="$PROJECT_DIR$/Dashboard.Api/Services/OrderService.cs" initialLine="17" containingFunctionPresentation="constructor 'OrderService'">
+            <startOffsets>
+              <option value="524" />
+            </startOffsets>
+            <endOffsets>
+              <option value="525" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

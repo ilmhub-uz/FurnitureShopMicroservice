@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Dashboard.Api.Entities;
 
-namespace Dashboard.Data.Entites;
+namespace Dashboard.Api.Entites;
 
 public class Contract
 {

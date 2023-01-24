@@ -1,5 +1,4 @@
-﻿using System;
-using Dashboard.Data.Entites;
+﻿using Dashboard.Api.Entities;
 
 namespace Dashboard.Api.ViewModels;
 
