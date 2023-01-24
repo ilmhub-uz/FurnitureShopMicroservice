@@ -1,7 +1,7 @@
-﻿using Dashboard.Api.Context;
+using Dashboard.Api.Context;
 using Dashboard.Api.Exceptions;
 using Dashboard.Api.ViewModels;
-using Dashboard.Data.Entites;
+using Dashboard.Api.Entities;
 using JFA.DependencyInjection;
 using Mapster;
 using Microsoft.EntityFrameworkCore;

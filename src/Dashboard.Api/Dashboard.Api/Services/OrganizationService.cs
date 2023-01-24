@@ -49,6 +49,7 @@ public class OrganizationService : IOrganizationService
         {
             throw new NotFoundException<Organization>();
         }
+
         organization.Name = updateOrganizationDto.Name;
         organization.Status = updateOrganizationDto.Status;
 

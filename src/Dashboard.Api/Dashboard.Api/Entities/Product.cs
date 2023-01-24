@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using Dashboard.Api.Entities;
 namespace Dashboard.Api.Entities;
 
 public class Product
@@ -15,7 +14,6 @@ public class Product
     public string? Material { get; set; }
     public Dictionary<string, string>? Properties { get; set; }
     public decimal Price { get; set; }
-    public bool IsAvailable { get; set; }
     public uint Count { get; set; }
     public int Views { get; set; }
     public EProductStatus Status { get; set; }
@@ -29,6 +27,4 @@ public class Product
     public virtual List<string>? Images { get; set; }
     public bool IsAvailable { get; set; }
     public uint ProductCount { get; set; }
-    public int Views { get; set; }
-    public EProductStatus Status { get; set; }
 }

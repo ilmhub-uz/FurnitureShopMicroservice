@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Dashboard.Data.Entites;
 
 namespace Dashboard.Api.Entities;
 
