@@ -1,0 +1,50 @@
+2023-01-24 20:43:58.213 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-24 20:43:58.338 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-24 20:43:58.460 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-24 20:43:58.482 +05:00 [INF] Hosting environment: Development
+2023-01-24 20:43:58.495 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-24 20:44:00.121 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger - -
+2023-01-24 20:44:00.609 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger - - - 301 0 - 509.5365ms
+2023-01-24 20:44:00.618 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/index.html - -
+2023-01-24 20:44:01.503 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/index.html - - - 200 - text/html;charset=utf-8 884.5785ms
+2023-01-24 20:44:01.548 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/swagger-ui.css - -
+2023-01-24 20:44:01.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/swagger-ui-bundle.js - -
+2023-01-24 20:44:01.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/swagger-ui-standalone-preset.js - -
+2023-01-24 20:44:01.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - -
+2023-01-24 20:44:01.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_vs/browserLink - -
+2023-01-24 20:44:01.721 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 171.8065ms
+2023-01-24 20:44:01.816 +05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-01-24 20:44:01.816 +05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-01-24 20:44:01.862 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 312.8271ms
+2023-01-24 20:44:01.867 +05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-01-24 20:44:01.866 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/swagger-ui.css - - - 200 143632 text/css 318.0683ms
+2023-01-24 20:44:02.014 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 465.0678ms
+2023-01-24 20:44:02.049 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 499.3983ms
+2023-01-24 20:44:02.498 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - -
+2023-01-24 20:44:02.640 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/favicon-32x32.png - -
+2023-01-24 20:44:02.734 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 235.8110ms
+2023-01-24 20:44:03.079 +05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-01-24 20:44:03.096 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/favicon-32x32.png - - - 200 628 image/png 455.9272ms
+2023-01-24 20:44:10.388 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/api/Contract - -
+2023-01-24 20:44:10.448 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-24 20:44:10.591 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract() on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-24 20:44:10.652 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 18.2812ms
+2023-01-24 20:44:10.695 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-24 20:44:10.983 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Contract.Api.Services.IContractService' while attempting to activate 'Contract.Api.Controllers.ContractController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method9(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass7_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-01-24 20:44:15.397 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/api/Contract - - - 500 - text/plain;+charset=utf-8 5009.8542ms

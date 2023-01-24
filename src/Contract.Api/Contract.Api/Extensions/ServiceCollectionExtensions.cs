@@ -1,7 +1,5 @@
 ﻿using Contract.Api.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Contract.Api.Extensions
 {
