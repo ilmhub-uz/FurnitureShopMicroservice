@@ -14,6 +14,6 @@ namespace Contract.Api.Entities
         public uint ProductCount { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime FinishDate { get; set; }
-        public virtual ICollection<Product>? Products { get; set; }
+        public virtual ICollection<ContractProduct>? Products { get; set; }
     }
 }

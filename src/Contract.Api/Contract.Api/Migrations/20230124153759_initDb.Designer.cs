@@ -9,11 +9,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Contract.Api.Context.Migrations
+namespace Contract.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230124150237_InitDb")]
-    partial class InitDb
+    [Migration("20230124153759_initDb")]
+    partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,6 +54,31 @@ namespace Contract.Api.Context.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contracts");
+                });
+
+            modelBuilder.Entity("Contract.Api.Entities.ContractProduct", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ContractId")
+                        .HasColumnType("uuid");
+
+                    b.Property<long>("Count")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Properties")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ContractId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Contract.Api.Entities.Order", b =>
@@ -104,13 +129,31 @@ namespace Contract.Api.Context.Migrations
                     b.ToTable("OrderProducts");
                 });
 
+            modelBuilder.Entity("Contract.Api.Entities.ContractProduct", b =>
+                {
+                    b.HasOne("Contract.Api.Entities.Contract", "Contract")
+                        .WithMany("Products")
+                        .HasForeignKey("ContractId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Contract");
+                });
+
             modelBuilder.Entity("Contract.Api.Entities.OrderProduct", b =>
                 {
-                    b.HasOne("Contract.Api.Entities.Order", null)
+                    b.HasOne("Contract.Api.Entities.Order", "Order")
                         .WithMany("OrderProducts")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Contract.Api.Entities.Contract", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Contract.Api.Entities.Order", b =>
