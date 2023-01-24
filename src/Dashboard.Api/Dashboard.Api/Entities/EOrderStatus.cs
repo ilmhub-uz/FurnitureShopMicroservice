@@ -1,5 +1,4 @@
-﻿using System;
-namespace Dashboard.Data.Entites;
+﻿namespace Dashboard.Api.Entities;
 
 public enum EOrderStatus
 {

@@ -1,6 +1,6 @@
 ﻿using Dashboard.Api.Context;
 using Dashboard.Api.ViewModels;
-using Dashboard.Data.Entites;
+using Dashboard.Api.Entities;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 

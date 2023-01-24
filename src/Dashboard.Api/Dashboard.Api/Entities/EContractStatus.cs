@@ -1,4 +1,4 @@
-namespace Dashboard.Data.Entites;
+namespace Dashboard.Api.Entites;
 
 public enum EContractStatus
 {
