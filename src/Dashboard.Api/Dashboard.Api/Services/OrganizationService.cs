@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dashboard.Api.Services;
 
-
 [Scoped]
 public class OrganizationService : IOrganizationService
 {
@@ -20,7 +19,6 @@ public class OrganizationService : IOrganizationService
         _context = context;
     }
 
-
     public async Task<OrganizationView> GetOrganizationById(Guid organizationId)
     {
         var organization = await _context.Organizations.FirstOrDefaultAsync(or => or.Id == organizationId);
@@ -30,7 +28,6 @@ public class OrganizationService : IOrganizationService
         }
 
         return organization.Adapt<OrganizationView>();
-
     }
 
     public async Task<List<OrganizationView>> GetOrganizations()
@@ -50,8 +47,8 @@ public class OrganizationService : IOrganizationService
         {
             throw new Exception("not found");
         }
-          organization.Name = updateOrganizationDto.Name;
-          organization.Status = updateOrganizationDto.Status;
+        organization.Name = updateOrganizationDto.Name;
+        organization.Status = updateOrganizationDto.Status;
 
           await _context.SaveChangesAsync();
     }
