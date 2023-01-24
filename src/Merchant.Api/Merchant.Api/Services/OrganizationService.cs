@@ -79,6 +79,9 @@ public class OrganizationService : IOrganizationService
         if(updateOrganization.Name is not null)
             organization.Name = updateOrganization.Name;
 
+        if (updateOrganization.Description is not null)
+            organization.Description = updateOrganization.Description;
+
         if (updateOrganization.ImageUrl is not null)
             organization.ImageUrl = await _fileHelper.
                 SaveFileAsync(updateOrganization.ImageUrl, EFileType.Images, EFileFolder.Organization);
