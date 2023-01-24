@@ -51,13 +51,23 @@ namespace Product.Api.Repositories
 			return product.Adapt<ProductViewModel>();
 		}
 
-		public async Task<ProductModel> UpdateProductAsync(string productId, CreateProductDto productDto)
+		public async Task<ProductModel> UpdateProductAsync(string productId, UpdateProductDto productDto)
 		{
-			var filter = Builders<ProductModel>.Filter.Eq(p => p.Id, productId);
-			var update = Builders<ProductModel>.Update.Set(e=>e,
-				productDto.Adapt<ProductModel>());
-			await _products.UpdateOneAsync(filter, update);
-			return _products.Find(p => p.Id == productId).SingleOrDefault();
+			var filter = Builders<ProductModel>.Filter.Eq("_id", productId);
+			var update = Builders<ProductModel>.Update
+				.Set("Name", productDto.Name)
+				.Set("Description", productDto.Description)
+				.Set("WithInstallation", productDto.WithInstallation)
+				.Set("Brend", productDto.Brend)
+				.Set("Material", productDto.Material)
+				.Set("Price", productDto.Price)
+				.Set("IsAvailable", productDto.IsAvailable)
+				.Set("Count", productDto.Count);
+	
+			var options = new FindOneAndUpdateOptions<ProductModel> { ReturnDocument = ReturnDocument.After };
+
+			var product = await _products.FindOneAndUpdateAsync(filter, update, options);
+			return product;
 		}
 	}
 }
