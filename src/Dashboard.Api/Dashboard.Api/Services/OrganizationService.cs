@@ -49,11 +49,13 @@ public class OrganizationService : IOrganizationService
         if (organization is null)
         {
             throw new Exception("not found");
+
+        }
+
         organization.Name = updateOrganizationDto.Name;
         organization.Status = updateOrganizationDto.Status;
 
         await _context.SaveChangesAsync();
+
     }
-
-
 }
