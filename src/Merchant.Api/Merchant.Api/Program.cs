@@ -1,4 +1,5 @@
 using Merchant.Api.Context;
+using Merchant.Api.Middleware;
 using Merchant.Api.Repositories;
 using Merchant.Api.Services;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseErrorHandlerMiddleware();
 
 app.UseAuthorization();
 
