@@ -3,7 +3,7 @@
 __ PM> NuGet\Install-Package Microsoft.AspNetCore.Authentication.JwtBearer -Version 7.0.2 __
 
 ***
-
+### appsettings.json
 ```
   "JwtBearer": {
     "ValidIssuer": "furnitureshop.uz",
