@@ -2,6 +2,7 @@
 using Merchant.Api.Dtos;
 using Merchant.Api.Dtos.Enums;
 using Merchant.Api.Entities;
+using Merchant.Api.Exceptions;
 using Merchant.Api.Repositories;
 
 namespace Merchant.Api.Services;
@@ -48,8 +49,8 @@ public class OrganizationService : IOrganizationService
     {
         var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
 
-        if (organization == null)
-            throw new Exception("not organization");
+        if (organization is null)
+            throw new NotFoundException<Organization>();
 
         await _organizationRepository.DeleteOrganizationAsync(organization);
     }
@@ -58,8 +59,8 @@ public class OrganizationService : IOrganizationService
     {
         var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
 
-        if (organization == null)
-            throw new Exception("not organization");
+        if (organization is null)
+            throw new NotFoundException<Organization>();
 
         return organization.Adapt<OrganizationView>();
     }
@@ -74,7 +75,7 @@ public class OrganizationService : IOrganizationService
     {
         var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
         if (organization is null)
-            throw new Exception("not organization");
+            throw new NotFoundException<Organization>();
 
         if(updateOrganization.Name is not null)
             organization.Name = updateOrganization.Name;

@@ -20,7 +20,7 @@ public class OrganizationController : ControllerBase
         => Ok(await organizationService.GetOrganizationsAsync());
 
     [HttpPost]
-    public async Task<IActionResult> CreateOrganization([FromBody] CreateOrganizationDto createOrganization)
+    public async Task<IActionResult> CreateOrganization([FromForm] CreateOrganizationDto createOrganization)
     {
         if (!ModelState.IsValid)
             return BadRequest();
@@ -44,7 +44,7 @@ public class OrganizationController : ControllerBase
     }
 
     [HttpPut("{organizationId:guid}")]
-    public async Task<IActionResult> UpdateOrganization(Guid organizationId, [FromBody] UpdateOrganizationDto updateOrganizationDto)
+    public async Task<IActionResult> UpdateOrganization(Guid organizationId, [FromForm] UpdateOrganizationDto updateOrganizationDto)
     {
         await organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto);
         

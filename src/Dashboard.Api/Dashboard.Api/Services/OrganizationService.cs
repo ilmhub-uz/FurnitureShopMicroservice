@@ -1,4 +1,4 @@
-﻿using Dashboard.Api.Context;
+using Dashboard.Api.Context;
 using Dashboard.Api.Entities;
 using Dashboard.Api.ModelsDto;
 using Dashboard.Api.Services.Interfaces;
@@ -49,8 +49,6 @@ public class OrganizationService : IOrganizationService
         if (organization is null)
         {
             throw new Exception("not found");
-        }
-
         organization.Name = updateOrganizationDto.Name;
         organization.Status = updateOrganizationDto.Status;
 
