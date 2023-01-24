@@ -1,6 +1,7 @@
 ﻿using Merchant.Api.Context;
 using Merchant.Api.Dtos;
 using Merchant.Api.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Merchant.Api.Repositories;
 
@@ -28,10 +29,7 @@ public class OrganizationRepository : IOrganizationRepository
         throw new NotImplementedException();
     }
 
-    public Task<List<Organization>> GetOrganizations()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<List<Organization>> GetOrganizations() => await context.Organizations.ToListAsync();
 
     public void UpdateOrganizationAsync(Organization updateOrganization)
     {

@@ -38,10 +38,8 @@ public class OrganizationService : IOrganizationService
         throw new NotImplementedException();
     }
 
-    public Task<List<OrganizationDto>> GetOrganizationsAsync()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<List<OrganizationDto>> GetOrganizationsAsync()
+        => (await _organizationRepository.GetOrganizations()).Adapt<List<OrganizationDto>>();
 
     public async Task<OrganizationDto> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization)
     {
