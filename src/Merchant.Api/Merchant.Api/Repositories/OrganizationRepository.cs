@@ -1,5 +1,4 @@
 ﻿using Merchant.Api.Context;
-using Merchant.Api.Dtos;
 using Merchant.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,9 +13,10 @@ public class OrganizationRepository : IOrganizationRepository
         this.context = context;
     }
 
-    public Task CreateOrganizationAsync(Organization createOrganization)
+    public async Task CreateOrganizationAsync(Organization createOrganization)
     {
-        throw new NotImplementedException();
+        await context.Organizations!.AddAsync(createOrganization);
+        await context.SaveChangesAsync();
     }
 
     public Task DeleteOrganizationAsync(Guid organizationId)
