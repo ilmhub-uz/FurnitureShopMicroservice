@@ -1,4 +1,4 @@
-﻿namespace Merchant.Api.Entities;
+﻿namespace Merchant.Api.Dtos.Enums;
 
 public enum EOrganizationStatus
 {
