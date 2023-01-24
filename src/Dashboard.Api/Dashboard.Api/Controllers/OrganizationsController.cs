@@ -32,7 +32,7 @@ public class OrganizationsController : Controller
         return Ok(organizations);
     }
 
-    [HttpGet("{organization:Guid}")]
+    [HttpGet("{organizationId:Guid}")]
     [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetOrganizationById(Guid organizationId)
@@ -42,7 +42,7 @@ public class OrganizationsController : Controller
         return Ok(organization);
     }
 
-    [HttpPut("{organization:Guid}")]
+    [HttpPut("{organizationId:Guid}")]
 
     public async Task<IActionResult> OrganizationUpdateStatus(Guid organizationId, UpdateOrganizationDto updateOrganizationDto)
     {
