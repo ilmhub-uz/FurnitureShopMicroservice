@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 
 namespace Cart.Api.Controllers;
 
@@ -16,16 +18,34 @@ public class CartsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddProduct()
+    public async Task<IActionResult> AddProduct(string key, string value)
     {
-        await _distributedCache.SetStringAsync("key", "value");
+        var valuesJson = await _distributedCache.GetStringAsync(key);
+        var values = new List<string>();
+
+        if (valuesJson is not null)
+            values = JsonConvert.DeserializeObject<List<string>>(valuesJson);
+
+        values!.Add(value);
+
+        await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(values), new DistributedCacheEntryOptions()
+        {
+            SlidingExpiration = TimeSpan.FromDays(10)
+        });
 
         return Ok();
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetCart()
+    public async Task<IActionResult> GetCart(string key)
     {
-        return Ok(await _distributedCache.GetStringAsync("key"));
+        var valuesJson = await _distributedCache.GetStringAsync(key);
+
+        if (valuesJson is null)
+            return Ok(new List<string>());
+
+        var values = JsonConvert.DeserializeObject<List<string>>(valuesJson);
+
+        return Ok(values);
     }
 }
