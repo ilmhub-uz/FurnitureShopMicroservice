@@ -1,4 +1,7 @@
 using Dashboard.Api.Context;
+using Dashboard.Api.Entities;
+using Dashboard.Api.Exceptions;
+using Dashboard.Api.ModelsDto;
 using Dashboard.Api.Services.Interfaces;
 using Dashboard.Api.ViewModels;
 using Mapster;
@@ -27,6 +30,15 @@ public class ProductService : IProductService
 
         if (product is null) throw new Exception();
 
+        return product.Adapt<ProductView>();
+    }
+
+    public async Task<ProductView> UpdateProduct(Guid productId, UpdateProductDto updateProductDto)
+    {
+        var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+
+        if (product is null) throw new NotFoundException<Product>();
+        product.Status = updateProductDto.Status;
         return product.Adapt<ProductView>();
     }
 }
