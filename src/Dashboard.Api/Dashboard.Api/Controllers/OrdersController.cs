@@ -4,17 +4,32 @@ using JFA.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dashboard.Api.Controllers;
+
+
 [Route("api/[controller]")]
-[Scoped]
 public class OrdersController : Controller
 {
-    private readonly OrderService _service;
+    private readonly IOrderService _orderService;
 
-    public OrdersController(OrderService orderService) => _service = orderService;
-    
-    [HttpGet]
-    public async Task<IActionResult> GetOrder()
+    public OrdersController(IOrderService orderService)
     {
-        return Ok();
+        _orderService = orderService;
+    }
+
+    [HttpGet("orderId:Guid")]
+    [ProducesResponseType(typeof(OrderView), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(OrderView), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetOrder(Guid orderId)
+    {
+        var order = await _orderService.GetOrderByIdAsync(orderId);
+        return Ok(order);
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(List<OrderView>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetOrders()
+    {
+        var orders = await _orderService.GetOrdersAsync();
+        return Ok(orders);
     }
 }
