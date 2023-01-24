@@ -1,11 +1,13 @@
 using Dashboard.Api.Context;
 using Dashboard.Api.Entities;
+using Dashboard.Api.Exceptions;
 using Dashboard.Api.ModelsDto;
 using Dashboard.Api.Services.Interfaces;
 using Dashboard.Api.ViewModels;
 using JFA.DependencyInjection;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace Dashboard.Api.Services;
 
@@ -24,7 +26,7 @@ public class OrganizationService : IOrganizationService
         var organization = await _context.Organizations.FirstOrDefaultAsync(or => or.Id == organizationId);
         if (organization is null)
         {
-            throw new Exception("not found"); // exception qoshish
+            throw new NotFoundException<Organization>();
         }
 
         return organization.Adapt<OrganizationView>();
@@ -45,11 +47,12 @@ public class OrganizationService : IOrganizationService
         var organization = await _context.Organizations.FirstOrDefaultAsync(or => or.Id == organizationId);
         if (organization is null)
         {
-            throw new Exception("not found");
+            throw new NotFoundException<Organization>();
         }
         organization.Name = updateOrganizationDto.Name;
         organization.Status = updateOrganizationDto.Status;
 
-          await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
     }
+}
 

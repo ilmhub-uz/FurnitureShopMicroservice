@@ -4,5 +4,6 @@ namespace Dashboard.Api.Services;
 
 public interface IOrderService
 {
-    Task<OrderView> GetOrdersViewAsync(Guid orderId);
+    Task<OrderView> GetOrderByIdAsync(Guid orderId);
+    Task<List<OrderView>> GetOrdersAsync();
 }
