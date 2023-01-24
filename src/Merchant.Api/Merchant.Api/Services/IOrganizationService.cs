@@ -1,12 +1,12 @@
 ﻿using Merchant.Api.Dtos;
-using MongoDB.Bson;
 
 namespace Merchant.Api.Services;
 
 public interface IOrganizationService
 {
-    Task<OrganizationDto> CreateOrganization(CreateOrganizationDto createOrganization);
-    Task<List<OrganizationDto>> GetOrganizations();
-    Task<OrganizationDto> GetOrganizationById(ObjectId organizationId);
-    Task<OrganizationDto> UpdateOrganization(ObjectId organizationId, UpdateOrganizationDto updateOrganization);
+    Task CreateOrganizationAsync(CreateOrganizationDto createOrganization);
+    Task<List<OrganizationView>?> GetOrganizationsAsync();
+    Task<OrganizationView> GetOrganizationByIdAsync(Guid organizationId);
+    Task UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization);
+    Task DeleteOrganizationAsync(Guid organizationId);
 }

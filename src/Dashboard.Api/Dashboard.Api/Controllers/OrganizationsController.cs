@@ -2,46 +2,53 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dashboard.Api.ModelsDto;
+using Dashboard.Api.Services.Interfaces;
+using Dashboard.Api.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Dashboard.Api.Controllers
+
+
+namespace Dashboard.Api.Controllers;
+
+[Route("api/[controller]")]
+public class OrganizationsController : Controller
 {
-    [Route("api/[controller]")]
-    public class OrganizationsController : Controller
+    private readonly IOrganizationService _organizationService;
+
+    public OrganizationsController(IOrganizationService organizationService)
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        _organizationService = organizationService;
+    }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+    [HttpGet]
+    [ProducesResponseType(typeof(List<OrganizationView>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetOrganizations()
+    {
+        var organizations = await _organizationService.GetOrganizations();
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        return Ok(organizations);
+    }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+    [HttpGet("{organizationId:Guid}")]
+    [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetOrganizationById(Guid organizationId)
+    {
+        var organization = await _organizationService.GetOrganizationById(organizationId);
+
+        return Ok(organization);
+    }
+
+    [HttpPut("{organizationId:Guid}")]
+
+    public async Task<IActionResult> OrganizationUpdateStatus(Guid organizationId, UpdateOrganizationDto updateOrganizationDto)
+    {
+        await _organizationService.UpdateOrganizationStatus(organizationId, updateOrganizationDto);
+
+        return Ok();
     }
 }
 
