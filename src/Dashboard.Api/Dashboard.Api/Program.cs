@@ -1,4 +1,6 @@
-using Dashboard.Common.Extensions;
+using Dashboard.Api.Context;
+using JFA.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAppDbContext(builder.Configuration);
+builder.Services.AddServicesFromAttribute();
+builder.Services.AddDbContext<AppDbContext>(opt =>
+{
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("localhost"));
+});
 var app = builder.Build();
 
 
