@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Product.Api.Entities.Dtos;
+using Product.Api.RabbitMq;
 using Product.Api.Repositories;
 
 namespace Product.Api.Controllers
@@ -10,7 +11,7 @@ namespace Product.Api.Controllers
 	public class ProductController : ControllerBase
 	{
         private readonly IProductRepository repository;
-        public ProductController(IProductRepository repository)
+		public ProductController(IProductRepository repository)
 		{
 			this.repository = repository;
 		}
