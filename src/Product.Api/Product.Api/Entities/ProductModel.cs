@@ -1,6 +1,8 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Product.Api.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+
 namespace Product.Api.Entities;
 public class ProductModel
 {
@@ -11,6 +13,7 @@ public class ProductModel
 	public string? Description { get; set; }
 	public bool? WithInstallation { get; set; }
 	public string? Brend { get; set; }
+	public DateTime CreatedAt { get; set; }
 	public string? Material { get; set; }
 	public Dictionary<string, string>? Properties { get; set; }
 	public decimal Price { get; set; }

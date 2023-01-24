@@ -2,6 +2,7 @@ using Dashboard.Api.Context;
 using Dashboard.Api.ModelsDto;
 using Dashboard.Api.ViewModels;
 using Dashboard.Api.Entities;
+using Dashboard.Api.Exceptions;
 using JFA.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
