@@ -13,8 +13,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddServicesFromAttribute();
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
-    opt.UseNpgsql(builder.Configuration.GetConnectionString("localhost"));
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("localhost")).UseLazyLoadingProxies();
 });
+
 var app = builder.Build();
 
 
