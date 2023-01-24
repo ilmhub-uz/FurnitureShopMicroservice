@@ -1,4 +1,4 @@
-﻿namespace Dashboard.Data.Entities;
+﻿namespace Dashboard.Api.Entities;
 
 public enum EOrganizationStatus
 {

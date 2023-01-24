@@ -16,6 +16,6 @@ public class FileHelper : IFileHelper
         await file.CopyToAsync(ms);
         await System.IO.File.WriteAllBytesAsync(Path.Combine(path, filePathName), ms.ToArray());
 
-        return path + filePathName;
+        return filePathName;
     }
 }
