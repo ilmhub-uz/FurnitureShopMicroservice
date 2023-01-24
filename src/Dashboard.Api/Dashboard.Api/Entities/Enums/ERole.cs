@@ -1,4 +1,4 @@
-namespace Dashboard.Api.Entities;
+namespace Dashboard.Api.Entities.Enums;
 
 public enum ERole
 {

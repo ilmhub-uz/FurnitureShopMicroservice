@@ -16,7 +16,7 @@ public class OrdersController : Controller
         _orderService = orderService;
     }
 
-    [HttpGet("orderId:Guid")]
+    [HttpGet("{orderId:Guid}")]
     [ProducesResponseType(typeof(OrderView), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(OrderView), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetOrder(Guid orderId)

@@ -4,11 +4,13 @@ using Dashboard.Api.Exceptions;
 using Dashboard.Api.ModelsDto;
 using Dashboard.Api.Services.Interfaces;
 using Dashboard.Api.ViewModels;
+using JFA.DependencyInjection;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dashboard.Api.Services;
 
+[Scoped]
 public class ProductService : IProductService
 {
     private readonly AppDbContext _context;
