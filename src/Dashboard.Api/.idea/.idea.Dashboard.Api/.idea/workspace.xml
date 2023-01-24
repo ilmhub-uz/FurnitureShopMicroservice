@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9898c901-0a6e-4bc6-ab9a-18767203a420" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dashboard.Api/ModelsDto/UpdateProductDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/RabbitMQ/ConnectionFactoryParametrs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/RabbitMQ/ProductQueue.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dashboard.Api/RabbitMQ/ProductRabbitMQ.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dashboard.Api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dashboard.Api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/CategoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/Interfaces/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/Interfaces/IProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Services/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Services/ProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Dashboard.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Dashboard.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.Api/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,26 +28,28 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectId" id="2Klh7SRiVIY8pBZL0FAUNGT0Oo1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/home/botirjon/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
-      &quot;/home/botirjon/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
-      &quot;/home/botirjon/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/home/botirjon/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache",
+      "/home/botirjon/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache",
+      "/home/botirjon/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Dashboard.Api" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Dashboard.Api/Dashboard.Api.csproj" />
@@ -84,9 +88,12 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="added" />
+    <option name="LAST_COMMIT_MESSAGE" value="added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

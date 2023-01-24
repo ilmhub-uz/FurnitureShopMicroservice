@@ -1,5 +1,6 @@
 using Dashboard.Api.Context;
 using Dashboard.Api.Middleware;
+using Dashboard.Api.RabbitMQ;
 using JFA.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("localhost"));
 });
+
+builder.Services.AddHostedService<ProductRabbitMQ>();
 var app = builder.Build();
 
 
