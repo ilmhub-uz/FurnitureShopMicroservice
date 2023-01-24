@@ -1,7 +1,7 @@
 ﻿using Merchant.Api.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Merchant.Api.Dtos;
+namespace Merchant.Api.Dtos.Create;
 
 public class CreateOrganizationDto
 {
