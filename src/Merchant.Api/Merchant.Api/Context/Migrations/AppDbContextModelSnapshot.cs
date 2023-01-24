@@ -45,6 +45,9 @@ namespace Merchant.Api.Context.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
 
