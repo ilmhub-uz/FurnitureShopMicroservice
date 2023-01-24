@@ -1,4 +1,5 @@
 using Dashboard.Api.Context;
+using Dashboard.Api.Middleware;
 using JFA.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +26,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+app.UseErrorHandlerMiddleware();
+
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
