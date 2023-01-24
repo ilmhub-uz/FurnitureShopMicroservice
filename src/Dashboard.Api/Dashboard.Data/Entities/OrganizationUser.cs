@@ -12,5 +12,8 @@ public class OrganizationUser
     [ForeignKey(nameof(OrganizationId))]
     public virtual Organization? Organization { get; set; }
 
+    public string UserId { get; set; }
+    public Guid OrganizationId { get; set; }
+    public virtual Organization? Organization { get; set; }
     public ERole Role { get; set; }
 }

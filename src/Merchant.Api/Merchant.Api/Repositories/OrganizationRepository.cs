@@ -1,32 +1,46 @@
-﻿using Merchant.Api.Dtos;
+﻿using Merchant.Api.Context;
+using Merchant.Api.Dtos;
 using Merchant.Api.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Merchant.Api.Repositories;
 
 public class OrganizationRepository : IOrganizationRepository
 {
-    public Task<Organization> CreateOrganizationAsync(CreateOrganizationDto createOrganization)
+    private readonly AppDbContext context;
+
+    public OrganizationRepository(AppDbContext context)
     {
-        throw new NotImplementedException();
+        this.context = context;
     }
 
-    public Task DeleteOrganizationAsync(Guid organizationId)
+    public async Task CreateOrganizationAsync(Organization createOrganization)
     {
-        throw new NotImplementedException();
+        await context.Organizations.AddAsync(createOrganization);
+        await context.SaveChangesAsync();
     }
 
-    public Task<Organization> GetOrganizationByIdAsync(Guid organizationId)
+    public async Task DeleteOrganizationAsync(Organization deleteOrganization)
     {
-        throw new NotImplementedException();
+        context.Organizations.Remove(deleteOrganization);
+        await context.SaveChangesAsync();
     }
 
-    public Task<List<Organization>> GetOrganizations()
+    public async Task<Organization?> GetOrganizationByIdAsync(Guid organizationId)
     {
-        throw new NotImplementedException();
+        var organization = await context.Organizations.FirstOrDefaultAsync(x => x.Id == organizationId);
+        return organization;
     }
 
-    public Task<Organization> UpdateOrganizationAsync(UpdateOrganizationDto updateOrganization)
+    public async Task<List<Organization>?> GetOrganizations()
     {
-        throw new NotImplementedException();
+        var organizations = await context.Organizations.ToListAsync();
+        return organizations;
+    }
+
+    public async Task UpdateOrganizationAsync(Organization updateOrganization)
+    {
+        context.Organizations.Update(updateOrganization);
+        await context.SaveChangesAsync();
     }
 }

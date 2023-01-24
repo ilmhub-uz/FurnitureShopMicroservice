@@ -1,6 +1,5 @@
 ﻿using Merchant.Api.Dtos;
 using Merchant.Api.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Merchant.Api.Controllers;
@@ -8,46 +7,47 @@ namespace Merchant.Api.Controllers;
 [ApiController]
 public class OrganizationController : ControllerBase
 {
-    private readonly IOrganizationService _organizationService;
+    private readonly IOrganizationService organizationService;
 
     public OrganizationController(IOrganizationService organizationService)
     {
-        _organizationService = organizationService;
+        this.organizationService = organizationService;
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(List<OrganizationDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<OrganizationView?>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrganizations()
-    {
-        //some code
-
-        return Ok();
-    }
+        => Ok(await organizationService.GetOrganizationsAsync());
 
     [HttpPost]
-    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateOrganization([FromBody] CreateOrganizationDto createOrganization)
     {
-        //some code
+        if (!ModelState.IsValid)
+            return BadRequest();
+
+        await organizationService.CreateOrganizationAsync(createOrganization);
 
         return Ok();
     }
 
     [HttpGet("{organizationId:guid}")]
-    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetOrganizationByID(Guid organizationId)
+    [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetOrganizationById(Guid organizationId) 
+        => Ok(await organizationService.GetOrganizationByIdAsync(organizationId));
+
+    [HttpDelete("{organizationId:guid}")]
+    public async Task<IActionResult> DeleteOrganization(Guid organizationId)
     {
-        //some code
+        await organizationService.DeleteOrganizationAsync(organizationId);
 
         return Ok();
     }
 
     [HttpPut("{organizationId:guid}")]
-    [ProducesResponseType(typeof(OrganizationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateOrganization(Guid organizationId, UpdateOrganizationDto updateOrganizationDto)
+    public async Task<IActionResult> UpdateOrganization(Guid organizationId, [FromBody] UpdateOrganizationDto updateOrganizationDto)
     {
-        //some code
-
+        await organizationService.UpdateOrganizationAsync(organizationId, updateOrganizationDto);
+        
         return Ok();
     }
 }

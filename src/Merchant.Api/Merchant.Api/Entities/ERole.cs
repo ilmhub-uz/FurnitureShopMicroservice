@@ -1,4 +1,5 @@
-﻿namespace Merchant.Api.Entities;
+﻿
+namespace Merchant.Api.Entities;
 
 public enum ERole
 {
