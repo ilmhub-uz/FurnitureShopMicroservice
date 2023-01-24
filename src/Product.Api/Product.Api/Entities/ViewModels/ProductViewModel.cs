@@ -1,4 +1,5 @@
 ﻿using Product.Api.Entities.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Product.Api.Entities.ViewModels;
 
@@ -17,5 +18,4 @@ public class ProductViewModel
 	public uint Count { get; set; }
 	public int Views { get; set; }
 	public EProductStatus Status { get; set; }
-	public int Rate { get; set; }
 }

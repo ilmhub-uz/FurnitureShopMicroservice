@@ -53,10 +53,11 @@ namespace Product.Api.Repositories
 
 		public async Task<ProductModel> UpdateProductAsync(string productId, CreateProductDto productDto)
 		{
-			var product = await (await _products.FindAsync(product => product.Id == productId)).SingleOrDefaultAsync();
-			product = productDto.Adapt<ProductModel>();
-			await _products.ReplaceOneAsync(e => e.Id == productId, product);
-			return product;
+			var filter = Builders<ProductModel>.Filter.Eq(p => p.Id, productId);
+			var update = Builders<ProductModel>.Update.Set(productId,
+				productDto.Adapt<ProductModel>());
+			await _products.UpdateOneAsync(filter, update);
+			return _products.Find(p => p.Id == productId).SingleOrDefault();
 		}
 	}
 }
