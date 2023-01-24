@@ -9,7 +9,7 @@ namespace Contract.Api.Extensions
         {
             collection.AddDbContext<AppDbContext>(options =>
             {
-                options.UseLazyLoadingProxies().UseNpgsql(configuration.GetConnectionString("localhost"));
+                options.UseNpgsql(configuration.GetConnectionString("localhost")).UseLazyLoadingProxies();
 
             });
         }

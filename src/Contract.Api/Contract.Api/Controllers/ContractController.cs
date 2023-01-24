@@ -1,4 +1,5 @@
-﻿using Contract.Api.Services;
+﻿using Contract.Api.Dto;
+using Contract.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Contract.Api.Controllers
@@ -15,38 +16,42 @@ namespace Contract.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
-        public async Task<IActionResult> CreateContract()
+        public async Task<IActionResult> CreateContract(CreateContractDto createContractDto)
         {
-            await contractService.AddContractAsync();
+            await contractService.AddContract(createContractDto);
 
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("{contractId}")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetContractById()
+        public async Task<IActionResult> GetContractById(Guid contractId)
         {
-            return Ok();
+            var contract = await contractService.GetContractById(contractId);
+            return Ok(contract);
         }
 
         [HttpGet]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
         public async Task<IActionResult> GetContracts()
         {
-            return Ok();
+            var contracts = await contractService.GetContracts();
+            return Ok(contracts);
         }
 
         [HttpPut]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
-        public async Task<IActionResult> UpdateContract()
+        public async Task<IActionResult> UpdateContract(UpdateContractDto updateContractDto)
         {
+            await contractService.UpdateContact(updateContractDto);
             return Ok();
         }
 
         [HttpDelete]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
-        public async Task<IActionResult> DeleteContract()
+        public async Task<IActionResult> DeleteContract(Guid contractId)
         {
+            await contractService.DeleteContract(contractId);
             return Ok();
         }
     }
