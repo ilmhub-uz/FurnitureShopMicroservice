@@ -2,4 +2,7 @@
 
 public enum ERole
 {
+    Owner,
+    Manager,
+    Seller
 }
