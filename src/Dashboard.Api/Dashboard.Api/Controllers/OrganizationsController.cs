@@ -43,7 +43,6 @@ public class OrganizationsController : Controller
     }
 
     [HttpPut("{organizationId:Guid}")]
-
     public async Task<IActionResult> OrganizationUpdateStatus(Guid organizationId, UpdateOrganizationDto updateOrganizationDto)
     {
         await _organizationService.UpdateOrganizationStatus(organizationId, updateOrganizationDto);

@@ -1,5 +1,8 @@
 using Contract.Api.Extensions;
 
+using Contract.Api.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -8,6 +11,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAppDbContext(builder.Configuration);
 builder.AddSeriologConfig();
+
+builder.Services.AddDbContext<AppDbContext>(option =>
+{
+    option.UseLazyLoadingProxies().UseNpgsql(builder.Configuration.GetConnectionString("localhost"));
+});
 
 var app = builder.Build();
 
