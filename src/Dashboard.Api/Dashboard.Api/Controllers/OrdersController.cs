@@ -1,11 +1,8 @@
 ﻿using Dashboard.Api.Services;
 using Dashboard.Api.ViewModels;
-using JFA.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dashboard.Api.Controllers;
-
-
 [Route("api/[controller]")]
 public class OrdersController : Controller
 {
@@ -16,7 +13,7 @@ public class OrdersController : Controller
         _orderService = orderService;
     }
 
-    [HttpGet("{orderId:Guid}")]
+    [HttpGet("{orderId:guid}")]
     [ProducesResponseType(typeof(OrderView), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(OrderView), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetOrder(Guid orderId)

@@ -1,4 +1,6 @@
 ﻿using Merchant.Api.Dtos;
+using Merchant.Api.Dtos.Create;
+using Merchant.Api.Dtos.Update;
 using Merchant.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,6 +1,6 @@
 ﻿using Merchant.Api.Entities;
 
-namespace Merchant.Api.Dtos;
+namespace Merchant.Api.Dtos.Update;
 
 public class UpdateOrganizationDto
 {

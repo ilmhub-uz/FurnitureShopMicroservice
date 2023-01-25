@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Merchant.Api.Dtos.Enums;
 
 namespace Merchant.Api.Entities;
 

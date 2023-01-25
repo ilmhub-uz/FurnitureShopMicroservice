@@ -1,4 +1,5 @@
-﻿using Dashboard.Api.Entities.Enums;
+﻿using Dashboard.Api.Entities;
+using Dashboard.Api.Entities.Enums;
 
 namespace Dashboard.Api.ViewModels;
 
