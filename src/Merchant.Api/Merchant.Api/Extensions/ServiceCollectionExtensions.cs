@@ -28,7 +28,7 @@ public static class ServiceCollectionExtensions
         collection.AddScoped<IEmployeeService, EmployeeService>();
         collection.AddScoped<IFileHelper, FileHelper>();
         collection.AddScoped<IJwtTokenService, JwtTokenService>();
-        collection.AddHostedService<ProductAddService>();
+        //collection.AddHostedService<ProductAddService>();
     }
 
     public static void AddJwtBearer(this IServiceCollection services, IConfiguration configuration)
