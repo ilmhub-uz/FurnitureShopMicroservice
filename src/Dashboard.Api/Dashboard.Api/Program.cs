@@ -1,29 +1,20 @@
-using Dashboard.Api.Context;
+using Dashboard.Api.Extensions;
 using Dashboard.Api.Middleware;
 using Dashboard.Api.RabbitMQ;
 using JFA.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddServicesFromAttribute();
-
 builder.Services.AddHostedService<ProductConsumer>();
 
-builder.Services.AddDbContext<AppDbContext>(opt =>
-{
-    opt.UseNpgsql(builder.Configuration.GetConnectionString("localhost")).UseLazyLoadingProxies();
-});
+builder.Services.AddDbContext(builder.Configuration);
+builder.Services.AddCorsPolicy();
 
 var app = builder.Build();
-
-
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -31,6 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 
 app.UseErrorHandlerMiddleware();
 

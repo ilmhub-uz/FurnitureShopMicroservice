@@ -1,7 +1,5 @@
 ﻿using Contract.Api.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Contract.Api.Extensions
 {
@@ -11,7 +9,7 @@ namespace Contract.Api.Extensions
         {
             collection.AddDbContext<AppDbContext>(options =>
             {
-                options.UseLazyLoadingProxies().UseNpgsql(configuration.GetConnectionString("localhost"));
+                options.UseNpgsql(configuration.GetConnectionString("localhost")).UseLazyLoadingProxies();
 
             });
         }
