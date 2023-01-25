@@ -1,10 +1,10 @@
+using JFA.DependencyInjection;
 using Merchant.Api.Data;
+using Merchant.Api.Extensions;
 using Merchant.Api.Middleware;
 using Merchant.Api.Repositories;
 using Merchant.Api.Services;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +20,14 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IFileHelper, FileHelper>();
 builder.Services.AddHostedService<ProductAddService>();
 
+builder.Services.AddSwaggerGenWithSecurityRequirement();
+
+builder.Services.AddServicesFromAttribute();
+builder.Services.AddJwtBearer(builder.Configuration);
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseLazyLoadingProxies().UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 
@@ -35,6 +41,7 @@ app.UseHttpsRedirection();
 
 app.UseErrorHandlerMiddleware();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
