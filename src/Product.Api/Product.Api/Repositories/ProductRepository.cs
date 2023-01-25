@@ -20,6 +20,9 @@ namespace Product.Api.Repositories
 		private readonly IMongoDatabase _database;
 		private readonly IMongoCollection<ProductModel> _products;
 		private IOptions<AppSettings> _appsettings;
+		private AppSettings object1;
+		private SendToGetMessage object2;
+
 		public ProductRepository(IOptions<AppSettings> appsettings, SendToGetMessage sendToGet)
 		{
 			_appsettings = appsettings;
@@ -29,13 +32,14 @@ namespace Product.Api.Repositories
 			this.sendToGet = sendToGet;
 		}
 
-		public async Task CreateProductAsync(CreateProductDto productDto)
+		public async Task<ProductModel> CreateProductAsync(CreateProductDto productDto)
 		{
 			var product = productDto.Adapt<ProductModel>();
 			product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
 			product.CreatedAt = DateTime.UtcNow;
-			sendToGet.SendMessage(product);
-			await _products.InsertOneAsync(product);
+			sendToGet.SendMessage(product ,"product added");
+		    await _products.InsertOneAsync(product);
+			return product;
 		}
 
 		public async Task DeleteProductAsync(string productId)
@@ -46,7 +50,7 @@ namespace Product.Api.Repositories
 				throw new Exception();
 		}
 
-		public async Task<IEnumerable<ProductViewModel>> GetAllProductAsync(ProductFilterDto filterDto)
+		public async Task<IEnumerable<ProductViewModel>> GetAllProductAsync(ProductFilterDto? filterDto)
 		{
 			var products = await (await _products.FindAsync(product => true)).ToListAsync();
 

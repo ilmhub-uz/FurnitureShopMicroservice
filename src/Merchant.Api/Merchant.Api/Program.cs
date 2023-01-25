@@ -8,6 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var rabbitMqConfig = builder.Configuration
+    .GetSection("RabbitMqConfigurations")
+    .Get<RabbitMqConfigurations>();
+
+builder.Services.AddSingleton(rabbitMqConfig);
+
 builder.Services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
