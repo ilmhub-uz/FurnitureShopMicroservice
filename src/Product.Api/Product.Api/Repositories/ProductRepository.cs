@@ -75,8 +75,7 @@ namespace Product.Api.Repositories
 			};
 
 			var productList = products.Adapt<List<ProductViewModel>>().ToPagedList(filterDto);
-
-			return productList;
+            return productList;
 		}
 
 		public async Task<ProductViewModel> GetProductAsync(string productId)
@@ -95,19 +94,7 @@ namespace Product.Api.Repositories
 			var product = productDto.Adapt<ProductModel>();
 			product.Id = productId;
 			await _products.ReplaceOneAsync(filter, product);
-		/*	var update = Builders<ProductModel>.Update
-				.Set("Name", productDto.Name)
-				.Set("Description", productDto.Description)
-				.Set("WithInstallation", productDto.WithInstallation)
-				.Set("Brend", productDto.Brend)
-				.Set("Material", productDto.Material)
-				.Set("Price", productDto.Price)
-				.Set("IsAvailable", productDto.IsAvailable)
-				.Set("Count", productDto.Count);
-
-			var options = new FindOneAndUpdateOptions<ProductModel> { ReturnDocument = ReturnDocument.After };
-            var product = await _products.FindOneAndUpdateAsync(filter, update, options);
-			*/return product.Adapt<ProductViewModel>();
+		    return product.Adapt<ProductViewModel>();
 		}
 	}
 }
