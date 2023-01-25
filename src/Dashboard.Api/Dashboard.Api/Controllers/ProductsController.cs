@@ -1,47 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Dashboard.Api.ModelsDto;
+using Dashboard.Api.Services;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace Dashboard.Api.Controllers
+namespace Dashboard.Api.Controllers;
+[Route("api/[controller]")]
+public class ProductsController : Controller
 {
-    [Route("api/[controller]")]
-    public class ProductsController : Controller
+    private readonly ProductService _productService;
+    
+    public ProductsController(ProductService productService)
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        _productService = productService;
+    }
+    [HttpGet]
+    public async Task<IActionResult> GetProduct()
+    {
+        var product =  await _productService.GetProductsAsync();
+        return Ok(product);
+    }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+    [HttpGet("{product:guid}")]
+    public async Task<IActionResult> GetProductsById(Guid productId)
+    {
+        await _productService.GetProductByIdAsync(productId);
+        return Ok();
+    }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+    [HttpPut("{product:guid}")]
+    public async Task<IActionResult> ProductUpdateStatus(Guid productId, UpdateProductDto updateProductDto)
+    {
+        await _productService.UpdateProduct(productId, updateProductDto);
+        return Ok();
     }
 }
-
