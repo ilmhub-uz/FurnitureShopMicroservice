@@ -1,14 +1,11 @@
-using Merchant.Api.Configurations;
 using JFA.DependencyInjection;
-using Merchant.Api.Data;
+using Merchant.Api.Configurations;
 using Merchant.Api.Extensions;
 using Merchant.Api.Middleware;
-using Merchant.Api.RabbitMQServices;
-using Merchant.Api.Repositories;
-using Merchant.Api.Services;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddJsonFile("RabbitMq.json", false, true);
 
 var rabbitMqConfig = builder.Configuration
     .GetSection("RabbitMqConfigurations")
