@@ -5,6 +5,5 @@ namespace Merchant.Api.Dtos;
 
 public class UpdateEmployeeDto
 {
-    public Guid OrganizationId { get; set; }
     public ERole Role { get; set; }
 }
