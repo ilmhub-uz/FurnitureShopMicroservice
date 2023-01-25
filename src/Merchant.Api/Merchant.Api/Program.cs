@@ -1,3 +1,4 @@
+using Merchant.Api.Configurations;
 using JFA.DependencyInjection;
 using Merchant.Api.Data;
 using Merchant.Api.Extensions;
