@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a917ab0-755d-4a4a-ba0f-4a7ce2ee51ca" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Pages/Categories.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Categories.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Products.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Orders.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Orders.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Product.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/NavMenu.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +64,7 @@
       <updated>1674662722291</updated>
       <workItem from="1674662723873" duration="55000" />
       <workItem from="1674662853166" duration="307000" />
+      <workItem from="1674663216090" duration="85000" />
     </task>
     <servers />
   </component>
