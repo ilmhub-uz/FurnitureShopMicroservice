@@ -7,7 +7,7 @@ using RabbitMQ.Client.Events;
 using System.Data;
 using System.Text;
 
-namespace Merchant.Api.Services;
+namespace Merchant.Api.RabbitMQServices;
 
 public class ProductAddService : BackgroundService
 {

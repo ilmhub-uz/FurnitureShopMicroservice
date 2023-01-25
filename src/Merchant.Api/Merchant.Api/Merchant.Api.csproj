@@ -24,8 +24,4 @@
 	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="RabbitMQServices\" />
-  </ItemGroup>
-
 </Project>

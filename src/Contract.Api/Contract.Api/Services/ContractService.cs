@@ -1,5 +1,6 @@
 ﻿using Contract.Api.Context.Repositories;
 using Contract.Api.Dto;
+using Contract.Api.Services.Interface;
 using JFA.DependencyInjection;
 
 namespace Contract.Api.Services;
@@ -25,12 +26,12 @@ public class ContractService : IContractService
         await contractRepository.DeleteContract(contractId);
     }
 
-    public async Task<ContractViewDto> GetContractById(Guid contractId)
+    public async Task<Entities.Contract> GetContractById(Guid contractId)
     {
         return await contractRepository.GetContractById(contractId);
     }
 
-    public async Task<List<ContractViewDto>> GetContracts(ContractFilterDto? contractFilterDto = null)
+    public async Task<List<Entities.Contract>> GetContracts(ContractFilterDto? contractFilterDto = null)
     {
         return await contractRepository.GetContracts(contractFilterDto);
     }
@@ -38,5 +39,15 @@ public class ContractService : IContractService
     public async Task UpdateContact(UpdateContractDto updateContractDto)
     {
         await contractRepository.UpdateContact(updateContractDto);
+    }
+
+    Task<ContractViewDto> IContractService.GetContractById(Guid contractId)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<List<ContractViewDto>> IContractService.GetContracts(ContractFilterDto? contractFilterDto)
+    {
+        throw new NotImplementedException();
     }
 }
