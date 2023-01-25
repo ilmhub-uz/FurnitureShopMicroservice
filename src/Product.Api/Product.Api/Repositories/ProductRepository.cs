@@ -33,6 +33,7 @@ namespace Product.Api.Repositories
 		{
 			var product = productDto.Adapt<ProductModel>();
 			product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
+			product.CreatedAt = DateTime.UtcNow;
 			sendToGet.SendMessage(product);
 			await _products.InsertOneAsync(product);
 		}
@@ -91,7 +92,10 @@ namespace Product.Api.Repositories
 			var filter = Builders<ProductModel>.Filter.Eq("_id", productId);
 			if (filter is null)
 				throw new NotFoundException<ProductModel>();
-			var update = Builders<ProductModel>.Update
+			var product = productDto.Adapt<ProductModel>();
+			product.Id = productId;
+			await _products.ReplaceOneAsync(filter, product);
+		/*	var update = Builders<ProductModel>.Update
 				.Set("Name", productDto.Name)
 				.Set("Description", productDto.Description)
 				.Set("WithInstallation", productDto.WithInstallation)
@@ -103,7 +107,7 @@ namespace Product.Api.Repositories
 
 			var options = new FindOneAndUpdateOptions<ProductModel> { ReturnDocument = ReturnDocument.After };
             var product = await _products.FindOneAndUpdateAsync(filter, update, options);
-			return product.Adapt<ProductViewModel>();
+			*/return product.Adapt<ProductViewModel>();
 		}
 	}
 }
