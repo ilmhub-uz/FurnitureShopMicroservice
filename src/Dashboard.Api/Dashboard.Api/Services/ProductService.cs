@@ -21,7 +21,10 @@ public class ProductService : IProductService
     public async Task<List<ProductView>> GetProductsAsync()
     {
         var products = await _context.Products.ToListAsync();
-        if (products is null) return new();
+        if (products is null)
+        {
+            throw new NotFoundException<Product>();
+        }
 
         return products.Adapt<List<ProductView>>();
     }
@@ -30,7 +33,10 @@ public class ProductService : IProductService
     {
         var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
 
-        if (product is null) throw new Exception();
+        if (product is null)
+        {
+            throw new NotFoundException<Product>();
+        }
 
         return product.Adapt<ProductView>();
     }
@@ -39,7 +45,10 @@ public class ProductService : IProductService
     {
         var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
 
-        if (product is null) throw new NotFoundException<Product>();
+        if (product is null)
+        {
+            throw new NotFoundException<Product>();
+        }
         product.Status = updateProductDto.Status;
         return product.Adapt<ProductView>();
     }

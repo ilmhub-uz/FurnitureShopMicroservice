@@ -8,7 +8,7 @@ namespace Product.Api.Repositories
 {
     public interface IProductRepository
     {
-        Task CreateProductAsync(CreateProductDto productDto);
+        Task<ProductModel> CreateProductAsync(CreateProductDto productDto);
         Task DeleteProductAsync(string productId);
         Task<IEnumerable<ProductViewModel>> GetAllProductAsync(ProductFilterDto filterDto);
         Task<ProductViewModel> GetProductAsync(string productId);

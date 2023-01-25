@@ -1,43 +1,48 @@
 ﻿using Mapster;
-using Merchant.Api.Context;
+using Merchant.Api.Data;
 using Merchant.Api.Dtos;
 using Merchant.Api.Entities;
 using Merchant.Api.Exceptions;
 using Merchant.Api.Repositories;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 
 namespace Merchant.Api.Services;
 
 public class EmployeeService : IEmployeeService
 {
-    private readonly AppDbContext context;
+    private readonly IEmployeeRepository employeeRepository;
+    private readonly IOrganizationRepository organizationRepository;
 
-    public EmployeeService(
-        AppDbContext context)
+    public EmployeeService(IEmployeeRepository employeeRepository, 
+        IOrganizationRepository organizationRepository)
     {
-        this.context = context;
+        this.employeeRepository = employeeRepository;
+        this.organizationRepository = organizationRepository;
     }
 
 
-    public async Task<EmployeeView> GetEmployeeByIdAsync(Guid organizationId,Guid employeeId)
+    public async Task<EmployeeView> GetEmployeeByIdAsync(Guid organizationId, Guid employeeId)
     {
-        var organizationUsers = await context.OrganizationUsers.FirstOrDefaultAsync(x => x.OrganizationId == organizationId && x.UserId == employeeId);
-        if (organizationUsers is null)
+        var organization = await organizationRepository.GetOrganizationByIdAsync(organizationId);
+        if (organization is null)
+            throw new NotFoundException<Organization>();
+
+        var employee = await employeeRepository.GetEmployeeByIdAsync(employeeId);
+        if (employee == null)
+            throw new NotFoundException<AppUser>();
+
+        if (!employee.Users.Any(x => x.OrganizationId == organizationId))
             throw new NotFoundException<OrganizationUser>();
 
-        var user = organizationUsers.User;
+        var result = employee.Adapt<EmployeeView>();
+        result.Role = employee.Users.First(x => x.OrganizationId == organizationId).Role;
+        return result;
 
-        var userView = organizationUsers.User!.Adapt<EmployeeView>();
-        userView.Role = organizationUsers.Role;
-        return userView;
     }
 
 
     public async Task CreateEmployeeAsync(CreateEmployeeDto createEmployee)
     {
-        var organization = await context.Organizations.FirstOrDefaultAsync(x=> x.Id == createEmployee.OrganizationId);
+        var organization = await organizationRepository.GetOrganizationByIdAsync(createEmployee.OrganizationId);
         if (organization is null)
             throw new NotFoundException<Organization>();
 
@@ -46,11 +51,12 @@ public class EmployeeService : IEmployeeService
             OrganizationId = createEmployee.OrganizationId,
             Role = createEmployee.Role
         };
+
         // need to find userId by userEmail from User.api and get userId and userName and then need to save into AppUser table
         var userId = Guid.NewGuid();
         var userName = Guid.NewGuid().ToString();
 
-        var user =await context.AppUsers.FirstOrDefaultAsync(x=> x.Email == createEmployee.Email);   
+        var user = await employeeRepository.GetEmployeeByEmailAsync(createEmployee.Email);
         if (user is null)
         {
             user = new AppUser()
@@ -64,55 +70,58 @@ public class EmployeeService : IEmployeeService
                 }
 
             };
-            await context.AppUsers.AddAsync(user);
-            await context.SaveChangesAsync();
+            await employeeRepository.CreateEmployeeAsync(user);
         }
         else
         {
             user.Users!.Add(organizationUser);
-            context.AppUsers.Update(user);
-            
+            await employeeRepository.UpdateEmployeeAsync(user);
+
         }
-        await context.SaveChangesAsync();
     }
 
 
     public async Task DeleteEmployeeAsync(Guid organizationId, Guid employeeId)
     {
-        var organizationUsers =await context.OrganizationUsers.FirstOrDefaultAsync(x=>x.OrganizationId == organizationId && x.UserId == employeeId);
-        if (organizationUsers is null)
+        var employee = await employeeRepository.GetEmployeeByIdAsync(employeeId);
+        if (!employee.Users.Any(x => x.OrganizationId == organizationId))
             throw new NotFoundException<OrganizationUser>();
-        context.OrganizationUsers.Remove(organizationUsers);
-        await context.SaveChangesAsync();
+
+        await employeeRepository.DeleteEmployeeAsync(employee);
     }
 
     public async Task UpdatEmployeeAsync(Guid organizationId, Guid employeeId, UpdateEmployeeDto updateEmployee)
     {
-        var organizationUsers = await context.OrganizationUsers.FirstOrDefaultAsync(x => x.OrganizationId == organizationId && x.UserId == employeeId);
-        if (organizationUsers is null)
+        var organization = await organizationRepository.GetOrganizationByIdAsync(organizationId);
+        if (organization is null)
+            throw new NotFoundException<Organization>();
+
+        var employee = await employeeRepository.GetEmployeeByIdAsync(employeeId);
+        if (employee is null)
+            throw new NotFoundException<AppUser>();
+
+        if (!employee.Users.Any(x => x.OrganizationId == organizationId))
             throw new NotFoundException<OrganizationUser>();
+        employee.Users.First(x => x.OrganizationId == organizationId).Role = updateEmployee.Role;
 
-        organizationUsers.Role = updateEmployee.Role;
-        // organizationUsers.OrganizationId = updateEmployee.OrganizationId; 
-        // there is a problem
-
-        context.OrganizationUsers.Update(organizationUsers);
-        await context.SaveChangesAsync();
+        await employeeRepository.UpdateEmployeeAsync(employee);
     }
 
     public async Task<List<EmployeeView>?> GetEmployeesAsync(Guid organizationId)
-    { 
-        var organizationUsers = await context.OrganizationUsers.Where(x => x.OrganizationId == organizationId).ToListAsync();
+    {
+        var organization = await organizationRepository.GetOrganizationByIdAsync(organizationId);
+        if (organization is null)
+            throw new NotFoundException<Organization>();
 
-        var employees = new List<EmployeeView>();
+        var result = new List<EmployeeView>();
         var employee = new EmployeeView();
-        foreach(var organizationUser in organizationUsers)
+        foreach (var organizationUser in organization.Users)
         {
             employee = organizationUser.User!.Adapt<EmployeeView>();
             employee.Role = organizationUser.Role;
-            employees.Add(employee);    
+            result.Add(employee);
         }
-        return employees;
+        return result;
     }
 
 }
