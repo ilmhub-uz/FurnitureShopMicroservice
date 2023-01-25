@@ -15,7 +15,7 @@ public class OrganizationRepository : IOrganizationRepository
 
     public async Task CreateOrganizationAsync(Organization createOrganization)
     {
-        await context.Organizations.AddAsync(createOrganization);
+        await context.Organizations!.AddAsync(createOrganization);
         await context.SaveChangesAsync();
     }
 

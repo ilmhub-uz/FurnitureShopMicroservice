@@ -1,14 +1,19 @@
-﻿using Product.Api.Entities.Enums;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using Product.Api.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+
 namespace Product.Api.Entities;
 public class ProductModel
 {
+	[BsonElement("_id")]
 	public string Id { get; set; }
 	public Guid AuthorId { get; set; }
 	public string? Name { get; set; }
 	public string? Description { get; set; }
 	public bool? WithInstallation { get; set; }
 	public string? Brend { get; set; }
+	public DateTime CreatedAt { get; set; }
 	public string? Material { get; set; }
 	public Dictionary<string, string>? Properties { get; set; }
 	public decimal Price { get; set; }
