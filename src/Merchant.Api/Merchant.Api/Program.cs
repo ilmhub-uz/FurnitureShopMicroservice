@@ -1,4 +1,5 @@
 using Merchant.Api.Configurations;
+using JFA.DependencyInjection;
 using Merchant.Api.Data;
 using Merchant.Api.Extensions;
 using Merchant.Api.Middleware;
@@ -18,6 +19,11 @@ builder.Services.AddSingleton(rabbitMqConfig);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGenWithSecurityRequirement();
+
+builder.Services.AddServicesFromAttribute();
+builder.Services.AddJwtBearer(builder.Configuration);
 builder.Services.AddServices();
 
 var app = builder.Build();
@@ -32,6 +38,7 @@ app.UseHttpsRedirection();
 
 app.UseErrorHandlerMiddleware();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
