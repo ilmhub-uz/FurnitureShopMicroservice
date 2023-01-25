@@ -1,6 +1,4 @@
-﻿using Contract.Api.ViewModel;
-
-namespace Contract.Api.Services.Interface
+﻿namespace Contract.Api.Services.Interface
 {
     public interface IOrderService
     {
