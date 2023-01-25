@@ -1,9 +1,8 @@
 ﻿using Contract.Api.Dto;
-using Contract.Api.ViewModel;
 
-namespace Contract.Api.Services.Interface
+namespace Contract.Api.Context.Repositories
 {
-    public interface IOrderService
+    public interface IOrderRepository
     {
         Task CreateOrderAsync(CreateOrderDto createOrder);
         Task DeleteOrderAsync(Guid orderId);

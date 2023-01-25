@@ -2,6 +2,7 @@ using Contract.Api.Context.Repositories;
 using Contract.Api.Extensions;
 using Contract.Api.Middlewares;
 using Contract.Api.Services;
+using Contract.Api.Services.Interface;
 using JFA.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);

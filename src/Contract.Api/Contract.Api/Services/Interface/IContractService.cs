@@ -1,6 +1,6 @@
 ﻿using Contract.Api.Dto;
 
-namespace Contract.Api.Services;
+namespace Contract.Api.Services.Interface;
 
 public interface IContractService
 {
