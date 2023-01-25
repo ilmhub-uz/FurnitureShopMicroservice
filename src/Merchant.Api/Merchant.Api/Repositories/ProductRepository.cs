@@ -1,6 +1,5 @@
-﻿using Merchant.Api.Context;
+﻿using Merchant.Api.Data;
 using Merchant.Api.Entities;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.EntityFrameworkCore;
 
 namespace Merchant.Api.Repositories;

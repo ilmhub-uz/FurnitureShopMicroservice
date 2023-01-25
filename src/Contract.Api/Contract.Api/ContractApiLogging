@@ -1,0 +1,1022 @@
+2023-01-24 20:43:58.213 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-24 20:43:58.338 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-24 20:43:58.460 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-24 20:43:58.482 +05:00 [INF] Hosting environment: Development
+2023-01-24 20:43:58.495 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-24 20:44:00.121 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger - -
+2023-01-24 20:44:00.609 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger - - - 301 0 - 509.5365ms
+2023-01-24 20:44:00.618 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/index.html - -
+2023-01-24 20:44:01.503 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/index.html - - - 200 - text/html;charset=utf-8 884.5785ms
+2023-01-24 20:44:01.548 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/swagger-ui.css - -
+2023-01-24 20:44:01.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/swagger-ui-bundle.js - -
+2023-01-24 20:44:01.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/swagger-ui-standalone-preset.js - -
+2023-01-24 20:44:01.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - -
+2023-01-24 20:44:01.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_vs/browserLink - -
+2023-01-24 20:44:01.721 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 171.8065ms
+2023-01-24 20:44:01.816 +05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-01-24 20:44:01.816 +05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-01-24 20:44:01.862 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 312.8271ms
+2023-01-24 20:44:01.867 +05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-01-24 20:44:01.866 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/swagger-ui.css - - - 200 143632 text/css 318.0683ms
+2023-01-24 20:44:02.014 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 465.0678ms
+2023-01-24 20:44:02.049 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 499.3983ms
+2023-01-24 20:44:02.498 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - -
+2023-01-24 20:44:02.640 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/favicon-32x32.png - -
+2023-01-24 20:44:02.734 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 235.8110ms
+2023-01-24 20:44:03.079 +05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-01-24 20:44:03.096 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/favicon-32x32.png - - - 200 628 image/png 455.9272ms
+2023-01-24 20:44:10.388 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/api/Contract - -
+2023-01-24 20:44:10.448 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-24 20:44:10.591 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract() on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-24 20:44:10.652 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 18.2812ms
+2023-01-24 20:44:10.695 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-24 20:44:10.983 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Contract.Api.Services.IContractService' while attempting to activate 'Contract.Api.Controllers.ContractController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method9(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass7_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-01-24 20:44:15.397 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/api/Contract - - - 500 - text/plain;+charset=utf-8 5009.8542ms
+2023-01-24 23:39:37.602 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-24 23:39:37.736 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-24 23:39:37.767 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-24 23:39:37.778 +05:00 [INF] Hosting environment: Development
+2023-01-24 23:39:37.785 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-24 23:39:39.614 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/index.html - -
+2023-01-24 23:39:40.819 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - -
+2023-01-24 23:39:40.853 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_vs/browserLink - -
+2023-01-24 23:39:41.078 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 258.1779ms
+2023-01-24 23:39:40.883 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/index.html - - - 200 - text/html;charset=utf-8 1278.6677ms
+2023-01-24 23:39:41.242 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 388.8428ms
+2023-01-24 23:39:41.625 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - -
+2023-01-24 23:39:42.157 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Contract" for actions - Contract.Api.Controllers.ContractController.GetContractById (Contract.Api),Contract.Api.Controllers.ContractController.GetContracts (Contract.Api). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-01-24 23:39:45.806 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - - - 500 - text/plain;+charset=utf-8 4180.9555ms
+2023-01-24 23:40:51.473 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-24 23:40:51.715 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-24 23:40:51.756 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-24 23:40:51.767 +05:00 [INF] Hosting environment: Development
+2023-01-24 23:40:51.774 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-24 23:40:53.332 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/index.html - -
+2023-01-24 23:40:54.899 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - -
+2023-01-24 23:40:54.905 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_vs/browserLink - -
+2023-01-24 23:40:54.920 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/index.html - - - 200 - text/html;charset=utf-8 1598.9721ms
+2023-01-24 23:40:54.954 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 54.0978ms
+2023-01-24 23:40:55.072 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 166.9563ms
+2023-01-24 23:40:55.264 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - -
+2023-01-24 23:40:55.805 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 540.8761ms
+2023-01-24 23:41:41.320 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7169/api/Contract application/json 192
+2023-01-24 23:41:41.340 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-24 23:41:41.409 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract(Contract.Api.Dto.CreateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-24 23:41:48.621 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-24 23:41:49.971 +05:00 [ERR] An error occurred using the connection to database 'mymicroservice.db' on server ''.
+2023-01-24 23:41:51.316 +05:00 [ERR] An exception occurred in the database while saving changes for context type 'Contract.Api.Context.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 3D000: ���� ������ "mymicroservice.db" �� ����������
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|195_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransactionAsync(IsolationLevel isolationLevel, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransactionAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+  Exception data:
+    Severity: �����
+    SqlState: 3D000
+    MessageText: ���� ������ "mymicroservice.db" �� ����������
+    File: postinit.c
+    Line: 943
+    Routine: InitPostgres
+Npgsql.PostgresException (0x80004005): 3D000: ���� ������ "mymicroservice.db" �� ����������
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|195_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransactionAsync(IsolationLevel isolationLevel, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransactionAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+  Exception data:
+    Severity: �����
+    SqlState: 3D000
+    MessageText: ���� ������ "mymicroservice.db" �� ����������
+    File: postinit.c
+    Line: 943
+    Routine: InitPostgres
+2023-01-24 23:41:52.535 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 11106.9116ms
+2023-01-24 23:41:52.554 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-24 23:41:52.718 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 3D000: ���� ������ "mymicroservice.db" �� ����������
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|195_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransactionAsync(IsolationLevel isolationLevel, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransactionAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Contract.Api.Context.Repositories.ContractRepository.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Context\Repositories\ContractRepository.cs:line 20
+   at Contract.Api.Services.ContractService.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Services\ContractService.cs:line 17
+   at Contract.Api.Controllers.ContractController.CreateContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Controllers\ContractController.cs:line 21
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+  Exception data:
+    Severity: �����
+    SqlState: 3D000
+    MessageText: ���� ������ "mymicroservice.db" �� ����������
+    File: postinit.c
+    Line: 943
+    Routine: InitPostgres
+2023-01-24 23:41:52.955 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7169/api/Contract application/json 192 - 500 - text/plain;+charset=utf-8 11635.7287ms
+2023-01-24 23:46:21.185 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-24 23:46:23.201 +05:00 [INF] Executed DbCommand (1,015ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE DATABASE "mymicroservice.db";
+2023-01-24 23:46:23.818 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2023-01-24 23:46:23.987 +05:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
+2023-01-24 23:46:24.004 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-01-24 23:46:24.058 +05:00 [INF] Applying migration '20230124153759_initDb'.
+2023-01-24 23:46:24.143 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Contracts" (
+    "Id" uuid NOT NULL,
+    "UserId" uuid NOT NULL,
+    "OrderId" uuid NOT NULL,
+    "Status" integer NOT NULL,
+    "CreatedAt" timestamp with time zone NOT NULL,
+    "ProductCount" bigint NOT NULL,
+    "TotalPrice" numeric NOT NULL,
+    "FinishDate" timestamp with time zone NOT NULL,
+    CONSTRAINT "PK_Contracts" PRIMARY KEY ("Id")
+);
+2023-01-24 23:46:24.160 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Orders" (
+    "Id" uuid NOT NULL,
+    "UserId" uuid NOT NULL,
+    "Status" integer NOT NULL,
+    "CreatedAt" timestamp with time zone NOT NULL,
+    "LastUpdatedAt" timestamp with time zone NULL,
+    CONSTRAINT "PK_Orders" PRIMARY KEY ("Id")
+);
+2023-01-24 23:46:24.190 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Products" (
+    "Id" uuid NOT NULL,
+    "ProductId" uuid NOT NULL,
+    "ContractId" uuid NOT NULL,
+    "Count" bigint NOT NULL,
+    "Properties" text NULL,
+    CONSTRAINT "PK_Products" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_Products_Contracts_ContractId" FOREIGN KEY ("ContractId") REFERENCES "Contracts" ("Id") ON DELETE CASCADE
+);
+2023-01-24 23:46:24.212 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "OrderProducts" (
+    "Id" uuid NOT NULL,
+    "ProductId" uuid NOT NULL,
+    "OrderId" uuid NOT NULL,
+    "Count" bigint NOT NULL,
+    "Properties" text NULL,
+    CONSTRAINT "PK_OrderProducts" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_OrderProducts_Orders_OrderId" FOREIGN KEY ("OrderId") REFERENCES "Orders" ("Id") ON DELETE CASCADE
+);
+2023-01-24 23:46:24.231 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_OrderProducts_OrderId" ON "OrderProducts" ("OrderId");
+2023-01-24 23:46:24.242 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Products_ContractId" ON "Products" ("ContractId");
+2023-01-24 23:46:24.253 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20230124153759_initDb', '6.0.13');
+2023-01-24 23:46:42.546 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-24 23:46:42.629 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-24 23:46:42.657 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-24 23:46:42.667 +05:00 [INF] Hosting environment: Development
+2023-01-24 23:46:42.674 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-24 23:46:44.276 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/index.html - -
+2023-01-24 23:46:45.406 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - -
+2023-01-24 23:46:45.411 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_vs/browserLink - -
+2023-01-24 23:46:45.438 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/index.html - - - 200 - text/html;charset=utf-8 1177.3669ms
+2023-01-24 23:46:45.523 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 116.9548ms
+2023-01-24 23:46:45.692 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 280.6076ms
+2023-01-24 23:46:45.932 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - -
+2023-01-24 23:46:46.451 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 518.5510ms
+2023-01-24 23:47:12.892 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7169/api/Contract application/json 192
+2023-01-24 23:47:12.927 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-24 23:47:13.014 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract(Contract.Api.Dto.CreateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-24 23:47:17.775 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-24 23:47:19.904 +05:00 [INF] Executed DbCommand (393ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Guid), @p4='?' (DbType = Int64), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contracts" ("Id", "CreatedAt", "FinishDate", "OrderId", "ProductCount", "Status", "TotalPrice", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-01-24 23:47:20.175 +05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2023-01-24 23:47:20.201 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 7160.1626ms
+2023-01-24 23:47:20.212 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-24 23:47:20.267 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7169/api/Contract application/json 192 - 200 0 - 7375.2024ms
+2023-01-24 23:47:34.564 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/api/Contract - -
+2023-01-24 23:47:34.571 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.GetContracts (Contract.Api)'
+2023-01-24 23:47:34.756 +05:00 [INF] Route matched with {action = "GetContracts", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetContracts() on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-24 23:47:34.912 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-24 23:47:36.426 +05:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."FinishDate", c."OrderId", c."ProductCount", c."Status", c."TotalPrice", c."UserId"
+FROM "Contracts" AS c
+2023-01-24 23:47:36.582 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Contract.Api.Dto.ContractViewDto, Contract.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-01-24 23:47:36.615 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.GetContracts (Contract.Api) in 1837.8294ms
+2023-01-24 23:47:36.623 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.GetContracts (Contract.Api)'
+2023-01-24 23:47:36.628 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/api/Contract - - - 200 - application/json;+charset=utf-8 2064.2059ms
+2023-01-24 23:52:59.479 +05:00 [INF] Request starting HTTP/2 PUT https://localhost:7169/api/Contract application/json 149
+2023-01-24 23:52:59.507 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.UpdateContract (Contract.Api)'
+2023-01-24 23:52:59.526 +05:00 [INF] Route matched with {action = "UpdateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateContract(Contract.Api.Dto.UpdateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-24 23:52:59.641 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-24 23:53:01.799 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__updateContractDto_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Contracts" AS c
+    WHERE c."Id" = @__updateContractDto_Id_0)
+2023-01-24 23:53:02.572 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.UpdateContract (Contract.Api) in 3008.8753ms
+2023-01-24 23:53:02.579 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.UpdateContract (Contract.Api)'
+2023-01-24 23:53:02.819 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: contract not found
+   at Contract.Api.Context.Repositories.ContractRepository.UpdateContact(UpdateContractDto updateContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Context\Repositories\ContractRepository.cs:line 56
+   at Contract.Api.Services.ContractService.UpdateContact(UpdateContractDto updateContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Services\ContractService.cs:line 37
+   at Contract.Api.Controllers.ContractController.UpdateContract(UpdateContractDto updateContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Controllers\ContractController.cs:line 46
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-01-24 23:53:05.704 +05:00 [INF] Request finished HTTP/2 PUT https://localhost:7169/api/Contract application/json 149 - 500 - text/plain;+charset=utf-8 6225.3761ms
+2023-01-24 23:53:24.782 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/api/Contract/3fa85f64-5717-4562-b3fc-2c963f66afa6 - -
+2023-01-24 23:53:24.803 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.GetContractById (Contract.Api)'
+2023-01-24 23:53:24.827 +05:00 [INF] Route matched with {action = "GetContractById", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetContractById(System.Guid) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-24 23:53:24.858 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-24 23:53:24.886 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__contractId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Contracts" AS c
+    WHERE c."Id" = @__contractId_0)
+2023-01-24 23:53:25.372 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.GetContractById (Contract.Api) in 535.2819ms
+2023-01-24 23:53:25.394 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.GetContractById (Contract.Api)'
+2023-01-24 23:53:25.432 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: contract not found
+   at Contract.Api.Context.Repositories.ContractRepository.GetContractById(Guid contractId) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Context\Repositories\ContractRepository.cs:line 40
+   at Contract.Api.Services.ContractService.GetContractById(Guid contractId) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Services\ContractService.cs:line 27
+   at Contract.Api.Controllers.ContractController.GetContractById(Guid contractId) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Controllers\ContractController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-01-24 23:53:25.610 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/api/Contract/3fa85f64-5717-4562-b3fc-2c963f66afa6 - - - 500 - text/plain;+charset=utf-8 828.4888ms
+2023-01-25 13:28:41.907 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-25 13:28:42.180 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-25 13:28:42.214 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-25 13:28:42.224 +05:00 [INF] Hosting environment: Development
+2023-01-25 13:28:42.234 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-25 13:28:45.146 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/index.html - -
+2023-01-25 13:28:47.304 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - -
+2023-01-25 13:28:47.304 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_vs/browserLink - -
+2023-01-25 13:28:47.322 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/index.html - - - 200 - text/html;charset=utf-8 2188.6391ms
+2023-01-25 13:28:47.364 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 59.9166ms
+2023-01-25 13:28:47.640 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 335.5703ms
+2023-01-25 13:28:47.811 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - -
+2023-01-25 13:28:48.409 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 597.5719ms
+2023-01-25 13:30:00.370 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7169/api/Contract application/json 192
+2023-01-25 13:30:00.401 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:30:00.479 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract(Contract.Api.Dto.CreateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-25 13:30:07.701 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-25 13:30:10.203 +05:00 [ERR] Failed executing DbCommand (422ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Guid), @p4='?' (DbType = Int64), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contracts" ("Id", "CreatedAt", "FinishDate", "OrderId", "ProductCount", "Status", "TotalPrice", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-01-25 13:30:13.227 +05:00 [ERR] An exception occurred in the database while saving changes for context type 'Contract.Api.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-25 13:30:14.122 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 13613.847ms
+2023-01-25 13:30:14.136 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:30:14.768 +05:00 [ERR] internal server error
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Contract.Api.Context.Repositories.ContractRepository.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Context\Repositories\ContractRepository.cs:line 22
+   at Contract.Api.Services.ContractService.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Services\ContractService.cs:line 19
+   at Contract.Api.Controllers.ContractController.CreateContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Controllers\ContractController.cs:line 21
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Contract.Api.Middlewares.ErrorHandlerMiddleware.Invoke(HttpContext httpContext) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Middlewares\ErrorHandlerMiddleware.cs:line 20
+2023-01-25 13:30:14.988 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7169/api/Contract application/json 192 - 500 0 - 14617.4293ms
+2023-01-25 13:31:37.378 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7169/api/Contract application/json 192
+2023-01-25 13:31:41.315 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:31:41.332 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract(Contract.Api.Dto.CreateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-25 13:32:17.083 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-25 13:32:21.831 +05:00 [ERR] Failed executing DbCommand (4,698ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Guid), @p4='?' (DbType = Int64), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contracts" ("Id", "CreatedAt", "FinishDate", "OrderId", "ProductCount", "Status", "TotalPrice", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-01-25 13:32:22.295 +05:00 [ERR] An exception occurred in the database while saving changes for context type 'Contract.Api.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-25 13:32:23.272 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 41930.8392ms
+2023-01-25 13:32:23.279 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:32:39.655 +05:00 [ERR] internal server error
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Contract.Api.Context.Repositories.ContractRepository.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Context\Repositories\ContractRepository.cs:line 22
+   at Contract.Api.Services.ContractService.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Services\ContractService.cs:line 19
+   at Contract.Api.Controllers.ContractController.CreateContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Controllers\ContractController.cs:line 21
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Contract.Api.Middlewares.ErrorHandlerMiddleware.Invoke(HttpContext httpContext) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Middlewares\ErrorHandlerMiddleware.cs:line 20
+2023-01-25 13:32:39.862 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7169/api/Contract application/json 192 - 500 0 - 62484.0300ms
+2023-01-25 13:32:42.291 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7169/api/Contract application/json 192
+2023-01-25 13:32:44.752 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:32:44.756 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract(Contract.Api.Dto.CreateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-25 13:32:44.815 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-25 13:32:44.849 +05:00 [ERR] Failed executing DbCommand (9ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Guid), @p4='?' (DbType = Int64), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contracts" ("Id", "CreatedAt", "FinishDate", "OrderId", "ProductCount", "Status", "TotalPrice", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-01-25 13:32:45.035 +05:00 [ERR] An exception occurred in the database while saving changes for context type 'Contract.Api.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-25 13:32:45.746 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 976.0428ms
+2023-01-25 13:32:46.228 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:32:52.245 +05:00 [ERR] internal server error
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Contract.Api.Context.Repositories.ContractRepository.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Context\Repositories\ContractRepository.cs:line 22
+   at Contract.Api.Services.ContractService.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Services\ContractService.cs:line 19
+   at Contract.Api.Controllers.ContractController.CreateContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Controllers\ContractController.cs:line 21
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Contract.Api.Middlewares.ErrorHandlerMiddleware.Invoke(HttpContext httpContext) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Middlewares\ErrorHandlerMiddleware.cs:line 20
+2023-01-25 13:32:52.447 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7169/api/Contract application/json 192 - 500 0 - 10157.0999ms
+2023-01-25 13:32:54.871 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7169/api/Contract application/json 192
+2023-01-25 13:32:56.484 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:32:56.488 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract(Contract.Api.Dto.CreateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-25 13:33:34.944 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-25 13:33:35.018 +05:00 [ERR] Failed executing DbCommand (61ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Guid), @p4='?' (DbType = Int64), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contracts" ("Id", "CreatedAt", "FinishDate", "OrderId", "ProductCount", "Status", "TotalPrice", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-01-25 13:33:35.197 +05:00 [ERR] An exception occurred in the database while saving changes for context type 'Contract.Api.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-25 13:33:36.070 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 39572.5003ms
+2023-01-25 13:33:36.109 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:33:36.532 +05:00 [ERR] internal server error
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Contract.Api.Context.Repositories.ContractRepository.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Context\Repositories\ContractRepository.cs:line 22
+   at Contract.Api.Services.ContractService.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Services\ContractService.cs:line 19
+   at Contract.Api.Controllers.ContractController.CreateContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Controllers\ContractController.cs:line 21
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Contract.Api.Middlewares.ErrorHandlerMiddleware.Invoke(HttpContext httpContext) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Middlewares\ErrorHandlerMiddleware.cs:line 20
+2023-01-25 13:33:36.857 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7169/api/Contract application/json 192 - 500 0 - 41986.2753ms
+2023-01-25 13:34:55.700 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-25 13:34:55.785 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-25 13:34:55.816 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-25 13:34:55.823 +05:00 [INF] Hosting environment: Development
+2023-01-25 13:34:55.828 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-25 13:34:57.786 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/index.html - -
+2023-01-25 13:34:58.989 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - -
+2023-01-25 13:34:58.992 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_vs/browserLink - -
+2023-01-25 13:34:59.046 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/index.html - - - 200 - text/html;charset=utf-8 1271.4899ms
+2023-01-25 13:34:59.077 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 88.0619ms
+2023-01-25 13:34:59.261 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 269.3432ms
+2023-01-25 13:34:59.447 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - -
+2023-01-25 13:34:59.905 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 458.6426ms
+2023-01-25 13:35:08.585 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7169/api/Contract application/json 192
+2023-01-25 13:35:12.603 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:35:12.673 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract(Contract.Api.Dto.CreateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-25 13:36:05.850 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-25 13:36:12.128 +05:00 [ERR] Failed executing DbCommand (406ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Guid), @p4='?' (DbType = Int64), @p5='?' (DbType = Int32), @p6='?' (DbType = Decimal), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contracts" ("Id", "CreatedAt", "FinishDate", "OrderId", "ProductCount", "Status", "TotalPrice", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-01-25 13:36:13.401 +05:00 [ERR] An exception occurred in the database while saving changes for context type 'Contract.Api.Context.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-25 13:36:14.184 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 61487.5497ms
+2023-01-25 13:36:14.194 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:36:14.577 +05:00 [ERR] internal server error
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|215_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23505
+    MessageText: повторяющееся значение ключа нарушает ограничение уникальности "PK_Contracts"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Contracts
+    ConstraintName: PK_Contracts
+    File: nbtinsert.c
+    Line: 671
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Contract.Api.Context.Repositories.ContractRepository.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Context\Repositories\ContractRepository.cs:line 22
+   at Contract.Api.Services.ContractService.AddContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Services\ContractService.cs:line 19
+   at Contract.Api.Controllers.ContractController.CreateContract(CreateContractDto createContractDto) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Controllers\ContractController.cs:line 21
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Contract.Api.Middlewares.ErrorHandlerMiddleware.Invoke(HttpContext httpContext) in E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\Middlewares\ErrorHandlerMiddleware.cs:line 20
+2023-01-25 13:36:14.801 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7169/api/Contract application/json 192 - 500 0 - 66216.2289ms
+2023-01-25 13:38:46.250 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-25 13:38:46.282 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-25 13:38:46.294 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-25 13:38:46.296 +05:00 [INF] Hosting environment: Development
+2023-01-25 13:38:46.299 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-25 13:39:24.607 +05:00 [INF] Now listening on: https://localhost:7169
+2023-01-25 13:39:24.970 +05:00 [INF] Now listening on: http://localhost:5169
+2023-01-25 13:39:25.009 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-25 13:39:25.018 +05:00 [INF] Hosting environment: Development
+2023-01-25 13:39:25.179 +05:00 [INF] Content root path: E:\Microservice\FurnitureShopMicroservice\src\Contract.Api\Contract.Api\
+2023-01-25 13:39:25.949 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/index.html - -
+2023-01-25 13:39:27.131 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - -
+2023-01-25 13:39:27.133 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/_vs/browserLink - -
+2023-01-25 13:39:27.156 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/index.html - - - 200 - text/html;charset=utf-8 1212.9938ms
+2023-01-25 13:39:27.214 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 83.0712ms
+2023-01-25 13:39:27.401 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 267.6005ms
+2023-01-25 13:39:27.595 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - -
+2023-01-25 13:39:28.132 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7169/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 537.4093ms
+2023-01-25 13:39:35.149 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7169/api/Contract application/json 192
+2023-01-25 13:39:39.707 +05:00 [INF] Executing endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:39:39.795 +05:00 [INF] Route matched with {action = "CreateContract", controller = "Contract"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateContract(Contract.Api.Dto.CreateContractDto) on controller Contract.Api.Controllers.ContractController (Contract.Api).
+2023-01-25 13:39:44.531 +05:00 [INF] Entity Framework Core 6.0.13 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.8+e68dfe8b5cbe4a26d20acc36def6187aa1cfdda3' with options: using lazy loading proxies 
+2023-01-25 13:39:44.837 +05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2023-01-25 13:39:44.858 +05:00 [INF] Executed action Contract.Api.Controllers.ContractController.CreateContract (Contract.Api) in 5043.4391ms
+2023-01-25 13:39:44.862 +05:00 [INF] Executed endpoint 'Contract.Api.Controllers.ContractController.CreateContract (Contract.Api)'
+2023-01-25 13:39:44.907 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7169/api/Contract application/json 192 - 200 0 - 9758.5059ms
