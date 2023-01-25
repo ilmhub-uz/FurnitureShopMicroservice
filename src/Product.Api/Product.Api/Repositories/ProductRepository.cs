@@ -43,7 +43,7 @@ namespace Product.Api.Repositories
 			var product = productDto.Adapt<ProductModel>();
 			product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
 			product.CreatedAt = DateTime.UtcNow;
-			sendToGet.SendMessage(product);
+			sendToGet.SendMessage(product ,"product added");
 			await _products.InsertOneAsync(product);
 		}
 
