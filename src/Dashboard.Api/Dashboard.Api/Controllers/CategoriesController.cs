@@ -1,9 +1,7 @@
 ﻿using Dashboard.Api.ModelsDto;
 using Dashboard.Api.Services.Interfaces;
 using Dashboard.Api.ViewModels;
-using JFA.DependencyInjection;
-using Mapster;
-using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc;
 
 
 namespace Dashboard.Api.Controllers;
@@ -27,14 +25,14 @@ public class CategoriesController : Controller
 
     [HttpGet("{categoryId:guid}")]
     [ProducesResponseType(typeof(CategoryView), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetCategoryById(Guid categoryId)
+    public async Task<IActionResult> GetCategoryById(int categoryId)
     {
         await _categoriesService.GetCategoryByIdAsync(categoryId);
         return Ok();
     }
 
     [HttpPut("{categoryId:guid}")]
-    public async Task<IActionResult> UpdateCategories(Guid categoryId, UpdateCategoryDto updateCategoryDto)
+    public async Task<IActionResult> UpdateCategories(int categoryId, UpdateCategoryDto updateCategoryDto)
     {
         await _categoriesService.UpdateCategoriesStatus(updateCategoryDto, categoryId);
         return Ok();

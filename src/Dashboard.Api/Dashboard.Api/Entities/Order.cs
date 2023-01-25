@@ -1,3 +1,4 @@
+using Dashboard.Api.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 using Dashboard.Api.Entities.Enums;
 

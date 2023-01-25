@@ -11,29 +11,29 @@ namespace Product.Api.Controllers
 	[ApiController]
 	public class ProductController : ControllerBase
 	{
-        private readonly IProductRepository repository;
-        private readonly IValidator<CreateProductDto> _createProductValidator;
+		private readonly IProductRepository repository;
+		private readonly IValidator<CreateProductDto> _createProductValidator;
 		public ProductController(IProductRepository repository, IValidator<CreateProductDto> createProductValidator)
-        {
-            this.repository = repository;
-            _createProductValidator = createProductValidator;
-        }
+		{
+			this.repository = repository;
+			_createProductValidator = createProductValidator;
+		}
 
 		[HttpPost]
 		public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
-        {
-            var result = _createProductValidator.Validate(createProductDto);
+		{
+			var result = _createProductValidator.Validate(createProductDto);
 
-            if (!result.IsValid)
-                return BadRequest(result.Errors);
-            
-            await repository.CreateProductAsync(createProductDto);
-			
-            return Ok();
+			if (!result.IsValid)
+				return BadRequest(result.Errors);
+
+			var product = await repository.CreateProductAsync(createProductDto);
+
+			return Ok(product);
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> GetProduct(ProductFilterDto filterDto)
+		public async Task<IActionResult> GetProduct([FromQuery] ProductFilterDto filterDto)
 		=> Ok(await repository.GetAllProductAsync(filterDto));
 
 		[HttpGet("getbyId")]
