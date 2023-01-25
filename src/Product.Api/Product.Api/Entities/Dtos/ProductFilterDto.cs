@@ -9,6 +9,6 @@ namespace Product.Api.Entities.Dtos
 		public decimal? FromPrice { get; set; }
 		public decimal? ToPrice { get; set; }
 		public EProductStatus Status { get; set; }
-		EProductSortingStatus SortingStatus { get; set; }
+		public EProductSortingStatus SortingStatus { get; set; }
 	}
 }

@@ -33,7 +33,7 @@ namespace Product.Api.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> GetProduct(ProductFilterDto filterDto)
+		public async Task<IActionResult> GetProduct([FromQuery]ProductFilterDto filterDto)
 		=> Ok(await repository.GetAllProductAsync(filterDto));
 
 		[HttpGet("getbyId")]
