@@ -1,3 +1,5 @@
+using Cart.Api.Middlewares;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -14,6 +16,8 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseErrorHandlerMiddleware();
 
 app.UseHttpsRedirection();
 
