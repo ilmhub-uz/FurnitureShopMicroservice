@@ -5,18 +5,22 @@ using Dashboard.Api.Entities;
 using Dashboard.Api.Exceptions;
 using JFA.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Dashboard.Api.Services.Interfaces;
 
 namespace Dashboard.Api.Services;
 
 [Scoped]
-public class CategoryService
+public class CategoryService : ICategoriesService
 {
     private readonly AppDbContext _context;
+
     public CategoryService(AppDbContext context)
     {
         _context = context;
     }
-    public async Task<List<CategoryView>> GetCategoriesAsync()
+
+
+    public async Task<List<CategoryView>> GetCategories()
     {
         var categories = await _context.Categories.Where(c => c.ParentId == null).ToListAsync();
 
@@ -31,6 +35,7 @@ public class CategoryService
 
         return categoriesViewList;
     }
+
     private CategoryView ConvertToCategoryView(Category category)
     {
         var categoryView = new CategoryView()
@@ -50,6 +55,7 @@ public class CategoryService
 
         return categoryView;
     }
+
     public async Task<CategoryView> GetCategoryByIdAsync(int categoryId)
     {
         var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId);
@@ -60,8 +66,9 @@ public class CategoryService
         return ConvertToCategoryView(category);
     }
 
-    public async Task UpdateCategory(int categoryId, UpdateCategoryDto updateCategoryDto)
+    public async Task UpdateCategoriesStatus(UpdateCategoryDto updateCategoryDto, int categoryId)
     {
+
         var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId);
 
         if (category is null)
@@ -71,5 +78,6 @@ public class CategoryService
         category.ParentId = updateCategoryDto.ParentId;
 
         await _context.SaveChangesAsync();
+
     }
 }
