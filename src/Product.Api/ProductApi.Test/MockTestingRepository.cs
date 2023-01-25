@@ -62,9 +62,9 @@ namespace Product.Api.Test
 			var product = await repository.CreateProductAsync(dto);
 			await repository.DeleteProductAsync(product.Id);
 
-			var products = await repository.GetAllProductAsync(new ProductFilterDto ());
-            var deleteproduct = products.FirstOrDefault(p => p.Id == product.Id);
-			
+			var products = await repository.GetAllProductAsync(new ProductFilterDto());
+			var deleteproduct = products.FirstOrDefault(p => p.Id == product.Id);
+
 			//Assert
 			Assert.Null(deleteproduct);
 		}
@@ -79,14 +79,14 @@ namespace Product.Api.Test
 				Count = 2,
 			};
 			var product = await repository.CreateProductAsync(dto);
-            var updatedto = new UpdateProductDto()
+			var updatedto = new UpdateProductDto()
 			{
 				Name = "Update",
 				Price = 2000,
 				Status = EProductStatus.Active,
 			};
 			await repository.UpdateProductAsync(product.Id, updatedto);
-            var updateproduct = await repository.GetProductAsync(product.Id);
+			var updateproduct = await repository.GetProductAsync(product.Id);
 
 			//Assert
 			Assert.NotNull(updateproduct);
