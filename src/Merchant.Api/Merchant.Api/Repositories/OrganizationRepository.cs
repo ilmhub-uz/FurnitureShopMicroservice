@@ -1,4 +1,4 @@
-﻿using Merchant.Api.Context;
+﻿using Merchant.Api.Data;
 using Merchant.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,7 +1,7 @@
 ﻿using Merchant.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Merchant.Api.Context;
+namespace Merchant.Api.Data;
 
 public class AppDbContext : DbContext
 {

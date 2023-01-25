@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Merchant.Api.Context.Migrations
+namespace Merchant.Api.Data.Migrations
 {
     public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("create extension hstore");
-
             migrationBuilder.CreateTable(
                 name: "AppUsers",
                 columns: table => new
@@ -24,26 +20,6 @@ namespace Merchant.Api.Context.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Category",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Views = table.Column<int>(type: "integer", nullable: false),
-                    ParentId = table.Column<int>(type: "integer", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Category", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Category_Category_ParentId",
-                        column: x => x.ParentId,
-                        principalTable: "Category",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -68,27 +44,11 @@ namespace Merchant.Api.Context.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     AuthorId = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    WithInstallation = table.Column<bool>(type: "boolean", nullable: true),
-                    Brend = table.Column<string>(type: "text", nullable: true),
-                    Material = table.Column<string>(type: "text", nullable: true),
-                    Properties = table.Column<Dictionary<string, string>>(type: "hstore", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: false),
-                    Images = table.Column<List<string>>(type: "text[]", nullable: true),
-                    IsAvailable = table.Column<bool>(type: "boolean", nullable: false),
-                    Count = table.Column<long>(type: "bigint", nullable: false),
-                    Views = table.Column<int>(type: "integer", nullable: false),
-                    Status = table.Column<int>(type: "integer", nullable: false),
-                    CategoryId = table.Column<int>(type: "integer", nullable: true)
+                    Description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_Category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -117,19 +77,9 @@ namespace Merchant.Api.Context.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Category_ParentId",
-                table: "Category",
-                column: "ParentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrganizationUsers_OrganizationId",
                 table: "OrganizationUsers",
                 column: "OrganizationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
-                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -145,9 +95,6 @@ namespace Merchant.Api.Context.Migrations
 
             migrationBuilder.DropTable(
                 name: "Organizations");
-
-            migrationBuilder.DropTable(
-                name: "Category");
         }
     }
 }
