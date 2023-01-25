@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using Merchant.Api.Context;
+using Merchant.Api.Data;
 using Merchant.Api.Dtos;
 using Merchant.Api.Entities;
 using Merchant.Api.Exceptions;
