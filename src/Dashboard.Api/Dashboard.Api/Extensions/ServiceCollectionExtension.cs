@@ -21,7 +21,7 @@ public static class ServiceCollectionExtension
         {
             c.AddDefaultPolicy(cors =>
             {
-                cors.AllowAnyOrigin() // domain qoshish
+                cors.WithOrigins("")// domain qoshish
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials();
