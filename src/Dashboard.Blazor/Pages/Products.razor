@@ -1,36 +1,38 @@
 ﻿@page "/products"
 @using Dashboard.Blazor.ViewModels;
-@inject HttpClient client
+@inject HttpClient Http
 
 <PageTitle>Products</PageTitle>
 
 <MudText Typo="Typo.h3" GutterBottom="true">Products</MudText>
-@if (productViews == null)
+@if (product == null)
 {
     <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
 else
 {
-    <MudTable Items="productViews" Hover="true" SortLabel="Sort By" Elevation="0">
+    <MudTable Items="product" Hover="true" SortLabel="Sort By" Elevation="0">
         <HeaderContent>
             <MudTh>Product Name</MudTh>
             <MudTh>Product Description</MudTh>
             <MudTh>Product Brend</MudTh>
             <MudTh>Product Material</MudTh>
             <MudTh>Product Price</MudTh>
+            <MudTh>Product Images</MudTh>
             <MudTh>Product Is Available</MudTh>
             <MudTh>Product Count</MudTh>
             <MudTh>Product Views</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd DataLabel="ProductName">@context.ProductName</MudTd>
-            <MudTd DataLabel="ProductDescription">@context.ProductDescription</MudTd>
-            <MudTd DataLabel="ProductBrend">@context.ProductBrend</MudTd>
-            <MudTd DataLabel="ProductMaterial">@context.ProductMaterial</MudTd>
-            <MudTd DataLabel="ProductPrice">@context.ProductPrice</MudTd>
-            <MudTd DataLabel="ProductIsAvailable">@context.ProductIsAvailable</MudTd>
-            <MudTd DataLabel="ProductCount">@context.ProductCount</MudTd>
-            <MudTd DataLabel="ProductViews">@context.ProductViews</MudTd>
+            <MudTd DataLabel="Product Name">@context.ProductName</MudTd>
+            <MudTd DataLabel="Product Description">@context.ProductDescription</MudTd>
+            <MudTd DataLabel="Product Brend">@context.ProductBrend</MudTd>
+            <MudTd DataLabel="Product Material">@context.ProductMaterial</MudTd>
+            <MudTd DataLabel="Product Price">@context.ProductPrice</MudTd>
+            <MudTd DataLabel="Product Images">@context.ProductImages</MudTd>
+            <MudTd DataLabel="Product Is Available">@context.ProductIsAvailable</MudTd>
+            <MudTd DataLabel="Product Count">@context.ProductCount</MudTd>
+            <MudTd DataLabel="Product Views">@context.ProductViews</MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager PageSizeOptions="new int[] { 50, 100 }"/>
@@ -38,10 +40,10 @@ else
     </MudTable>
 }
 @code {
-    private List<ProductView>? productViews;
+    private List<ProductView>? product;
 
     protected override async Task OnInitializedAsync()
     {
-        productViews = await client.GetFromJsonAsync<List<ProductView>>("/api/Products");
+        product = await Http.GetFromJsonAsync<List<ProductView>>("/api/Products");
     }
 }
