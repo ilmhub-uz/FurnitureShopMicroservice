@@ -1,0 +1,12 @@
+{
+  "RabbitMqConfigurations": {
+    "HostName": "localhost",
+    "UserName": "guest",
+    "Password": "guest",
+    "Port": 5672,
+
+    "PostOrganizationName": "organization_added",
+    "PostEmploeeName": "emploee_added",
+    "GetProductName": "product_added"
+  }
+}
