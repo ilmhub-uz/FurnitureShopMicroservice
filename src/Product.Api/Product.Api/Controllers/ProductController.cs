@@ -27,9 +27,9 @@ namespace Product.Api.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors);
             
-           await repository.CreateProductAsync(createProductDto);
+         var product =  await repository.CreateProductAsync(createProductDto);
 			
-            return Ok();
+            return Ok(product);
 		}
 
 		[HttpGet]
