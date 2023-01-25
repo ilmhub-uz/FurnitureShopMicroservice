@@ -1,4 +1,6 @@
 ﻿using Merchant.Api.Dtos;
+using Merchant.Api.Dtos.Create;
+using Merchant.Api.Dtos.Update;
 
 namespace Merchant.Api.Services;
 
