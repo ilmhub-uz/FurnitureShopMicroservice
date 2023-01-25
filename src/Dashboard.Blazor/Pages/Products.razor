@@ -1,62 +1,47 @@
 ﻿@page "/products"
-@inject HttpClient Http
-@using Dashboard.Blazor.Shared
+@using Dashboard.Blazor.ViewModels;
+@inject HttpClient client
 
-<PageTitle>Weather forecast</PageTitle>
+<PageTitle>Products</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">Weather forecast</MudText>
-<MudText Class="mb-8">This component demonstrates fetching data from the server.</MudText>
-@if (forecasts == null)
+<MudText Typo="Typo.h3" GutterBottom="true">Products</MudText>
+@if (productViews == null)
 {
-    <MudProgressCircular Color="Color.Default" Indeterminate="true"/>
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
 else
 {
-    <MudTable Items="forecasts" Hover="true" SortLabel="Sort By" Elevation="0">
+    <MudTable Items="productViews" Hover="true" SortLabel="Sort By" Elevation="0">
         <HeaderContent>
-            <MudTh>
-                <MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<WeatherForecast, object>(x=>x.Date)">Date</MudTableSortLabel>
-            </MudTh>
-            <MudTh>
-                <MudTableSortLabel SortBy="new Func<WeatherForecast, object>(x=>x.TemperatureC)">Temp. (C)</MudTableSortLabel>
-            </MudTh>
-            <MudTh>
-                <MudTableSortLabel SortBy="new Func<WeatherForecast, object>(x=>x.TemperatureF)">Temp. (F)</MudTableSortLabel>
-            </MudTh>
-            <MudTh>
-                <MudTableSortLabel SortBy="new Func<WeatherForecast, object>(x=>x.Summary!)">Summary</MudTableSortLabel>
-            </MudTh>
+            <MudTh>Product Name</MudTh>
+            <MudTh>Product Description</MudTh>
+            <MudTh>Product Brend</MudTh>
+            <MudTh>Product Material</MudTh>
+            <MudTh>Product Price</MudTh>
+            <MudTh>Product Is Available</MudTh>
+            <MudTh>Product Count</MudTh>
+            <MudTh>Product Views</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd DataLabel="Date">@context.Date</MudTd>
-            <MudTd DataLabel="Temp. (C)">@context.TemperatureC</MudTd>
-            <MudTd DataLabel="Temp. (F)">@context.TemperatureF</MudTd>
-            <MudTd DataLabel="Summary">@context.Summary</MudTd>
+            <MudTd DataLabel="ProductName">@context.ProductName</MudTd>
+            <MudTd DataLabel="ProductDescription">@context.ProductDescription</MudTd>
+            <MudTd DataLabel="ProductBrend">@context.ProductBrend</MudTd>
+            <MudTd DataLabel="ProductMaterial">@context.ProductMaterial</MudTd>
+            <MudTd DataLabel="ProductPrice">@context.ProductPrice</MudTd>
+            <MudTd DataLabel="ProductIsAvailable">@context.ProductIsAvailable</MudTd>
+            <MudTd DataLabel="ProductCount">@context.ProductCount</MudTd>
+            <MudTd DataLabel="ProductViews">@context.ProductViews</MudTd>
         </RowTemplate>
         <PagerContent>
-            <MudTablePager PageSizeOptions="new int[]{50, 100}"/>
+            <MudTablePager PageSizeOptions="new int[] { 50, 100 }"/>
         </PagerContent>
     </MudTable>
 }
-
-
 @code {
-    private WeatherForecast[]? forecasts;
+    private List<ProductView>? productViews;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        productViews = await client.GetFromJsonAsync<List<ProductView>>("/api/Products");
     }
-
-    public class WeatherForecast
-    {
-        public DateTime Date { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public string? Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
-
 }

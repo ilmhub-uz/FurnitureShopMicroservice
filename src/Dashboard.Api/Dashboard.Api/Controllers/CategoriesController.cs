@@ -12,10 +12,9 @@ public class CategoriesController : Controller
 {
     private readonly ICategoriesService _categoriesService;
 
-    public CategoriesController(UpdateCategoryDto updateCategoryDto, ICategoriesService categoriesService)
+    public CategoriesController(ICategoriesService categoriesService)
     {
         _categoriesService = categoriesService;
-        _updateCategoryDto = updateCategoryDto;
     }
     
     [HttpGet]
