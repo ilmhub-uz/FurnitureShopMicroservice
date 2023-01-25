@@ -40,6 +40,7 @@ namespace Product.Api.Repositories
 		public async Task DeleteProductAsync(string productId)
 		{
 			var result = await _products.DeleteOneAsync(e => e.Id == productId);
+
 			if (result.DeletedCount == 0)
 				throw new Exception();
 		}
@@ -47,6 +48,7 @@ namespace Product.Api.Repositories
 		public async Task<IEnumerable<ProductViewModel>> GetAllProductAsync(ProductFilterDto filterDto)
 		{
 			var products = await (await _products.FindAsync(product => true)).ToListAsync();
+
 			if (products is null)
 				return new List<ProductViewModel>();
 
@@ -61,7 +63,7 @@ namespace Product.Api.Repositories
 
 			if (filterDto.Name is not null) products = products.Where(p => p.Name.Contains(filterDto.Name)).ToList();
 			if (filterDto.FromPrice is not null) products = products.Where(p => p.Price >= filterDto.FromPrice).ToList();
-			if (filterDto.FromPrice is not null) products = products.Where(p => p.Price <= filterDto.ToPrice).ToList();
+			if (filterDto.ToPrice is not null) products = products.Where(p => p.Price <= filterDto.ToPrice).ToList();
 
 			products = filterDto.SortingStatus switch
 			{
@@ -70,7 +72,9 @@ namespace Product.Api.Repositories
 				EProductSortingStatus.CreatedAtes => products.OrderByDescending(p => p.CreatedAt).ToList(),
 				_ => products
 			};
+
 			var productList = products.Adapt<List<ProductViewModel>>().ToPagedList(filterDto);
+
 			return productList;
 		}
 
