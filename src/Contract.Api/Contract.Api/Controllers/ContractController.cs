@@ -33,9 +33,9 @@ namespace Contract.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetContracts()
+        public async Task<IActionResult> GetContracts([FromBody] ContractFilterDto? contractFilterDto = null)
         {
-            var contracts = await contractService.GetContracts();
+            var contracts = await contractService.GetContracts(contractFilterDto);
             return Ok(contracts);
         }
 

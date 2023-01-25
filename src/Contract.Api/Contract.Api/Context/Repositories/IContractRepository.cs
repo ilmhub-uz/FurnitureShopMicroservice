@@ -4,8 +4,8 @@ namespace Contract.Api.Context.Repositories;
 
 public interface IContractRepository
 {
-    Task<ContractViewDto> GetContractById(Guid contractId);
-    Task<List<ContractViewDto>> GetContracts();
+    Task<Entities.Contract> GetContractById(Guid contractId);
+    Task<List<Entities.Contract>> GetContracts(ContractFilterDto? contractFilterDto);
     Task AddContract(CreateContractDto createContractDto);
     Task UpdateContact(UpdateContractDto updateContractDto);
     Task DeleteContract(Guid contractId);

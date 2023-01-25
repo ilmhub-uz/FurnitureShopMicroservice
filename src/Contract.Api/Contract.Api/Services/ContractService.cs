@@ -9,6 +9,7 @@ public class ContractService : IContractService
 {
 
     private readonly IContractRepository contractRepository;
+
     public ContractService(IContractRepository contractRepository)
     {
         this.contractRepository = contractRepository;
@@ -29,9 +30,9 @@ public class ContractService : IContractService
         return await contractRepository.GetContractById(contractId);
     }
 
-    public async Task<List<ContractViewDto>> GetContracts()
+    public async Task<List<ContractViewDto>> GetContracts(ContractFilterDto? contractFilterDto = null)
     {
-        return await contractRepository.GetContracts();
+        return await contractRepository.GetContracts(contractFilterDto);
     }
 
     public async Task UpdateContact(UpdateContractDto updateContractDto)

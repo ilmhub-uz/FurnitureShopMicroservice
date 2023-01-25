@@ -31,10 +31,10 @@ app.MapControllers();
 
 app.Run();
 
-//1.ContractService cihini to`ldirish
-//2.UnitTest yoizsh
-//3.Dockerfile yozish
-//4.Hub yozish
+//1.ContractService ichini to`ldirish                    //chala
+//2.UnitTest yozish                                      //chala
+//3.Dockerfile yozish                                    //chala
+//4.Hub yozish 
 //5.emailsender yozish
 //6.validator yozish
 //7.
