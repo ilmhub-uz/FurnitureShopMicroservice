@@ -1,22 +1,20 @@
 using Dashboard.Api.Extensions;
 using Dashboard.Api.Middleware;
+using Dashboard.Api.RabbitMQ;
 using JFA.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddServicesFromAttribute();
+builder.Services.AddHostedService<ProductConsumer>();
+
 builder.Services.AddDbContext(builder.Configuration);
 builder.Services.AddCorsPolicy();
 
 var app = builder.Build();
-
-
-
 
 if (app.Environment.IsDevelopment())
 {

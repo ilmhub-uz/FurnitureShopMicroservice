@@ -1,9 +1,7 @@
 ﻿using Dashboard.Api.ModelsDto;
 using Dashboard.Api.Services.Interfaces;
 using Dashboard.Api.ViewModels;
-using JFA.DependencyInjection;
-using Mapster;
-using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc;
 
 
 namespace Dashboard.Api.Controllers;
