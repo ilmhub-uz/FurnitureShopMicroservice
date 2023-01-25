@@ -32,19 +32,14 @@ namespace Product.Api.Repositories
 			this.sendToGet = sendToGet;
 		}
 
-		public ProductRepository(AppSettings object1, SendToGetMessage object2)
-		{
-			this.object1 = object1;
-			this.object2 = object2;
-		}
-
-		public async Task CreateProductAsync(CreateProductDto productDto)
+		public async Task<ProductModel> CreateProductAsync(CreateProductDto productDto)
 		{
 			var product = productDto.Adapt<ProductModel>();
 			product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
 			product.CreatedAt = DateTime.UtcNow;
 			sendToGet.SendMessage(product ,"product added");
-			await _products.InsertOneAsync(product);
+		    await _products.InsertOneAsync(product);
+			return product;
 		}
 
 		public async Task DeleteProductAsync(string productId)
@@ -55,7 +50,7 @@ namespace Product.Api.Repositories
 				throw new Exception();
 		}
 
-		public async Task<IEnumerable<ProductViewModel>> GetAllProductAsync(ProductFilterDto filterDto)
+		public async Task<IEnumerable<ProductViewModel>> GetAllProductAsync(ProductFilterDto? filterDto)
 		{
 			var products = await (await _products.FindAsync(product => true)).ToListAsync();
 
