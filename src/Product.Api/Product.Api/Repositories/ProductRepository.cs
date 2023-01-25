@@ -20,6 +20,9 @@ namespace Product.Api.Repositories
 		private readonly IMongoDatabase _database;
 		private readonly IMongoCollection<ProductModel> _products;
 		private IOptions<AppSettings> _appsettings;
+		private AppSettings object1;
+		private SendToGetMessage object2;
+
 		public ProductRepository(IOptions<AppSettings> appsettings, SendToGetMessage sendToGet)
 		{
 			_appsettings = appsettings;
@@ -27,6 +30,12 @@ namespace Product.Api.Repositories
 			_database = _mongoClient.GetDatabase("products_db");
 			_products = _database.GetCollection<ProductModel>("products");
 			this.sendToGet = sendToGet;
+		}
+
+		public ProductRepository(AppSettings object1, SendToGetMessage object2)
+		{
+			this.object1 = object1;
+			this.object2 = object2;
 		}
 
 		public async Task CreateProductAsync(CreateProductDto productDto)
