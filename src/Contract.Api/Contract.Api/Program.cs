@@ -1,5 +1,6 @@
 using Contract.Api.Context.Repositories;
 using Contract.Api.Extensions;
+using Contract.Api.Middlewares;
 using Contract.Api.Services;
 using JFA.DependencyInjection;
 
@@ -23,9 +24,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseErrorHandlerMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
+//1.ContractService cihini to`ldirish
+//2.UnitTest yoizsh
+//3.Dockerfile yozish
+//4.Hub yozish
+//5.emailsender yozish
+//6.validator yozish
+//7.

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Mapster;
 using JFA.DependencyInjection;
+using Contract.Api.Exceptions;
 
 namespace Contract.Api.Context.Repositories;
 
@@ -19,14 +20,13 @@ public class ContractRepository : IContractRepository
     {
         var product = createContractDto.Adapt<Entities.Contract>();
         await context.Contracts!.AddAsync(product);
-        await context.SaveChangesAsync();
     }
 
     public async Task DeleteContract(Guid contractId)
     {
         if (!await context.Contracts!.AnyAsync(c => c.Id == contractId))
         {
-            throw new Exception(message: "contract not found");
+            throw new NotFoundException<Entities.Contract>();
         }
 
         var product = await context.Contracts!.FirstAsync(c => c.Id == contractId);
@@ -39,7 +39,7 @@ public class ContractRepository : IContractRepository
     {
         if (!await context.Contracts!.AnyAsync(c => c.Id == contractId))
         {
-            throw new Exception(message: "contract not found");
+            throw new NotFoundException<Entities.Contract>();
         }
         var product = await context.Contracts!.FirstAsync(c => c.Id == contractId);
         return product.Adapt<ContractViewDto>();
@@ -55,7 +55,7 @@ public class ContractRepository : IContractRepository
     {
         if (!await context.Contracts!.AnyAsync(c => c.Id == updateContractDto.Id))
         {
-            throw new Exception(message: "contract not found");
+            throw new NotFoundException<Entities.Contract>();
         }
         var product = await context.Contracts!.FirstAsync(c => c.Id == updateContractDto.Id);
 
