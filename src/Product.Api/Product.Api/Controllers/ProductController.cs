@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Product.Api.Entities.Dtos;
 using Product.Api.RabbitMq;
@@ -11,16 +12,24 @@ namespace Product.Api.Controllers
 	public class ProductController : ControllerBase
 	{
         private readonly IProductRepository repository;
-		public ProductController(IProductRepository repository)
-		{
-			this.repository = repository;
-		}
+        private readonly IValidator<CreateProductDto> _createProductValidator;
+		public ProductController(IProductRepository repository, IValidator<CreateProductDto> createProductValidator)
+        {
+            this.repository = repository;
+            _createProductValidator = createProductValidator;
+        }
 
 		[HttpPost]
 		public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
-		{
-			await repository.CreateProductAsync(createProductDto);
-			return Ok();
+        {
+            var result = _createProductValidator.Validate(createProductDto);
+
+            if (!result.IsValid)
+                return BadRequest(result.Errors);
+            
+            await repository.CreateProductAsync(createProductDto);
+			
+            return Ok();
 		}
 
 		[HttpGet]

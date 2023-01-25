@@ -1,4 +1,5 @@
-﻿using Merchant.Api.Entities;
+﻿using Merchant.Api.Dtos.Enums;
+using Merchant.Api.Entities;
 
 namespace Merchant.Api.Dtos;
 

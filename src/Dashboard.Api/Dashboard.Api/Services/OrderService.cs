@@ -37,7 +37,6 @@ public class OrderService : IOrderService
         orders ??= new List<Order>();
 
         return orders.Select(o => o.Adapt<OrderView>()).ToList();
-
     }
 
 }

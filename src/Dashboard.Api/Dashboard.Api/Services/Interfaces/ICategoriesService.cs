@@ -5,8 +5,7 @@ namespace Dashboard.Api.Services.Interfaces;
 
 public interface ICategoriesService
 {
-    Task<CategoryView> GetCategoryByIdAsync(int categoryId);
-    Task AddCategory(CreateCategoryDto categoryDto);
-    Task UpdateCategory(int categoryId, UpdateCategoryDto updateCategoryDto);
-    Task DeleteCategory(int categoryId);
+    Task<CategoryView> GetCategoryByIdAsync(Guid categoryId);
+    Task<List<CategoryView>> GetCategories();
+    Task UpdateCategoriesStatus(UpdateCategoryDto updateCategoryDto, Guid categoryId);
 }

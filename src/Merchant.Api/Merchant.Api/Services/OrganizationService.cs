@@ -1,6 +1,8 @@
 ﻿using Mapster;
 using Merchant.Api.Dtos;
+using Merchant.Api.Dtos.Create;
 using Merchant.Api.Dtos.Enums;
+using Merchant.Api.Dtos.Update;
 using Merchant.Api.Entities;
 using Merchant.Api.Exceptions;
 using Merchant.Api.Repositories;

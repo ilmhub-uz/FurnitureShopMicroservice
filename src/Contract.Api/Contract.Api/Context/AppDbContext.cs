@@ -1,5 +1,4 @@
-﻿using Contract.Api.Dto;
-using Contract.Api.Entities;
+﻿using Contract.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contract.Api.Context
@@ -8,6 +7,10 @@ namespace Contract.Api.Context
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Entities.Contract> Contract { get; set; }
+        public DbSet<Entities.Contract>? Contracts { get; set; }
+        public DbSet<Order>? Orders { get; set; }
+        public DbSet<OrderProduct>? OrderProducts { get; set; }
+        public DbSet<ContractProduct>? Products {get;set;}
+       
     }
 }

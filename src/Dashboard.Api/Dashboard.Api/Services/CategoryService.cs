@@ -2,6 +2,7 @@ using Dashboard.Api.Context;
 using Dashboard.Api.ModelsDto;
 using Dashboard.Api.ViewModels;
 using Dashboard.Api.Entities;
+using Dashboard.Api.Exceptions;
 using JFA.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
@@ -58,16 +59,6 @@ public class CategoryService
 
         return ConvertToCategoryView(category);
     }
-    public async Task AddCategory(CreateCategoryDto categoryDto)
-    {
-        var category = new Category()
-        {
-            Name = categoryDto.Name,
-            ParentId = categoryDto.ParentId,
-        };
-
-        await _context.SaveChangesAsync();
-    }
 
     public async Task UpdateCategory(int categoryId, UpdateCategoryDto updateCategoryDto)
     {
@@ -78,16 +69,6 @@ public class CategoryService
 
         category.Name = updateCategoryDto.Name;
         category.ParentId = updateCategoryDto.ParentId;
-
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteCategory(int categoryId)
-    {
-        var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId);
-
-        if (category is null)
-            throw new NotFoundException<Category>();
 
         await _context.SaveChangesAsync();
     }

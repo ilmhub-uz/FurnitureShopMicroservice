@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Dashboard.Api.ModelsDto;
+﻿using Dashboard.Api.ModelsDto;
 using Dashboard.Api.Services.Interfaces;
 using Dashboard.Api.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-
-
-
 
 namespace Dashboard.Api.Controllers;
 
@@ -22,7 +15,6 @@ public class OrganizationsController : Controller
         _organizationService = organizationService;
     }
 
-
     [HttpGet]
     [ProducesResponseType(typeof(List<OrganizationView>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrganizations()
@@ -32,7 +24,7 @@ public class OrganizationsController : Controller
         return Ok(organizations);
     }
 
-    [HttpGet("{organizationId:Guid}")]
+    [HttpGet("{organization:guid}")]
     [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(OrganizationView), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetOrganizationById(Guid organizationId)
@@ -42,7 +34,7 @@ public class OrganizationsController : Controller
         return Ok(organization);
     }
 
-    [HttpPut("{organizationId:Guid}")]
+    [HttpPut("{organization:guid}")]
 
     public async Task<IActionResult> OrganizationUpdateStatus(Guid organizationId, UpdateOrganizationDto updateOrganizationDto)
     {
