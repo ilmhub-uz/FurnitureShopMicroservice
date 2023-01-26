@@ -4,12 +4,19 @@ using Product.Api.RabbitMq;
 using Product.Api.Repositories;
 using Product.Api.Services;
 using System.Reflection;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var logger  = new LoggerConfiguration()
+	.WriteTo.Console()
+	.WriteTo.File(path: "ProductApi.log", rollingInterval: RollingInterval.Year,
+		outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+	.CreateLogger();
 
 builder.Services.AddFluentValidationAutoValidation(options =>
 {
