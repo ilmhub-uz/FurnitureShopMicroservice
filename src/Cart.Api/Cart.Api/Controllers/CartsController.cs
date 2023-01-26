@@ -1,19 +1,15 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
+﻿using System.Security.Claims;
 using Cart.Api.Dtos;
 using Cart.Api.Entities;
 using Cart.Api.Services;
-using Mapster;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Distributed;
-using Newtonsoft.Json;
 
 namespace Cart.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class CartsController : ControllerBase
 {
     private readonly ICartService _cartService;
@@ -25,24 +21,25 @@ public class CartsController : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> AddProduct(string key, CreateProductDto createProductDto)
+    public async Task<IActionResult> AddProduct(CreateProductDto createProductDto)
     {
-        await _cartService.AddProductAsync(key, createProductDto);
+        await _cartService.AddProductAsync(User.FindFirst(ClaimTypes.NameIdentifier)!.Value, createProductDto);
 
         return Ok();
     }
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Product>))]
-    public async Task<IActionResult> GetUserCart(string key) => Ok(await _cartService.GetUserCartAsync(key));
+    public async Task<IActionResult> GetUserCart() =>
+        Ok(await _cartService.GetUserCartAsync(User.FindFirst(ClaimTypes.NameIdentifier)!.Value));
 
     [HttpPut]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> UpdateProduct(string key, UpdateProductDto updateProductDto)
+    public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
     {
-        await _cartService.UpdateProductAsync(key, updateProductDto);
+        await _cartService.UpdateProductAsync(User.FindFirst(ClaimTypes.NameIdentifier)!.Value, updateProductDto);
 
         return Ok();
     }
@@ -51,18 +48,18 @@ public class CartsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Product))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> DeleteProduct(string key, string productId)
+    public async Task<IActionResult> DeleteProduct(string productId)
     {
-        await _cartService.DeleteProductAsync(key, productId);
+        await _cartService.DeleteProductAsync(User.FindFirst(ClaimTypes.NameIdentifier)!.Value, productId);
 
         return Ok();
     }
 
     [HttpDelete("user")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> DeleteUserCart(string key)
+    public async Task<IActionResult> DeleteUserCart()
     {
-        await _cartService.DeleteUserCartAsync(key);
+        await _cartService.DeleteUserCartAsync(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
         return Ok();
     }
