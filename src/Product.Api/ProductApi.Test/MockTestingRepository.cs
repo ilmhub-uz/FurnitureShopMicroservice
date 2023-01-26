@@ -94,5 +94,23 @@ namespace Product.Api.Test
 			Assert.Equal("Update", updateproduct.Name);
 			Assert.Equal(2000, updateproduct.Price);
 		}
+
+		[Fact]
+		public async Task TestGetProductAsync()
+		{
+			var dto = new CreateProductDto()
+			{
+				Name = "Test",
+				Price = 1000,
+				Count = 2,
+			};
+			var product = await repository.CreateProductAsync(dto);
+            var currentproduct = await repository.GetProductAsync(product.Id);
+
+			//Assert
+			Assert.NotNull(currentproduct);
+			Assert.Equal("Test",currentproduct.Name);
+			Assert.Equal(1000,currentproduct.Price);
+		}
 	}
 }
