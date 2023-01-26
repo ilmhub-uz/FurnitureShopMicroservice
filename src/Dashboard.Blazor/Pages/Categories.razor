@@ -17,11 +17,13 @@ else
             <MudTh>Id</MudTh>
             <MudTh>Category Name</MudTh>
             <MudTh>Sub Categories</MudTh>
+            <MudTh>Edit</MudTh>
             </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Id">@context.Id</MudTd>
             <MudTd DataLabel="Category">@context.Name</MudTd>
             <MudTd DataLabel="Sub categories">@context.Children?.Count</MudTd>
+            <MudTd DataLabel="Edit"><MudLink Href="EditCategory">Edit</MudLink></MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager PageSizeOptions="new int[] { 50, 100 }"/>
@@ -37,6 +39,5 @@ else
     {
         categoires = await Http.GetFromJsonAsync<List<CategoryView>>("/api/Categories");
     }
-
 
 }
