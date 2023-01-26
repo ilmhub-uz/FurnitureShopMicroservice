@@ -20,7 +20,6 @@ namespace Product.Api.RabbitMq
 			var connection = factory.CreateConnection();
 			var channel = connection.CreateModel();
 		
-			//channel.QueueDeclare("product_added", false, false, false, null);
 			channel.ExchangeDeclare(message, ExchangeType.Fanout);
 
 			var productJson = Newtonsoft.Json.JsonConvert.SerializeObject(product);

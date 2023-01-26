@@ -38,7 +38,7 @@ namespace Product.Api.Repositories
 			product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
 			product.CreatedAt = DateTime.UtcNow;
 			sendToGet.SendMessage(product ,"product added");
-		    await _products.InsertOneAsync(product);
+			await _products.InsertOneAsync(product);
 			return product;
 		}
 
@@ -77,7 +77,7 @@ namespace Product.Api.Repositories
 				EProductSortingStatus.CreatedAtes => products.OrderByDescending(p => p.CreatedAt).ToList(),
 				_ => products
 			};
-
+		
 			var productList = products.Adapt<List<ProductViewModel>>().ToPagedList(filterDto);
             return productList;
 		}
