@@ -19,6 +19,7 @@ else
             <MudTh>Description</MudTh>
             <MudTh>ImageUrl</MudTh>
             <MudTh>Users</MudTh>
+            <MudTh>Edit</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Id">@context.Id</MudTd>
@@ -27,6 +28,7 @@ else
             <MudTd DataLabel="Description">@context.Description</MudTd>
             <MudTd DataLabel="ImageUrl">@context.ImageUrl</MudTd>
             <MudTd DataLabel="Users">@context.Users</MudTd>
+            <MudTd DataLabel="Edit"><MudLink Href="EditOrg">Edit</MudLink></MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager PageSizeOptions="new int[] { 50, 100 }"/>

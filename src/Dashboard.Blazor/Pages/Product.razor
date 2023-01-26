@@ -22,6 +22,7 @@ else
             <MudTh>Product Is Available</MudTh>
             <MudTh>Product Count</MudTh>
             <MudTh>Product Views</MudTh>
+            <MudTh>Edit</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Product Name">@context.ProductName</MudTd>
@@ -33,6 +34,7 @@ else
             <MudTd DataLabel="Product Is Available">@context.ProductIsAvailable</MudTd>
             <MudTd DataLabel="Product Count">@context.ProductCount</MudTd>
             <MudTd DataLabel="Product Views">@context.ProductViews</MudTd>
+            <MudTd DataLabel="Edit"><MudLink Href="EditProduct">Edit</MudLink></MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager PageSizeOptions="new int[] { 50, 100 }"/>
