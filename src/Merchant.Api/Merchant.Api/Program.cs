@@ -1,33 +1,27 @@
+using JFA.DependencyInjection;
 using Merchant.Api.Configurations;
-using Merchant.Api.Data;
+using Merchant.Api.Extensions;
 using Merchant.Api.Middleware;
-using Merchant.Api.Repositories;
-using Merchant.Api.Services;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddJsonFile("RabbitMq.json", false, true);
 
 var rabbitMqConfig = builder.Configuration
     .GetSection("RabbitMqConfigurations")
     .Get<RabbitMqConfigurations>();
 
+builder.Services.AddAppDbContext(builder.Configuration);
 builder.Services.AddSingleton(rabbitMqConfig);
-
-builder.Services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IOrganizationService, OrganizationService>();
-builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddSwaggerGenWithSecurityRequirement();
 
-builder.Services.AddScoped<IFileHelper, FileHelper>();
-builder.Services.AddHostedService<ProductAddService>();
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseLazyLoadingProxies().UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+builder.Services.AddServicesFromAttribute();
+builder.Services.AddJwtBearer(builder.Configuration);
+builder.Services.AddServices();
 
 var app = builder.Build();
 
@@ -41,6 +35,7 @@ app.UseHttpsRedirection();
 
 app.UseErrorHandlerMiddleware();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

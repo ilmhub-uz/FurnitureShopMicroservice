@@ -1,5 +1,6 @@
 using Dashboard.Api.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
+using Dashboard.Api.Entities.Enums;
 
 namespace Dashboard.Api.Entities;
 
@@ -21,5 +22,5 @@ public class Order
     public DateTime CreatedAt { get; set; }
     public DateTime? LastUpdatedAt { get; set; }
 
-    public virtual ICollection<OrderProduct>? OrderProducts { get; set; }
+    public virtual ICollection<Order>? OrderProducts { get; set; }
 }

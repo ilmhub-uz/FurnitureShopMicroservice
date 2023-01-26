@@ -18,12 +18,14 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.8" />
     <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.Telegram" Version="0.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.13" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="RabbitMQServices\" />
+	  <PackageReference Include="JFA.DependencyInjection" Version="1.0.7" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
   </ItemGroup>
 
 </Project>
