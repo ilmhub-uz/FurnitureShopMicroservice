@@ -20,8 +20,6 @@ namespace Product.Api.Repositories
 		private readonly IMongoDatabase _database;
 		private readonly IMongoCollection<ProductModel> _products;
 		private IOptions<AppSettings> _appsettings;
-		private AppSettings object1;
-		private SendToGetMessage object2;
 
 		public ProductRepository(IOptions<AppSettings> appsettings, SendToGetMessage sendToGet)
 		{
