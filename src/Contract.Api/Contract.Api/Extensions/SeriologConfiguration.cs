@@ -1,5 +1,5 @@
 ﻿using Serilog;
-using TelegramSink;
+//using TelegramSink;
 
 namespace Contract.Api.Extensions;
 
@@ -11,11 +11,11 @@ public static class SeriologConfiguration
         var telegramChatId = builder.Configuration["TelegramSeriologConfiguration:TelegramChatId"];
 
         var logger = new LoggerConfiguration()
-            .WriteTo.Console()
-            .WriteTo.File("ContractApiLogging")
-            .WriteTo.TeleSink(telegramApiKey, telegramChatId, minimumLevel: Serilog.Events.LogEventLevel.Error)
+            //.WriteTo.Console()
+            //.WriteTo.File("ContractApiLogging")
+            //.WriteTo.TeleSink(telegramApiKey, telegramChatId, minimumLevel: Serilog.Events.LogEventLevel.Error)
             .CreateLogger();
 
-        builder.Logging.AddSerilog(logger);
+        //builder.Logging.AddSerilog(logger);
     }
 }

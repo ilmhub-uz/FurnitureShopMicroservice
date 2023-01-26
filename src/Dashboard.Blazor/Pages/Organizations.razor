@@ -1,0 +1,43 @@
+@page "/organizations"
+@using Dashboard.Blazor.ViewModels;
+@inject HttpClient client
+
+<PageTitle>Organizations</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Organizations</MudText>
+@if (organization == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudTable Items="organization" Hover="true" SortLabel="Sort By" Elevation="0">
+        <HeaderContent>
+            <MudTh>Id</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Description</MudTh>
+            <MudTh>ImageUrl</MudTh>
+            <MudTh>Users</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Id">@context.Id</MudTd>
+            <MudTd DataLabel="Organization">@context.Name</MudTd>
+            <MudTd DataLabel="Status">@context.Status</MudTd>
+            <MudTd DataLabel="Description">@context.Description</MudTd>
+            <MudTd DataLabel="ImageUrl">@context.ImageUrl</MudTd>
+            <MudTd DataLabel="Users">@context.Users</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[] { 50, 100 }"/>
+        </PagerContent>
+    </MudTable>
+}
+@code {
+    private List<OrganizationView>? organization;
+
+    protected override async Task OnInitializedAsync()
+    {
+        organization = await client.GetFromJsonAsync<List<OrganizationView>>("/api/Organizations");
+    }
+}

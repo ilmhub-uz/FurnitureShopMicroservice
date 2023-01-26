@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddServicesFromAttribute();
-builder.Services.AddHostedService<ProductConsumer>();
+//builder.Services.AddHostedService<ProductConsumer>();
 
 builder.Services.AddDbContext(builder.Configuration);
 builder.Services.AddCorsPolicy();
