@@ -1,0 +1,21 @@
+﻿@page "/editproduct"
+@using Dashboard.Blazor.ModelsDto
+@inject HttpClient client
+
+<h3>Edit Order</h3>
+<br>
+<MudTextField @bind-Value="updateProductDto.Status" Label="Name" Variant="Variant.Outlined" />
+<br>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async()=> await PutProduct())">Update</MudButton>
+
+@code {
+    UpdateProductDto updateProductDto = new UpdateProductDto();
+
+    private async Task PutProduct()
+    {
+        var message = new HttpRequestMessage(HttpMethod.Put, "/api/Products");
+        message.Content = JsonContent.Create(updateProductDto);
+        message.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
+        var responseMessage = await client.SendAsync(message);
+    }
+}

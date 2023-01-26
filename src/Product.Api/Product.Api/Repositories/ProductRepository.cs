@@ -20,8 +20,6 @@ namespace Product.Api.Repositories
 		private readonly IMongoDatabase _database;
 		private readonly IMongoCollection<ProductModel> _products;
 		private IOptions<AppSettings> _appsettings;
-		private AppSettings object1;
-		private SendToGetMessage object2;
 
 		public ProductRepository(IOptions<AppSettings> appsettings, SendToGetMessage sendToGet)
 		{
@@ -38,7 +36,7 @@ namespace Product.Api.Repositories
 			product.Id = ObjectId.GenerateNewId(DateTime.Now).ToString();
 			product.CreatedAt = DateTime.UtcNow;
 			sendToGet.SendMessage(product ,"product added");
-		    await _products.InsertOneAsync(product);
+			await _products.InsertOneAsync(product);
 			return product;
 		}
 
@@ -77,7 +75,7 @@ namespace Product.Api.Repositories
 				EProductSortingStatus.CreatedAtes => products.OrderByDescending(p => p.CreatedAt).ToList(),
 				_ => products
 			};
-
+		
 			var productList = products.Adapt<List<ProductViewModel>>().ToPagedList(filterDto);
             return productList;
 		}

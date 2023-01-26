@@ -62,9 +62,9 @@ namespace Product.Api.Test
 			var product = await repository.CreateProductAsync(dto);
 			await repository.DeleteProductAsync(product.Id);
 
-			var products = await repository.GetAllProductAsync(new ProductFilterDto ());
-            var deleteproduct = products.FirstOrDefault(p => p.Id == product.Id);
-			
+			var products = await repository.GetAllProductAsync(new ProductFilterDto());
+			var deleteproduct = products.FirstOrDefault(p => p.Id == product.Id);
+
 			//Assert
 			Assert.Null(deleteproduct);
 		}
@@ -79,20 +79,38 @@ namespace Product.Api.Test
 				Count = 2,
 			};
 			var product = await repository.CreateProductAsync(dto);
-            var updatedto = new UpdateProductDto()
+			var updatedto = new UpdateProductDto()
 			{
 				Name = "Update",
 				Price = 2000,
 				Status = EProductStatus.Active,
 			};
 			await repository.UpdateProductAsync(product.Id, updatedto);
-            var updateproduct = await repository.GetProductAsync(product.Id);
+			var updateproduct = await repository.GetProductAsync(product.Id);
 
 			//Assert
 			Assert.NotNull(updateproduct);
 			Assert.Equal(EProductStatus.Active, updateproduct.Status);
 			Assert.Equal("Update", updateproduct.Name);
 			Assert.Equal(2000, updateproduct.Price);
+		}
+
+		[Fact]
+		public async Task TestGetProductAsync()
+		{
+			var dto = new CreateProductDto()
+			{
+				Name = "Test",
+				Price = 1000,
+				Count = 2,
+			};
+			var product = await repository.CreateProductAsync(dto);
+            var currentproduct = await repository.GetProductAsync(product.Id);
+
+			//Assert
+			Assert.NotNull(currentproduct);
+			Assert.Equal("Test",currentproduct.Name);
+			Assert.Equal(1000,currentproduct.Price);
 		}
 	}
 }

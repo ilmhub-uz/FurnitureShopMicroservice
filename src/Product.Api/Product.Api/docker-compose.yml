@@ -1,0 +1,42 @@
+﻿version: '3.7'
+
+services:
+
+  productapi:
+    image: productapi
+    container_name: productapi
+    depends_on:
+      - "mongodb"
+      - "rabbitmq"
+    ports:
+      - 5071:80
+    build:
+      dockerfile: Dockerfile
+    networks:
+      - real
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+    - 5672:5672
+    - 15672:15672
+    volumes:
+    - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+    - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+    - real
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - .:/todo
+    networks:
+      - real
+
+networks:
+  real:
+    driver: bridge

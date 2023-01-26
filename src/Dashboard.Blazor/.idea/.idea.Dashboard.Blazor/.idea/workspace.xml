@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a917ab0-755d-4a4a-ba0f-4a7ce2ee51ca" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Pages/Orders.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Orders.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Product.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/NavMenu.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/EditCategory.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/EditOrg.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/EditProduct.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dashboard.Api/Dashboard.Api/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard.Api/Dashboard.Api/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dashboard.Api/Dashboard.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard.Api/Dashboard.Api/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Dashboard.Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dashboard.Blazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Categories.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Categories.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Organizations.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Organizations.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Product.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Product.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/CategoryView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/Enums/EOrderStatus.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/Enums/EOrganizationStatus.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/Enums/ERole.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/OrderProductView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/OrderView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/OrganizationUserView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/OrganizationView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/ProductView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModels/UserView.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +82,8 @@
       <workItem from="1674662723873" duration="55000" />
       <workItem from="1674662853166" duration="307000" />
       <workItem from="1674663216090" duration="85000" />
+      <workItem from="1674663321699" duration="132000" />
+      <workItem from="1674733371068" duration="2733000" />
     </task>
     <servers />
   </component>
