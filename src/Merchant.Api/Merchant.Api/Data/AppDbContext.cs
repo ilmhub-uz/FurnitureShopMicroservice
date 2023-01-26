@@ -9,6 +9,7 @@ public class AppDbContext : DbContext
     public DbSet<OrganizationUser>? OrganizationUsers { get; set; }
     public DbSet<AppUser>? AppUsers { get; set; }
     public DbSet<Product>? Products { get; set; }
+    public DbSet<Contract>? Contracts { get; set; }
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
