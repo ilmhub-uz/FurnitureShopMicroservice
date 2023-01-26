@@ -2,8 +2,12 @@ using JFA.DependencyInjection;
 using Merchant.Api.Configurations;
 using Merchant.Api.Extensions;
 using Merchant.Api.Middleware;
+using Merchant.Api.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<FactoryConfigurationOptions>(
+    builder.Configuration.GetSection("FactoryConfiguration"));
 
 builder.Configuration.AddJsonFile("RabbitMq.json", false, true);
 
