@@ -1,14 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Dashboard.Api.Entities;
 using Dashboard.Api.Entities.Enums;
 
-namespace Dashboard.Api.Entites;
+namespace Dashboard.Api.Entities;
 
 public class Contract
 {
     public Guid Id { get; set; }
 
+    public Guid ContractId { get; set; }
     [Required]
     public Guid UserId { get; set; }
 
