@@ -20,8 +20,9 @@ public class ContractRepository : IContractRepository
 
     public async Task AddContract(CreateContractDto createContractDto)
     {
-        var product = createContractDto.Adapt<Entities.Contract>();
-        await context.Contracts!.AddAsync(product);
+        var contract = createContractDto.Adapt<Entities.Contract>();
+        await context.Contracts!.AddAsync(contract);
+        await context.SaveChangesAsync();
     }
 
     public async Task DeleteContract(Guid contractId)
