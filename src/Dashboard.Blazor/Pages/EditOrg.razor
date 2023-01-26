@@ -1,0 +1,22 @@
+﻿@page "/editorg"
+@using Dashboard.Blazor.ModelsDto
+@inject HttpClient client
+
+<h3>Edit Organization</h3>
+<br>
+<MudTextField @bind-Value="updateOrgDto.Name" Label="Name" Variant="Variant.Outlined" />
+<MudTextField @bind-Value="updateOrgDto.Status" Label="Status" Variant="Variant.Outlined" />
+<br>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async()=> await PutOrg())">Update</MudButton>
+
+@code {
+    UpdateOrganizationDto updateOrgDto = new UpdateOrganizationDto();
+
+    private async Task PutOrg()
+    {
+        var message = new HttpRequestMessage(HttpMethod.Put, "/api/Organizations");
+        message.Content = JsonContent.Create(updateOrgDto);
+        message.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
+        var responseMessage = await client.SendAsync(message);
+    }
+}
