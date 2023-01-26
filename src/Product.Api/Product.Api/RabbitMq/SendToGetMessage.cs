@@ -8,6 +8,7 @@ namespace Product.Api.RabbitMq
 	{
 		public void SendMessage(ProductModel product , string message)
 		{
+			
 			var factory = new ConnectionFactory
 			{
 				HostName = "localhost",
@@ -18,15 +19,13 @@ namespace Product.Api.RabbitMq
 
 			var connection = factory.CreateConnection();
 			var channel = connection.CreateModel();
-
-			//channel.QueueDeclare("product_added", false, false, false, null);
+		
 			channel.ExchangeDeclare(message, ExchangeType.Fanout);
 
 			var productJson = Newtonsoft.Json.JsonConvert.SerializeObject(product);
 			var productJsonByte = Encoding.UTF8.GetBytes(productJson);
 			channel.BasicPublish("product_added", "", null, productJsonByte);
-			if(!channel.IsClosed)channel.Close();
-			if(connection.IsOpen)connection.Close();
+			if(channel.IsOpen)channel.Close();
 		}
 	}
 }
