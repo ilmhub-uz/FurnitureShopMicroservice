@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using Cart.Api.Dtos;
 using Cart.Api.Entities;
+using Cart.Api.Services;
 using Mapster;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Http;
@@ -15,70 +16,33 @@ namespace Cart.Api.Controllers;
 [ApiController]
 public class CartsController : ControllerBase
 {
-    private readonly IDistributedCache _distributedCache;
+    private readonly ICartService _cartService;
 
-    public CartsController(IDistributedCache distributedCache)
+    public CartsController(ICartService cartService)
     {
-        _distributedCache = distributedCache;
+        _cartService = cartService;
     }
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> AddProduct(string key, CreateProductDto createProductDto)
     {
-        var productsJson = await _distributedCache.GetStringAsync(key);
-        var products = JsonConvert.DeserializeObject<List<Product>>(productsJson ?? string.Empty);
-        var product = createProductDto.Adapt<Product>();
-        
-        products ??= new List<Product>();
-
-        products.Add(product);
-        
-        await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(products), new DistributedCacheEntryOptions()
-        {
-            SlidingExpiration = TimeSpan.FromDays(10)
-        });
+        await _cartService.AddProductAsync(key, createProductDto);
 
         return Ok();
     }
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Product>))]
-    public async Task<IActionResult> GetCart(string key)
-    {
-        var productsJson = await _distributedCache.GetStringAsync(key);
-
-        if (productsJson is null)
-            return Ok(new List<string>());
-
-        var products = JsonConvert.DeserializeObject<List<Product>>(productsJson);
-
-        return Ok(products);
-    }
+    public async Task<IActionResult> GetUserCart(string key) => Ok(await _cartService.GetUserCartAsync(key));
 
     [HttpPut]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateProduct(string key, UpdateProductDto updateProductDto)
     {
-        var productsJson = await _distributedCache.GetStringAsync(key);
-
-        if (productsJson is null)
-            return BadRequest();
-
-        var products = JsonConvert.DeserializeObject<List<Product>>(productsJson);
-        var product = products!.FirstOrDefault(product => product.Id == updateProductDto.Id);
-
-        if (product is null)
-            return BadRequest();
-
-        products!.Remove(product);
-        products.Add(updateProductDto.Adapt<Product>());
-
-        await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(products), new DistributedCacheEntryOptions()
-        {
-            SlidingExpiration = TimeSpan.FromDays(10)
-        });
+        await _cartService.UpdateProductAsync(key, updateProductDto);
 
         return Ok();
     }
@@ -86,29 +50,19 @@ public class CartsController : ControllerBase
     [HttpDelete]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Product))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteProduct(string key, string productId)
     {
-        var productsJson = await _distributedCache.GetStringAsync(key);
+        await _cartService.DeleteProductAsync(key, productId);
 
-        if (productsJson is null)
-            return BadRequest();
-
-        var products = JsonConvert.DeserializeObject<List<Product>>(productsJson);
-        var product = products!.FirstOrDefault(product => product.Id == productId);
-
-        if (products is null)
-            return BadRequest();
-
-        products.Remove(product!);
-
-        return Ok(product);
+        return Ok();
     }
 
     [HttpDelete("user")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteUserCart(string key)
     {
-        await _distributedCache.RemoveAsync(key);
+        await _cartService.DeleteUserCartAsync(key);
 
         return Ok();
     }
