@@ -11,14 +11,6 @@
   <ItemGroup>
     <PackageReference Include="JFA.DependencyInjection" Version="1.0.7" />
     <PackageReference Include="Mapster" Version="7.3.0" />
-    <Compile Remove="Controllers\**" />
-    <Content Remove="Controllers\**" />
-    <EmbeddedResource Remove="Controllers\**" />
-    <None Remove="Controllers\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Controllers\OrderController.cs" />
   </ItemGroup>
 
   <ItemGroup>
