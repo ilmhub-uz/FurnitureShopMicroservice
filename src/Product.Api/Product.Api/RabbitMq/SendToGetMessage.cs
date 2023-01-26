@@ -25,8 +25,7 @@ namespace Product.Api.RabbitMq
 			var productJson = Newtonsoft.Json.JsonConvert.SerializeObject(product);
 			var productJsonByte = Encoding.UTF8.GetBytes(productJson);
 			channel.BasicPublish("product_added", "", null, productJsonByte);
-			if(!channel.IsOpen)channel.Close();
-			if(connection.IsOpen)connection.Close();
+			if(channel.IsOpen)channel.Close();
 		}
 	}
 }
