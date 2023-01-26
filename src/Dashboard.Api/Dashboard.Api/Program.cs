@@ -1,4 +1,5 @@
 using Dashboard.Api.Extensions;
+using Dashboard.Api.Helpers;
 using Dashboard.Api.Middleware;
 using Dashboard.Api.RabbitMQ;
 using JFA.DependencyInjection;
@@ -22,6 +23,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+if (app.Services.GetServices<IHttpContextAccessor>() is not null)
+    HttpContextHelper.Accessor = app.Services.GetService<IHttpContextAccessor>();
 
 app.UseCors();
 
