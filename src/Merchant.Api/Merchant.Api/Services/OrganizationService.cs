@@ -24,7 +24,7 @@ public class OrganizationService : IOrganizationService
         _fileHelper = fileHelper;
     }
 
-    public async Task CreateOrganizationAsync(CreateOrganizationDto createOrganization)
+    public async Task<OrganizationView> CreateOrganizationAsync(CreateOrganizationDto createOrganization)
     {
         var organization = createOrganization.Adapt<Organization>();
 
@@ -49,16 +49,18 @@ public class OrganizationService : IOrganizationService
         await _organizationRepository.CreateOrganizationAsync(organization);
 
         SendMessage(organization);
+
+        return createOrganization.Adapt<OrganizationView>();
     }
 
-    public async Task DeleteOrganizationAsync(Guid organizationId)
+    public async Task<bool> DeleteOrganizationAsync(Guid organizationId)
     {
         var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
 
         if (organization is null)
             throw new NotFoundException<Organization>();
 
-        await _organizationRepository.DeleteOrganizationAsync(organization);
+        return await _organizationRepository.DeleteOrganizationAsync(organizationId);
     }
 
     public async Task<OrganizationView> GetOrganizationByIdAsync(Guid organizationId)
@@ -77,7 +79,7 @@ public class OrganizationService : IOrganizationService
         return organizations?.Select(x => x.Adapt<OrganizationView>()).ToList();
     }
 
-    public async Task UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization)
+    public async Task<OrganizationView> UpdateOrganizationAsync(Guid organizationId, UpdateOrganizationDto updateOrganization)
     {
         var organization = await _organizationRepository.GetOrganizationByIdAsync(organizationId);
         if (organization is null)
@@ -96,6 +98,7 @@ public class OrganizationService : IOrganizationService
         }
 
         await _organizationRepository.UpdateOrganizationAsync(organization);
+        return updateOrganization.Adapt<OrganizationView>();
     }
 
     private void SendMessage(Organization organization)

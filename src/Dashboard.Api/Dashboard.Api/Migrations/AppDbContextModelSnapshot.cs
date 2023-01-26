@@ -183,6 +183,9 @@ namespace Dashboard.Api.Migrations
                     b.Property<long>("Count")
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
@@ -198,27 +201,14 @@ namespace Dashboard.Api.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("OrganizationId")
-                        .HasColumnType("uuid");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
-                    b.Property<long>("ProductCount")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ProductName")
                         .HasColumnType("text");
 
                     b.Property<Dictionary<string, string>>("Properties")
                         .HasColumnType("hstore");
-
-                    b.Property<long[]>("Rates")
-                        .HasColumnType("bigint[]");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");
@@ -232,8 +222,6 @@ namespace Dashboard.Api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Products");
                 });
@@ -310,15 +298,7 @@ namespace Dashboard.Api.Migrations
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("Dashboard.Api.Entities.Organization", "Organization")
-                        .WithMany()
-                        .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("Dashboard.Api.Entities.AppUser", b =>
