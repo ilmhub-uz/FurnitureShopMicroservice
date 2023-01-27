@@ -18,10 +18,10 @@ public class ContractRepository : IContractRepository
         this.context = context;
     }
 
-    public async Task AddContract(CreateContractDto createContractDto)
+    public async Task AddContract(Entities.Contract contract)
     {
-        var product = createContractDto.Adapt<Entities.Contract>();
-        await context.Contracts!.AddAsync(product);
+        await context.Contracts!.AddAsync(contract);
+        await context.SaveChangesAsync();
     }
 
     public async Task DeleteContract(Guid contractId)
@@ -47,16 +47,17 @@ public class ContractRepository : IContractRepository
         return product.Adapt<Entities.Contract>();
     }
 
-    public async Task<List<Entities.Contract>> GetContracts(ContractFilterDto? contractFilterDto)
+    public async Task<List<Entities.Contract>> GetContracts(ContractFilterDto? contractFilterDto = null)
     {
-        var query = context.Contracts!.Select(c => c.Adapt<Entities.Contract>());
+        var query = context.Contracts!.Where(c =>true);
 
         if (contractFilterDto is not null)
         {
             query = FilterContract(query, contractFilterDto);
         }
+        var contracts  = await query.ToListAsync();
 
-        return await query.ToListAsync();
+        return contracts.Select(c => c.Adapt<Entities.Contract>()).ToList();
     }
 
     public async Task UpdateContact(UpdateContractDto updateContractDto)
@@ -67,10 +68,19 @@ public class ContractRepository : IContractRepository
         }
         var product = await context.Contracts!.FirstAsync(c => c.Id == updateContractDto.Id);
 
-        context.Contracts!.Update(product);
+        if (updateContractDto.Status != null)       product.Status = updateContractDto.Status.Value;
+        if (updateContractDto.ProductCount != null) product.ProductCount = updateContractDto.ProductCount.Value;
+        if (updateContractDto.FinishDate != null)   product.FinishDate = updateContractDto.FinishDate.Value;
+        if (updateContractDto.TotalPrice != null)   product.TotalPrice = updateContractDto.TotalPrice.Value;
+
         await context.SaveChangesAsync();
     }
-
+ 
+    public EContractStatus Status { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public uint ProductCount { get; set; }
+    public decimal TotalPrice { get; set; }
+    public DateTime FinishDate { get; set; }
     private IQueryable<Entities.Contract> FilterContract(IQueryable<Entities.Contract> query, ContractFilterDto contractFilterDto)
     {
 
