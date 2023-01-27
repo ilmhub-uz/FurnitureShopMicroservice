@@ -1,10 +1,10 @@
 ﻿using Contract.Api.Dto;
 using Contract.Api.Entities;
 using Contract.Api.Exceptions;
+using Contract.Api.RabbitMq;
 using JFA.DependencyInjection;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Contracts;
 
 namespace Contract.Api.Context.Repositories
 {
@@ -13,19 +13,22 @@ namespace Contract.Api.Context.Repositories
     {
 
         private readonly AppDbContext context;
+        private readonly SendToGetMessage sendToGet;
 
-        public OrderRepository(AppDbContext context)
+        public OrderRepository(AppDbContext context, SendToGetMessage sendToGet)
         {
             this.context = context;
+            this.sendToGet = sendToGet;
         }
         public async Task CreateOrderAsync(CreateOrderDto createOrder)
         {
             var product = createOrder.Adapt<Entities.Order>();
+            sendToGet.SendMessageOrder(product, "orderadded");
             await context.Orders.AddAsync(product);
             await context.SaveChangesAsync();
         }
 
-        public async Task DeleteOrderAsync(Guid orderId)    
+        public async Task DeleteOrderAsync(Guid orderId)
         {
             if (!await context.Orders.AnyAsync(c => c.Id == orderId))
             {

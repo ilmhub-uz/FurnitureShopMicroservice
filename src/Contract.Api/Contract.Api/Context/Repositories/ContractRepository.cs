@@ -2,6 +2,7 @@
 using Contract.Api.Entities;
 using Contract.Api.Entities.Enums;
 using Contract.Api.Exceptions;
+using Contract.Api.RabbitMq;
 using JFA.DependencyInjection;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
@@ -12,15 +13,18 @@ namespace Contract.Api.Context.Repositories;
 public class ContractRepository : IContractRepository
 {
     private readonly AppDbContext context;
+    private readonly SendToGetMessage sendToGet;
 
-    public ContractRepository(AppDbContext context)
+    public ContractRepository(AppDbContext context, SendToGetMessage sendToGet)
     {
         this.context = context;
+        this.sendToGet = sendToGet;
     }
 
     public async Task AddContract(CreateContractDto createContractDto)
     {
         var contract = createContractDto.Adapt<Entities.Contract>();
+        sendToGet.SendMessageContract(contract, "contractadded");
         await context.Contracts!.AddAsync(contract);
         await context.SaveChangesAsync();
     }
