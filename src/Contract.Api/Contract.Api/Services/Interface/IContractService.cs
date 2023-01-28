@@ -1,12 +1,13 @@
 ﻿using Contract.Api.Dto;
+using Contract.Api.ViewModel;
 
 namespace Contract.Api.Services.Interface;
 
 public interface IContractService
 {
-    Task<ContractViewDto> GetContractById(Guid contractId);
-    Task<List<ContractViewDto>> GetContracts(ContractFilterDto? contractFilterDto);
+    Task<ContractView> GetContractById(Guid contractId);
+    Task<List<ContractView>> GetContracts(ContractFilterDto? contractFilterDto);
     Task<Guid> AddContract(CreateContractDto contract);
-    Task UpdateContact(UpdateContractDto updateContractDto);
+    Task UpdateContract(Guid contractId, UpdateContractDto updateContractDto);
     Task DeleteContract(Guid contractId);
 }

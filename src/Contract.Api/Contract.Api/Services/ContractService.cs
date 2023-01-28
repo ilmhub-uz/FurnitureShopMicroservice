@@ -1,9 +1,9 @@
 ﻿using Contract.Api.Context.Repositories;
 using Contract.Api.Dto;
 using Contract.Api.Services.Interface;
+using Contract.Api.ViewModel;
 using JFA.DependencyInjection;
 using Mapster;
-
 namespace Contract.Api.Services;
 
 [Scoped]
@@ -21,33 +21,38 @@ public class ContractService : IContractService
     {
         var contract = createContractDto.Adapt<Entities.Contract>();
 
-        var contractId = Guid.NewGuid();
-        contract.Id = contractId;
-        // contract.UserId =Guid.Parse(userId);
+        contract.Id = Guid.NewGuid();
+        contract.CreatedAt = DateTime.UtcNow;
+
         await contractRepository.AddContract(contract);
 
-        return contractId;
+        return contract.Id;
     }
 
     public async Task DeleteContract(Guid contractId)
     {
-        await contractRepository.DeleteContract(contractId);
+        var contract = await contractRepository.GetContractById(contractId);
+        await contractRepository.DeleteContract(contract);
     }
 
-    public async Task<ContractViewDto> GetContractById(Guid contractId)
+    public async Task<ContractView> GetContractById(Guid contractId)
     {
         var contract = await contractRepository.GetContractById(contractId);
-        return contract.Adapt<ContractViewDto>();
+        return contract.Adapt<ContractView>();
     }
 
-    public async Task<List<ContractViewDto>> GetContracts(ContractFilterDto? contractFilterDto = null)
+    public async Task<List<ContractView>> GetContracts(ContractFilterDto? contractFilterDto = null)
     {
         var contracts = await contractRepository.GetContracts(contractFilterDto);
-        return contracts.Select(c => c.Adapt<ContractViewDto>()).ToList();
+        return contracts.Select(c => c.Adapt<ContractView>()).ToList();
     }
 
-    public async Task UpdateContact(UpdateContractDto updateContractDto)
+    public async Task UpdateContract(Guid contractId, UpdateContractDto updateContractDto)
     {
-        await contractRepository.UpdateContact(updateContractDto);
+        var contract = await contractRepository.GetContractById(contractId);
+
+        if (updateContractDto.Status != null) contract.Status = updateContractDto.Status.Value;
+
+        await contractRepository.UpdateContact(contractId, contract);
     }
 }

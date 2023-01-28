@@ -1,9 +1,9 @@
 ﻿using Contract.Api.Dto;
+using Contract.Api.Filters;
 using Contract.Api.Services;
 using Contract.Api.Services.Interface;
-using Mapster;
+using Contract.Api.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace Contract.Api.Controllers;
 
@@ -18,40 +18,42 @@ public class ContractController : Controller
     }
 
     [HttpPost]
-    [ProducesResponseType(statusCode: StatusCodes.Status200OK,type: typeof(Guid))]
-    public async Task<IActionResult> CreateContract([FromQuery]CreateContractDto createContractDto)
+    [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(Guid))]
+    public async Task<IActionResult> CreateContract([FromQuery] CreateContractDto createContractDto)
     {
-     // var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+        // var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
         var contractId = await contractService.AddContract(createContractDto/*,userId*/);
         return Ok(contractId);
     }
 
     [HttpGet("{contractId}")]
-    [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(ContractViewDto))]
+    [IdValidation]
+    [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(ContractView))]
     public async Task<IActionResult> GetContractById(Guid contractId)
     {
         var contract = await contractService.GetContractById(contractId);
         return Ok(contract);
     }
 
-
     [HttpGet]
-    [ProducesResponseType(statusCode: StatusCodes.Status200OK,type:typeof(List<ContractViewDto>))]
-    public async Task<IActionResult> GetContracts([FromQuery]ContractFilterDto? contractFilterDto = null)
+    [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(List<ContractView>))]
+    public async Task<IActionResult> GetContracts([FromQuery] ContractFilterDto? contractFilterDto = null)
     {
         var contracts = await contractService.GetContracts(contractFilterDto);
         return Ok(contracts);
     }
 
-    [HttpPut]
+    [HttpPut("{contractId}")]
+    [IdValidation]
     [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateContract([FromQuery]UpdateContractDto updateContractDto)
+    public async Task<IActionResult> UpdateContract(Guid contractId, [FromQuery] UpdateContractDto updateContractDto)
     {
-        await contractService.UpdateContact(updateContractDto);
+        await contractService.UpdateContract(contractId, updateContractDto);
         return Ok();
     }
 
-    [HttpDelete]
+    [HttpDelete("{contractId}")]
+    [IdValidation]
     [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteContract(Guid contractId)
     {

@@ -7,6 +7,5 @@ public class CreateContractDtoValidator : AbstractValidator<CreateContractDto>
 {
     public CreateContractDtoValidator()
     {
-        RuleFor(c=>c.CreatedAt).NotEmpty();
     }
 }

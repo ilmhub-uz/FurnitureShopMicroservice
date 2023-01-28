@@ -15,16 +15,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAppDbContext(builder.Configuration);
 builder.AddSeriologConfig();
 builder.Services.AddServicesFromAttribute();
-
+builder.Services.AddScoped<ContractRepository>();
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
+
 app.UseErrorHandlerMiddleware();
 app.UseAuthorization();
 
