@@ -26,7 +26,7 @@ namespace Contract.Api.Controllers
             return Ok();
         }
 
-        [HttpGet("{orderId}")]
+        [HttpGet("{OrderId}")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
         public async Task<IActionResult> GetOrderByIdAsync(Guid OrderId)
         {

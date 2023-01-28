@@ -1,8 +1,7 @@
 using Contract.Api.Context.Repositories;
 using Contract.Api.Extensions;
 using Contract.Api.Middlewares;
-using Contract.Api.Services;
-using Contract.Api.Services.Interface;
+using Contract.Api.RabbitMq;
 using JFA.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +14,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAppDbContext(builder.Configuration);
 builder.AddSeriologConfig();
 builder.Services.AddServicesFromAttribute();
-builder.Services.AddScoped<ContractRepository>();
+builder.Services.AddSingleton<SendToGetMessage>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IContractRepository, ContractRepository>();
+
 var app = builder.Build();
 
     app.UseSwagger();
