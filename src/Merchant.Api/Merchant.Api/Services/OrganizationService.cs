@@ -5,7 +5,9 @@ using Merchant.Api.Dtos.Enums;
 using Merchant.Api.Dtos.Update;
 using Merchant.Api.Entities;
 using Merchant.Api.Exceptions;
+using Merchant.Api.Options;
 using Merchant.Api.Repositories;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System.Text;
@@ -15,13 +17,16 @@ public class OrganizationService : IOrganizationService
 {
     private readonly IOrganizationRepository _organizationRepository;
     private readonly IFileHelper _fileHelper;
+    private readonly IOptions<FactoryConfigurationOptions> _config;
 
     public OrganizationService(
         IOrganizationRepository organizationRepository,
-        IFileHelper fileHelper)
+        IFileHelper fileHelper,
+        IOptions<FactoryConfigurationOptions> config)
     {
         _organizationRepository = organizationRepository;
         _fileHelper = fileHelper;
+        _config = config;
     }
 
     public async Task<OrganizationView> CreateOrganizationAsync(CreateOrganizationDto createOrganization)
@@ -48,7 +53,7 @@ public class OrganizationService : IOrganizationService
 
         await _organizationRepository.CreateOrganizationAsync(organization);
 
-        SendMessage(organization);
+        SendMessage(organization, "organization_added");
 
         return createOrganization.Adapt<OrganizationView>();
     }
@@ -98,30 +103,33 @@ public class OrganizationService : IOrganizationService
         }
 
         await _organizationRepository.UpdateOrganizationAsync(organization);
+
+        SendMessage(organization, "organization_updated");
+
         return updateOrganization.Adapt<OrganizationView>();
     }
 
-    private void SendMessage(Organization organization)
+    private void SendMessage(Organization organization, string exchange)
     {
         var factory = new ConnectionFactory
         {
-            HostName = "localhost",
-            UserName = "guest",
-            Password = "guest",
-            Port = 5672
+            HostName = _config.Value.HostName,
+            UserName = _config.Value.UserName,
+            Password = _config.Value.Password,
+            Port = _config.Value.Port
         };
 
         var connection = factory.CreateConnection();
         var channel = connection.CreateModel();
 
-        channel.ExchangeDeclare("organization_added", ExchangeType.Fanout);
+        channel.ExchangeDeclare(exchange, ExchangeType.Fanout);
         var productJson = JsonConvert.SerializeObject(organization, Formatting.None, new JsonSerializerSettings()
         {
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         });
         var productJsonByte = Encoding.UTF8.GetBytes(productJson);
 
-        channel.BasicPublish("organization_added", "", null, productJsonByte);
+        channel.BasicPublish(exchange, "", null, productJsonByte);
 
         // channel.Close();
         // connection.Close();

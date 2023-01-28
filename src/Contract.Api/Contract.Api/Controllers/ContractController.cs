@@ -1,12 +1,13 @@
 ﻿using Contract.Api.Dto;
 using Contract.Api.Services;
+using Contract.Api.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Contract.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ContractController : Controller
+    public class ContractController : ControllerBase
     {
         private readonly IContractService contractService;
         public ContractController(IContractService contractService)
