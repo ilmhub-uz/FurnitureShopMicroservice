@@ -5,7 +5,7 @@ namespace Product.Api.Extensions
 {
 	public static class LoggerExtension
 	{
-		public static void SerilogConfiguration(this WebApplicationBuilder builder)
+		public static void SerilogConfiguration(this IServiceCollection service)
 		{
 			var logger = new LoggerConfiguration()
 				.WriteTo.Console()
