@@ -4,6 +4,7 @@ using Contract.Api.Services;
 using Contract.Api.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Contract.Api.Controllers
 {
@@ -12,7 +13,7 @@ namespace Contract.Api.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderService orderService;
-        public OrderController(IOrderService orderService)
+        public OrderController(OrderService orderService)
         {
             this.orderService = orderService;
         }
@@ -21,9 +22,10 @@ namespace Contract.Api.Controllers
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
         public async Task<IActionResult> CreateOrderAsync(CreateOrderDto createOrder)
         {
-            await orderService.CreateOrderAsync(createOrder);
+            //var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)
+            var orderId = await orderService.CreateOrderAsync(Guid.NewGuid(),createOrder);
             
-            return Ok();
+            return Ok(orderId);
         }
 
         [HttpGet("{OrderId}")]
@@ -42,7 +44,6 @@ namespace Contract.Api.Controllers
         public async Task<IActionResult> DeleteOrderAsync(Guid orderId)
         {
             await orderService.DeleteOrderAsync(orderId);
-
             return Ok();
         }
     }
