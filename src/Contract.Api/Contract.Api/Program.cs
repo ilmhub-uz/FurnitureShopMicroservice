@@ -1,4 +1,5 @@
 using Contract.Api.Context.Repositories;
+using Contract.Api.Entities;
 using Contract.Api.Extensions;
 using Contract.Api.Middlewares;
 using Contract.Api.RabbitMq;
@@ -11,24 +12,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<EmailBody>(builder.Configuration.GetSection("EmailBody"));
+builder.Services.Configure<EmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration"));
+
 builder.Services.AddAppDbContext(builder.Configuration);
-builder.AddSeriologConfig();
 builder.Services.AddServicesFromAttribute();
+builder.Services.AddAutoDtoValidation();
 builder.Services.AddSingleton<SendToGetMessage>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<IContractRepository, ContractRepository>();
+builder.AddSeriologConfig();
 
 var app = builder.Build();
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
-
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseErrorHandlerMiddleware();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
 
 //1.ContractService ichini to`ldirish                    //chala

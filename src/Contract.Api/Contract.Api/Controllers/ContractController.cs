@@ -12,9 +12,11 @@ namespace Contract.Api.Controllers;
 public class ContractController : Controller
 {
     private readonly IContractService contractService;
-    public ContractController(ContractService contractService)
+    private readonly IEmailService emailService;
+    public ContractController(ContractService contractService, EmailService emailService)
     {
         this.contractService = contractService;
+        this.emailService = emailService;
     }
 
     [HttpPost]
@@ -23,6 +25,8 @@ public class ContractController : Controller
     {
         // var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
         var contractId = await contractService.AddContract(createContractDto/*,userId*/);
+        var emailReceiver = new string[] { "maxammatovabdurauftdyu@gmail.com" };
+        emailService.SendEmail(emailReceiver);
         return Ok(contractId);
     }
 
