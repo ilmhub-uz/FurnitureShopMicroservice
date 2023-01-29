@@ -3,6 +3,7 @@ using System;
 using Contract.Api.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Contract.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230129171742_init5")]
+    partial class init5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +36,9 @@ namespace Contract.Api.Migrations
                     b.Property<DateTime>("FinishDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
+
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
@@ -45,7 +50,7 @@ namespace Contract.Api.Migrations
                     b.ToTable("Contracts");
                 });
 
-            modelBuilder.Entity("Contract.Api.Entities.ContractOrder", b =>
+            modelBuilder.Entity("Contract.Api.Entities.ContractProduct", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,7 +59,10 @@ namespace Contract.Api.Migrations
                     b.Property<Guid>("ContractId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("OrderId")
+                    b.Property<long>("Count")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Properties")
@@ -115,13 +123,15 @@ namespace Contract.Api.Migrations
                     b.ToTable("OrderProducts");
                 });
 
-            modelBuilder.Entity("Contract.Api.Entities.ContractOrder", b =>
+            modelBuilder.Entity("Contract.Api.Entities.ContractProduct", b =>
                 {
-                    b.HasOne("Contract.Api.Entities.Contract", null)
+                    b.HasOne("Contract.Api.Entities.Contract", "Contract")
                         .WithMany("Products")
                         .HasForeignKey("ContractId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Contract");
                 });
 
             modelBuilder.Entity("Contract.Api.Entities.OrderProduct", b =>

@@ -18,46 +18,38 @@ namespace Contract.Api.Context.Repositories
         {
             this.context = context;
         }
-        public async Task CreateOrderAsync(CreateOrderDto createOrder)
+        public async Task CreateOrderAsync(Order order)
         {
-            var product = createOrder.Adapt<Entities.Order>();
-            await context.Orders.AddAsync(product);
+            await context.Orders.AddAsync(order);
             await context.SaveChangesAsync();
         }
 
-        public async Task DeleteOrderAsync(Guid orderId)    
+        public async Task DeleteOrderAsync(Order order)    
         {
-            if (!await context.Orders.AnyAsync(c => c.Id == orderId))
-            {
-                throw new NotFoundException<Entities.Order>();
-            }
-
-            var order = await context.Orders.FirstAsync(c => c.Id == orderId);
-
-            context.Orders.Remove(order);
+            context.Orders!.Remove(order);
             await context.SaveChangesAsync();
         }
 
-        public async Task<List<Order>?> GetOrder()
+        public async Task<List<Order>?> GetOrders()
         {
-            var query = await context.Orders.ToListAsync();
-
-            return query.Select(c => c.Adapt<Entities.Order>()).ToList();
+            var orders = await context.Orders!.Include(order =>order.OrderProducts).ToListAsync();
+            return orders;
         }
 
-        public async Task<Order?> GetOrderByIdAsync(Guid OrderId)
+        public async Task<Order> GetOrderByIdAsync(Guid OrderId)
         {
-            if (!await context.Orders.AnyAsync(c => c.Id == OrderId))
-            {
-                throw new NotFoundException<Entities.Contract>();
-            }
-            var product = await context.Orders.FirstAsync(c => c.Id == OrderId);
-            return product.Adapt<Entities.Order>();
+            var order = await context.Orders!.Include(order => order.OrderProducts).FirstAsync(o => o.Id == OrderId);
+            return order;
+        }
+        public async Task UpdateOrder(Order order)
+        {
+            context.Orders!.Update(order);
+            await context.SaveChangesAsync();
         }
 
-        public async Task<bool> IsEntityExist(Guid contractId)
+        public async Task<bool> IsEntityExist(Guid orderId)
         {
-            if (await context.Contracts!.AnyAsync(c => c.Id == contractId)) return true;
+            if (await context.Orders!.AnyAsync(c => c.Id == orderId)) return true;
             else return false;
         }
     }

@@ -7,6 +7,6 @@ public class CreateContractDtoValidator : AbstractValidator<CreateContractDto>
 {
     public CreateContractDtoValidator()
     {
-        RuleFor(c =>c.OrderId).NotNull();
+        RuleFor(c =>c.ContractOrders).NotNull();
     }
 }

@@ -7,6 +7,6 @@ public interface IContractRepository
     Task<Entities.Contract> GetContractById(Guid contractId);
     Task<List<Entities.Contract>> GetContracts(ContractFilterDto? contractFilterDto);
     Task AddContract(Entities.Contract contract);
-    Task UpdateContact(Guid userId, Entities.Contract updateContractDto);
+    Task UpdateContact(Entities.Contract updateContractDto);
     Task DeleteContract(Entities.Contract contract);
 }

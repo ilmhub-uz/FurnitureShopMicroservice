@@ -47,7 +47,7 @@ public class ContractRepository : IContractRepository, IsEntityExistRepository
         return contracts.Select(c => c.Adapt<Entities.Contract>()).ToList();
     }
 
-    public async Task UpdateContact(Guid contractId, Entities.Contract contract)
+    public async Task UpdateContact(Entities.Contract contract)
     {
 
         context.Contracts!.Update(contract);
@@ -65,11 +65,6 @@ public class ContractRepository : IContractRepository, IsEntityExistRepository
         if (contractFilterDto.CreatedAt is not null)
         {
             query = query.Where(c => c.UserId == contractFilterDto.UserId);
-        }
-
-        if (contractFilterDto.FinishDate is not null)
-        {
-            query = query.Where(c => c.OrderId == contractFilterDto.OrderId);
         }
 
         if (contractFilterDto.Status is not null)
