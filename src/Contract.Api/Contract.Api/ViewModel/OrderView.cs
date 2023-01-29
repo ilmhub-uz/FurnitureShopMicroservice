@@ -2,9 +2,8 @@
 {
     public class OrderView
     {
-        
         public Guid Id { get; set; }
-        public uint Count { get; set; }
+        public DateTime 
         public string? Properties { get; set; }
     }
 }

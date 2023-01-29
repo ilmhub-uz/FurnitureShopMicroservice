@@ -24,11 +24,11 @@ namespace Contract.Api.Controllers
             return Ok(orderId);
         }
 
-        [HttpGet("{OrderId}")]
+        [HttpGet("{orderId}")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetOrderByIdAsync(Guid OrderId)
+        public async Task<IActionResult> GetOrderByIdAsync(Guid orderId)
         {
-            return Ok(await orderService.GetOrderByIdAsync(OrderId));
+            return Ok(await orderService.GetOrderByIdAsync(orderId));
         }
 
         [HttpGet]
@@ -39,11 +39,19 @@ namespace Contract.Api.Controllers
             return Ok(orders);
         }
 
-        [HttpDelete]
+        [HttpDelete("{orderId}")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
         public async Task<IActionResult> DeleteOrderAsync(Guid orderId)
         {
             await orderService.DeleteOrderAsync(orderId);
+            return Ok();
+        }
+
+        [HttpPut("{orderId}")]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateOrderAsync(Guid orderId ,UpdateOrderDto updateOrderDto)
+        {
+            await orderService.UpdateOrderAsync(orderId, updateOrderDto);
             return Ok();
         }
     }

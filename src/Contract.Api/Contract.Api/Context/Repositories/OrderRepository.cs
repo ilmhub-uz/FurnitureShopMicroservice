@@ -38,13 +38,18 @@ namespace Contract.Api.Context.Repositories
 
         public async Task<Order> GetOrderByIdAsync(Guid OrderId)
         {
-            var order = await context.Orders!.Include(order => order.OrderProducts).FirstAsync(c => c.Id == OrderId);
+            var order = await context.Orders!.Include(order => order.OrderProducts).FirstAsync(o => o.Id == OrderId);
             return order;
         }
-
-        public async Task<bool> IsEntityExist(Guid contractId)
+        public async Task UpdateOrder(Order order)
         {
-            if (await context.Contracts!.AnyAsync(c => c.Id == contractId)) return true;
+            context.Orders!.Update(order);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task<bool> IsEntityExist(Guid orderId)
+        {
+            if (await context.Orders!.AnyAsync(c => c.Id == orderId)) return true;
             else return false;
         }
     }

@@ -4,6 +4,7 @@ using Contract.Api.Entities;
 using Contract.Api.Services.Interface;
 using Contract.Api.ViewModel;
 using JFA.DependencyInjection;
+using MailKit.Search;
 using Mapster;
 namespace Contract.Api.Services;
 
@@ -20,19 +21,20 @@ public class ContractService : IContractService
 
     public async Task<Guid> AddContract(Guid userId, CreateContractDto createContractDto)
     {
-        var contract = new Entities.Contract()
+        var contractId = Guid.NewGuid();
+
+        var contract   = new Entities.Contract()
         {
-            Id = Guid.NewGuid(),
-            UserId = userId,
-            CreatedAt = DateTime.UtcNow,
-            OrderId = createContractDto.OrderId,
+            Id         = contractId,
+            UserId     = userId,
+            CreatedAt  = DateTime.UtcNow,
             FinishDate = DateTime.UtcNow,
-            Status = EContractStatus.Created
+            Status     = EContractStatus.Created,
+            Products   = ConvertToOrderProduct(createContractDto.ContractOrders!, contractId)
         };
 
         await contractRepository.AddContract(contract);
-
-        return contract.Id;
+        return contractId;
     }
 
     public async Task DeleteContract(Guid contractId)
@@ -59,6 +61,21 @@ public class ContractService : IContractService
 
         if (updateContractDto.Status != null) contract.Status = updateContractDto.Status.Value;
 
-        await contractRepository.UpdateContact(contractId, contract);
+        await contractRepository.UpdateContact(contract);
+    }
+
+    private List<ContractOrder> ConvertToOrderProduct(List<ContractOrderDto> contractOrders, Guid contractId)
+    {
+        var contractProductList = new List<ContractOrder>();
+        foreach (var contractProduct in contractOrders)
+        {
+            contractProductList.Add(new ContractOrder
+            {
+                Id = Guid.NewGuid(),
+                OrderId = contractProduct.OrderId,
+                ContractId = contractId,
+            });
+        }
+        return contractProductList;
     }
 }

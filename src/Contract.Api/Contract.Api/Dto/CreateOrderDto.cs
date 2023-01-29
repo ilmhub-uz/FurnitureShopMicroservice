@@ -1,7 +1,6 @@
-﻿namespace Contract.Api.Dto
+﻿namespace Contract.Api.Dto;
+
+public class CreateOrderDto
 {
-    public class CreateOrderDto
-    {
-        public List<CreateOrderProductDto> Products { get; set; }
-    }
+    public List<CreateOrderProductDto> Products { get; set; }
 }

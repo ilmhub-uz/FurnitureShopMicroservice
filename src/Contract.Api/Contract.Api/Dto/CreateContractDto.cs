@@ -4,5 +4,5 @@ namespace Contract.Api.Dto;
 
 public class CreateContractDto
 {
-    public Guid OrderId { get; set; }
+    public List<ContractOrderDto>? ContractOrders { get; set; }
 }

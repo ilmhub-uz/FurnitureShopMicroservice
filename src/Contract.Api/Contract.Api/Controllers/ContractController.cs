@@ -21,7 +21,7 @@ public class ContractController : Controller
 
     [HttpPost]
     [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(Guid))]
-    public async Task<IActionResult> CreateContract([FromQuery] CreateContractDto createContractDto)
+    public async Task<IActionResult> CreateContract(CreateContractDto createContractDto)
     {
         // var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
         var contractId = await contractService.AddContract(Guid.NewGuid(),createContractDto);

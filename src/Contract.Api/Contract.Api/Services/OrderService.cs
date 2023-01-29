@@ -1,12 +1,8 @@
-﻿using Contract.Api.Context;
-using Contract.Api.Context.Repositories;
+﻿using Contract.Api.Context.Repositories;
 using Contract.Api.Dto;
 using Contract.Api.Entities;
 using Contract.Api.Services.Interface;
 using JFA.DependencyInjection;
-using Mapster;
-using Microsoft.VisualBasic;
-using System.Collections.Generic;
 
 namespace Contract.Api.Services;
 
@@ -51,10 +47,20 @@ public class OrderService : IOrderService
 
     public async Task<Order?> GetOrderByIdAsync(Guid OrderId)
     {
-        return await orderRepository.GetOrderByIdAsync(OrderId);
+        var order = await orderRepository.GetOrderByIdAsync(OrderId);
+        return order;
     }
 
-    private List<OrderProduct> ConvertToOrderProduct (CreateOrderDto createOrderDto, Guid orderId)
+    public async Task UpdateOrderAsync(Guid orderId, UpdateOrderDto updateOrderDto)
+    {
+        var order = await orderRepository.GetOrderByIdAsync(orderId);
+
+        if(updateOrderDto.OrderStatus != null) order.Status = updateOrderDto.OrderStatus.Value;
+
+        await orderRepository.UpdateOrder(order);
+    }
+
+    private List<OrderProduct> ConvertToOrderProduct(CreateOrderDto createOrderDto, Guid orderId)
     {
         var orderProductList = new List<OrderProduct>();
         foreach (var orderProduct in createOrderDto.Products)
