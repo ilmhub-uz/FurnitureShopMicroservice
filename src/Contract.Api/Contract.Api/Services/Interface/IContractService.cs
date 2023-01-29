@@ -7,7 +7,7 @@ public interface IContractService
 {
     Task<ContractView> GetContractById(Guid contractId);
     Task<List<ContractView>> GetContracts(ContractFilterDto? contractFilterDto);
-    Task<Guid> AddContract(CreateContractDto contract);
+    Task<Guid> AddContract(Guid userId, CreateContractDto contract);
     Task UpdateContract(Guid contractId, UpdateContractDto updateContractDto);
     Task DeleteContract(Guid contractId);
 }

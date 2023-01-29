@@ -1,5 +1,6 @@
 ﻿using Contract.Api.Context.Repositories;
 using Contract.Api.Dto;
+using Contract.Api.Entities;
 using Contract.Api.Services.Interface;
 using Contract.Api.ViewModel;
 using JFA.DependencyInjection;
@@ -17,13 +18,16 @@ public class ContractService : IContractService
         this.contractRepository = contractRepository;
     }
 
-    public async Task<Guid> AddContract(CreateContractDto createContractDto)
+    public async Task<Guid> AddContract(Guid userId, CreateContractDto createContractDto)
     {
         var contract = new Entities.Contract()
         {
             Id = Guid.NewGuid(),
+            UserId = userId,
             CreatedAt = DateTime.UtcNow,
-            OrderId = createContractDto.OrderId
+            OrderId = createContractDto.OrderId,
+            FinishDate = DateTime.UtcNow,
+            Status = EContractStatus.Created
         };
 
         await contractRepository.AddContract(contract);
