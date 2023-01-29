@@ -8,5 +8,5 @@ public class Contract
     public EContractStatus Status { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime FinishDate { get; set; }
-    public virtual ICollection<ContractProduct>? Products { get; set; }
+    public virtual ICollection<ContractOrder>? Products { get; set; }
 }

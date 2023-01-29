@@ -32,13 +32,13 @@ namespace Contract.Api.Context.Repositories
 
         public async Task<List<Order>?> GetOrders()
         {
-            var orders = await context.Orders!.ToListAsync();
+            var orders = await context.Orders!.Include(order =>order.OrderProducts).ToListAsync();
             return orders;
         }
 
         public async Task<Order> GetOrderByIdAsync(Guid OrderId)
         {
-            var order = await context.Orders!.FirstAsync(c => c.Id == OrderId);
+            var order = await context.Orders!.Include(order => order.OrderProducts).FirstAsync(c => c.Id == OrderId);
             return order;
         }
 

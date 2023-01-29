@@ -25,6 +25,7 @@ public class ContractController : Controller
     {
         // var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
         var contractId = await contractService.AddContract(Guid.NewGuid(),createContractDto);
+
         var emailReceiver = new string[] { "maxammatovabdurauftdyu@gmail.com" };
         emailService.SendEmail(emailReceiver);
         return Ok(contractId);

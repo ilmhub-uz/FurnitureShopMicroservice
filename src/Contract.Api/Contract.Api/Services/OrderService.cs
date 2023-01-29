@@ -30,7 +30,7 @@ public class OrderService : IOrderService
             UserId = userId,
             CreatedAt = DateTime.UtcNow,
             Status = EOrderStatus.Created,
-            OrderProducts = ConvertToOrderProdcut(createOrder)
+            OrderProducts = ConvertToOrderProduct(createOrder, orderId)
         };
 
         await orderRepository.CreateOrderAsync(order);
@@ -54,7 +54,7 @@ public class OrderService : IOrderService
         return await orderRepository.GetOrderByIdAsync(OrderId);
     }
 
-    private List<OrderProduct>ConvertToOrderProdcut (CreateOrderDto createOrderDto)
+    private List<OrderProduct> ConvertToOrderProduct (CreateOrderDto createOrderDto, Guid orderId)
     {
         var orderProductList = new List<OrderProduct>();
         foreach (var orderProduct in createOrderDto.Products)
@@ -62,6 +62,7 @@ public class OrderService : IOrderService
             orderProductList.Add(new OrderProduct
             {
                 Id = Guid.NewGuid(),
+                OrderId = orderId,
                 ProductId = orderProduct.ProductId,
                 Count = orderProduct.Count
             });

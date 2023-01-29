@@ -1,10 +1,7 @@
 ﻿using Contract.Api.Dto;
-using Contract.Api.Entities;
 using Contract.Api.Services;
 using Contract.Api.Services.Interface;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace Contract.Api.Controllers
 {
@@ -23,8 +20,7 @@ namespace Contract.Api.Controllers
         public async Task<IActionResult> CreateOrderAsync(CreateOrderDto createOrder)
         {
             //var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)
-            var orderId = await orderService.CreateOrderAsync(Guid.NewGuid(),createOrder);
-            
+            var orderId = await orderService.CreateOrderAsync(Guid.NewGuid(), createOrder);
             return Ok(orderId);
         }
 
@@ -37,7 +33,11 @@ namespace Contract.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetOrder() => Ok(await orderService.GetOrder());
+        public async Task<IActionResult> GetOrder()
+        {
+            var orders = await orderService.GetOrder();
+            return Ok(orders);
+        }
 
         [HttpDelete]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
