@@ -9,7 +9,7 @@ using System.Diagnostics.Contracts;
 namespace Contract.Api.Context.Repositories
 {
     [Scoped]
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository : IOrderRepository, IsEntityExistRepository
     {
 
         private readonly AppDbContext context;
@@ -53,6 +53,12 @@ namespace Contract.Api.Context.Repositories
             }
             var product = await context.Orders.FirstAsync(c => c.Id == OrderId);
             return product.Adapt<Entities.Order>();
+        }
+
+        public async Task<bool> IsEntityExist(Guid contractId)
+        {
+            if (await context.Contracts!.AnyAsync(c => c.Id == contractId)) return true;
+            else return false;
         }
     }
 }

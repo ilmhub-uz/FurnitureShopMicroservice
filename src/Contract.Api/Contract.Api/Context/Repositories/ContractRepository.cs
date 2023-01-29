@@ -1,7 +1,5 @@
 ﻿using Contract.Api.Dto;
 using Contract.Api.Entities;
-using Contract.Api.Entities.Enums;
-using Contract.Api.Exceptions;
 using JFA.DependencyInjection;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Contract.Api.Context.Repositories;
 
 [Scoped]
-public class ContractRepository : IContractRepository
+public class ContractRepository : IContractRepository, IsEntityExistRepository
 {
     private readonly AppDbContext context;
 
@@ -18,69 +16,58 @@ public class ContractRepository : IContractRepository
         this.context = context;
     }
 
-    public async Task AddContract(CreateContractDto createContractDto)
+    public async Task AddContract(Entities.Contract contract)
     {
-        var contract = createContractDto.Adapt<Entities.Contract>();
         await context.Contracts!.AddAsync(contract);
         await context.SaveChangesAsync();
     }
 
-    public async Task DeleteContract(Guid contractId)
+    public async Task DeleteContract(Entities.Contract contract)
     {
-        if (!await context.Contracts!.AnyAsync(c => c.Id == contractId))
-        {
-            throw new NotFoundException<Entities.Contract>();
-        }
-
-        var product = await context.Contracts!.FirstAsync(c => c.Id == contractId);
-
-        context.Contracts!.Remove(product);
+        context.Contracts!.Remove(contract);
         await context.SaveChangesAsync();
     }
 
     public async Task<Entities.Contract> GetContractById(Guid contractId)
     {
-        if (!await context.Contracts!.AnyAsync(c => c.Id == contractId))
-        {
-            throw new NotFoundException<Entities.Contract>();
-        }
-        var product = await context.Contracts!.FirstAsync(c => c.Id == contractId);
-        return product.Adapt<Entities.Contract>();
+        var contract = await context.Contracts!.FirstAsync(c => c.Id == contractId);
+        return contract;
     }
 
-    public async Task<List<Entities.Contract>> GetContracts(ContractFilterDto? contractFilterDto)
+    public async Task<List<Entities.Contract>> GetContracts(ContractFilterDto? contractFilterDto = null)
     {
-        var query = context.Contracts!.Select(c => c.Adapt<Entities.Contract>());
+        var query = context.Contracts!.Where(c => true);
 
         if (contractFilterDto is not null)
         {
             query = FilterContract(query, contractFilterDto);
         }
+        var contracts = await query.ToListAsync();
 
-        return await query.ToListAsync();
+        return contracts.Select(c => c.Adapt<Entities.Contract>()).ToList();
     }
 
-    public async Task UpdateContact(UpdateContractDto updateContractDto)
+    public async Task UpdateContact(Guid contractId, Entities.Contract contract)
     {
-        if (!await context.Contracts!.AnyAsync(c => c.Id == updateContractDto.Id))
-        {
-            throw new NotFoundException<Entities.Contract>();
-        }
-        var product = await context.Contracts!.FirstAsync(c => c.Id == updateContractDto.Id);
 
-        context.Contracts!.Update(product);
-        await context.SaveChangesAsync();
+        context.Contracts!.Update(contract);
+        context.SaveChanges();
+    }
+
+    public async Task<bool> IsEntityExist(Guid contractId)
+    {
+        if (await context.Contracts!.AnyAsync(c => c.Id == contractId)) return true;
+        else return false;
     }
 
     private IQueryable<Entities.Contract> FilterContract(IQueryable<Entities.Contract> query, ContractFilterDto contractFilterDto)
     {
-
-        if (contractFilterDto.UserId is not null)
+        if (contractFilterDto.CreatedAt is not null)
         {
             query = query.Where(c => c.UserId == contractFilterDto.UserId);
         }
 
-        if (contractFilterDto.OrderId is not null)
+        if (contractFilterDto.FinishDate is not null)
         {
             query = query.Where(c => c.OrderId == contractFilterDto.OrderId);
         }
@@ -96,16 +83,16 @@ public class ContractRepository : IContractRepository
             };
         }
 
-        if (contractFilterDto.SortType is not null)
-        {
-            query = contractFilterDto.SortType switch
-            {
-                ESortType.fromCheap => query.OrderByDescending(c => c.TotalPrice),
-                ESortType.fromExpensive => query.OrderBy(c => c.TotalPrice),
-                ESortType.fromCreateDate => query.OrderByDescending(c => c.CreatedAt)
-            };
-        }
-        
+        /* if (contractFilterDto.SortType is not null)
+         {
+             query = contractFilterDto.SortType switch
+             {
+                 ESortType.fromCheap => query.OrderByDescending(c => c.TotalPrice),
+                 ESortType.fromExpensive => query.OrderBy(c => c.TotalPrice),
+                 ESortType.fromCreateDate => query.OrderByDescending(c => c.CreatedAt)
+             };
+         }*/
+
         return query;
     }
 }

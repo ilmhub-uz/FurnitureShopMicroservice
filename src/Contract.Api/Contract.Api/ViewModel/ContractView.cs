@@ -1,8 +1,8 @@
 ﻿using Contract.Api.Entities;
 
-namespace Contract.Api.Dto;
+namespace Contract.Api.ViewModel;
 
-public class ContractViewDto
+public class ContractView
 {
     public Guid Id { get; set; }
     public EContractStatus Status { get; set; }
