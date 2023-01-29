@@ -19,10 +19,12 @@ public class ContractService : IContractService
 
     public async Task<Guid> AddContract(CreateContractDto createContractDto)
     {
-        var contract = createContractDto.Adapt<Entities.Contract>();
-
-        contract.Id = Guid.NewGuid();
-        contract.CreatedAt = DateTime.UtcNow;
+        var contract = new Entities.Contract()
+        {
+            Id = Guid.NewGuid(),
+            CreatedAt = DateTime.UtcNow,
+            OrderId = createContractDto.OrderId
+        };
 
         await contractRepository.AddContract(contract);
 
