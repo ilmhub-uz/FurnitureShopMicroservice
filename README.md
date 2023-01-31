@@ -14,21 +14,21 @@
 - [x] redis,
 - [x] rabbitmq,
 - [x] docker,
-- [ ] ocelot,
+- [x] ocelot,
 - [ ] sqlserver,
 
 - [x] efcore,
 - [x] mapster,
-- [ ] fluentvalidation,
-- [ ] serilog,
+- [x] fluentvalidation,
+- [x] serilog,
 - [ ] microsoft.identity,
 
-- [ ] unit test,
-- [ ] xunit,
+- [x] unit test,
+- [x] xunit,
 - [ ] nunit,
-- [ ] moq,
+- [x] moq,
 - [ ] fluentassertions 
 
 - [ ] request rate limit
-- [ ] load balancing in microservices 
-- [ ] api gateway
+- [x] load balancing in microservices 
+- [x] api gateway
