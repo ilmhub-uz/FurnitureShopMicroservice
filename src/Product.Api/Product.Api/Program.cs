@@ -4,13 +4,15 @@ using Product.Api.RabbitMq;
 using Product.Api.Repositories;
 using Product.Api.Services;
 using System.Reflection;
+using Serilog;
+using Product.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.SerilogConfiguration();
 builder.Services.AddFluentValidationAutoValidation(options =>
 {
     options.DisableDataAnnotationsValidation = false;
